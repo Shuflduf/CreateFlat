@@ -7,6 +7,8 @@ const HALF_TILE = TILE_SIZE / 2.0
     Vector2i(0, 0): $Components/Motor
 }
 
+@export var selected_component: PackedScene
+
 func _physics_process(_delta: float) -> void:
     var mouse_pos = get_global_mouse_position() - Vector2(HALF_TILE, HALF_TILE)
     var tile_pos = mouse_pos.snapped(Vector2(TILE_SIZE, TILE_SIZE))
@@ -22,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
         if event.button_index == MOUSE_BUTTON_LEFT:
             var grid_pos = Vector2i($CursorSelection.position / 128.0) 
             if not all_components.has(grid_pos):
-                var new_component = preload("res://Blocks/Shaft/shaft.tscn").instantiate()
+                var new_component = selected_component.instantiate()
                 $Components.add_child(new_component)
                 new_component.position = $CursorSelection.position
                 
@@ -45,3 +47,11 @@ func connect_neighbors(new_component_pos: Vector2i):
                 neighbor_connector.connected_to = connector
                 neighbor_connector.sprites.frame = connector.sprites.frame
         
+
+
+func _on_sidebar_item_selected(scene: PackedScene) -> void:
+    selected_component = scene
+    for c in %Preview.get_children():
+        c.queue_free()
+    var new_preview = scene.instantiate()
+    %Preview.add_child(new_preview)

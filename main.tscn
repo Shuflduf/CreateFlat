@@ -1,18 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=13 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://ccjr6p7spuw0a" path="res://sidebar.gd" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://camera.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://dd41jxinu7o6f" path="res://Blocks/component_info.gd" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="9_4c57u"]
+
+[sub_resource type="Resource" id="Resource_5vw27"]
+script = ExtResource("6_272bh")
+name = "Motor"
+scene = ExtResource("4_7mycd")
+thumbnail = ExtResource("5_lquwl")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_efxa6"]
+script = ExtResource("6_272bh")
+name = "Shaft"
+scene = ExtResource("8_kek77")
+thumbnail = ExtResource("9_4c57u")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.47451)
+border_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
+selected_component = ExtResource("4_7mycd")
 
-[node name="CursorSelection" type="Sprite2D" parent="."]
+[node name="CursorSelection" type="Node2D" parent="."]
+position = Vector2(-128, 0)
+
+[node name="Indicator" type="Sprite2D" parent="CursorSelection"]
 z_index = 20
 scale = Vector2(8, 8)
 texture = ExtResource("3_7mycd")
 centered = false
+
+[node name="Preview" type="CanvasGroup" parent="CursorSelection"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.6)
+position = Vector2(64, 64)
+
+[node name="Motor" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("4_7mycd")]
+connections = {
+0: NodePath("Connector")
+}
 
 [node name="Cam" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
@@ -25,3 +66,40 @@ position = Vector2(64, 64)
 connections = {
 0: NodePath("Connector")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sidebar" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("5_7mycd")
+components = Array[ExtResource("6_272bh")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6")])
+
+[node name="Components" type="VBoxContainer" parent="CanvasLayer/Sidebar"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Base" type="PanelContainer" parent="CanvasLayer/Sidebar/Components"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Sidebar/Components/Base"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("5_lquwl")
+expand_mode = 4
+stretch_mode = 5
+
+[connection signal="item_selected" from="CanvasLayer/Sidebar" to="." method="_on_sidebar_item_selected"]

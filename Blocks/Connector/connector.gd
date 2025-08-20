@@ -17,7 +17,8 @@ var connected_to: MechanicalConnector
 func transfer_rotation():
     if not connected_to:
         return
+    
+    sprites.frame = connected_to.sprites.frame
     connected_to.speed = speed
-    connected_to.sprites.frame = sprites.frame
     connected_to.rotated.emit()
     #connected_to.transfer_rotation()
