@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvqr1pc5ymigg"]
+
+[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="1_7w27j"]
+[ext_resource type="Script" uid="uid://bc75hcalxt4dp" path="res://Blocks/Motor/motor.gd" id="1_cdrnf"]
+[ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://shaft.tscn" id="1_l0xdg"]
+[ext_resource type="Shader" uid="uid://b52ixj2xsgiha" path="res://shaft_mask.gdshader" id="2_cdrnf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncvd4"]
+resource_local_to_scene = true
+shader = ExtResource("2_cdrnf")
+shader_parameter/top_shown = true
+shader_parameter/bottom_shown = false
+
+[node name="Motor" type="Node2D"]
+script = ExtResource("1_cdrnf")
+
+[node name="Shaft" parent="." instance=ExtResource("1_l0xdg")]
+material = SubResource("ShaderMaterial_ncvd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_7w27j")

@@ -7,3 +7,18 @@ func _physics_process(_delta: float) -> void:
     var mouse_pos = get_global_mouse_position() - Vector2(HALF_TILE, HALF_TILE)
     var tile_pos = mouse_pos.snapped(Vector2(TILE_SIZE, TILE_SIZE))
     $CursorSelection.position = tile_pos
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event is InputEventMouseButton and event.is_pressed():
+        if event.button_index == MOUSE_BUTTON_LEFT:
+            #pass
+            %TileMap.set_cell(
+                cursor_selection_pos(),
+                0,
+                Vector2i.ZERO,
+                1
+            )
+        #if event.
+
+func cursor_selection_pos() -> Vector2i:
+    return Vector2i($CursorSelection.position / TILE_SIZE)

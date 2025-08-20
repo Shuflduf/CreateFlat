@@ -1,44 +1,35 @@
-[gd_scene load_steps=11 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=9 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Assets/Blocks/motor.png" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://shaft.tscn" id="3_h2yge"]
-[ext_resource type="Shader" uid="uid://b52ixj2xsgiha" path="res://shaft_mask.gdshader" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://camera.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="7_272bh"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
-texture = ExtResource("2_1bvp3")
-0:0/0 = 0
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7mycd"]
+scenes/1/scene = ExtResource("3_h2yge")
+scenes/2/scene = ExtResource("7_272bh")
+scenes/3/scene = ExtResource("4_7mycd")
 
-[sub_resource type="TileSet" id="TileSet_0xm2m"]
-sources/0 = SubResource("TileSetAtlasSource_lquwl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/top_shown = true
-shader_parameter/bottom_shown = false
+[sub_resource type="TileSet" id="TileSet_272bh"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_7mycd")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMap" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 z_index = 5
-scale = Vector2(8, 8)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_0xm2m")
+tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0)
+tile_set = SubResource("TileSet_272bh")
 
 [node name="CursorSelection" type="Sprite2D" parent="."]
 z_index = 20
 scale = Vector2(8, 8)
 texture = ExtResource("3_7mycd")
 centered = false
-
-[node name="Shaft" parent="." instance=ExtResource("3_h2yge")]
-material = SubResource("ShaderMaterial_7mycd")
-bottom_shown = false
 
 [node name="Cam" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
