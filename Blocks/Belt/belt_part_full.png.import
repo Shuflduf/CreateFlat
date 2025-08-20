@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4veklkbcsiks"
-path="res://.godot/imported/belt_part_side.png-43cea04a481ef5262f83b6a4be03b2e2.ctex"
+uid="uid://wxds8qpfcknd"
+path="res://.godot/imported/belt_part_full.png-1e85dc9c95b77925e618b22fc91036d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/belt_part_side.png"
-dest_files=["res://.godot/imported/belt_part_side.png-43cea04a481ef5262f83b6a4be03b2e2.ctex"]
+source_file="res://Blocks/Belt/belt_part_full.png"
+dest_files=["res://.godot/imported/belt_part_full.png-1e85dc9c95b77925e618b22fc91036d4.ctex"]
 
 [params]
 

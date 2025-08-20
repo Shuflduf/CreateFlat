@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://shaft.tscn" id="3_h2yge"]
 [ext_resource type="Shader" uid="uid://b52ixj2xsgiha" path="res://shaft_mask.gdshader" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://camera.gd" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://belt.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="7_272bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 texture = ExtResource("2_1bvp3")
@@ -46,3 +46,14 @@ script = ExtResource("6_7mycd")
 
 [node name="Belt" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(256, 0)
+
+[node name="Belt2" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(384, 0)
+type = 1
+
+[node name="Belt3" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(512, 0)
+type = 1
+
+[node name="Belt4" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(640, 0)
