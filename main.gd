@@ -28,7 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
     
 func connect_neighbors(new_component_pos: Vector2i):
     var new_component = all_components[new_component_pos]
-    for test_dir in MechanicalComponent.DIR_MAPPINGS:
+    print(new_component.connections)
+    for test_dir in new_component.connections:
         var offset = MechanicalComponent.DIR_MAPPINGS[test_dir]
         var test_pos = new_component_pos + offset
         if all_components.has(test_pos):
@@ -36,8 +37,9 @@ func connect_neighbors(new_component_pos: Vector2i):
             var opposite_dir = MechanicalComponent.OPPOSITE_DIRS[test_dir]
             new_component.neighbors[test_dir] = neighbor
             neighbor.neighbors[opposite_dir] = new_component
-            if neighbor.connections[opposite_dir]:
-                neighbor.connections[opposite_dir].connected_to = new_component.connections[test_dir]
-                neighbor.connections[opposite_dir].sprites.frame = new_component.connections[test_dir].sprites.frame
+            if neighbor.connections.has(opposite_dir):
+                var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
+                neighbor_connector.connected_to = new_component.connections[test_dir]
+                neighbor_connector.sprites.frame = new_component.connections[test_dir].sprites.frame
             
     print(new_component.neighbors)

@@ -9,6 +9,8 @@ var speed = 0.0:
         speed = value
         sprites.speed_scale = value
 
+#@export var internal_connector: MechanicalConnector
+#var external_connector: MechanicalConnector
 var connected_to: MechanicalConnector
 
 func transfer_rotation():

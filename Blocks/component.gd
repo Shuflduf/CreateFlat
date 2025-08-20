@@ -27,12 +27,7 @@ var neighbors: Dictionary[Dir, MechanicalComponent] = {
     Dir.Right: null,
 }
 
-@export var connections: Dictionary[Dir, MechanicalConnector] = {
-    Dir.Up: null,
-    Dir.Down: null,
-    Dir.Left: null,
-    Dir.Right: null,
-}
+@export var connections: Dictionary[Dir, MechanicalConnector] = {}
 
 #func force_update():
     #return

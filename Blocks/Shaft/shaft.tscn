@@ -7,9 +7,7 @@
 script = ExtResource("11_pmkp2")
 connections = {
 0: NodePath("Top"),
-1: NodePath("Bottom"),
-2: null,
-3: null
+1: NodePath("Bottom")
 }
 
 [node name="Top" parent="." instance=ExtResource("2_maxws")]
