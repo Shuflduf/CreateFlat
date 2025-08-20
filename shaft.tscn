@@ -13,9 +13,10 @@
 [ext_resource type="Script" uid="uid://dhpjtq45n86uo" path="res://shaft.gd" id="11_pmkp2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pmkp2"]
+resource_local_to_scene = true
 shader = ExtResource("1_lwrw8")
 shader_parameter/top_shown = true
-shader_parameter/bottom_shown = false
+shader_parameter/bottom_shown = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1k11s"]
 animations = [{
@@ -57,6 +58,6 @@ material = SubResource("ShaderMaterial_pmkp2")
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_1k11s")
 autoplay = "default"
-frame_progress = 0.139181
-offset = Vector2(425, 432.5)
+frame_progress = 0.845636
+offset = Vector2(425, 433)
 script = ExtResource("11_pmkp2")
