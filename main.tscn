@@ -1,29 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=5 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://shaft.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://camera.gd" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="7_272bh"]
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7mycd"]
-scenes/1/scene = ExtResource("3_h2yge")
-scenes/2/scene = ExtResource("7_272bh")
-scenes/3/scene = ExtResource("4_7mycd")
-
-[sub_resource type="TileSet" id="TileSet_272bh"]
-tile_size = Vector2i(128, 128)
-sources/0 = SubResource("TileSetScenesCollectionSource_7mycd")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
-
-[node name="TileMap" type="TileMapLayer" parent="."]
-unique_name_in_owner = true
-z_index = 5
-tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0)
-tile_set = SubResource("TileSet_272bh")
 
 [node name="CursorSelection" type="Sprite2D" parent="."]
 z_index = 20
@@ -35,17 +18,7 @@ centered = false
 position_smoothing_speed = 10.0
 script = ExtResource("6_7mycd")
 
-[node name="Belt" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(256, 0)
+[node name="Components" type="Node2D" parent="."]
+position = Vector2(64, 64)
 
-[node name="Belt2" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(384, 0)
-type = 1
-
-[node name="Belt3" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(512, 0)
-type = 1
-
-[node name="Belt4" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(640, 0)
-type = 2
+[node name="Motor" parent="Components" instance=ExtResource("4_7mycd")]

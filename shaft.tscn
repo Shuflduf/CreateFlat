@@ -53,7 +53,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Shaft" type="AnimatedSprite2D"]
+[node name="Shaft" type="AnimatedSprite2D" groups=["Shaft"]]
 material = SubResource("ShaderMaterial_pmkp2")
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_1k11s")
