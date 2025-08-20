@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=11 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://dc1uut57p5t65" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Assets/Blocks/motor.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://shaft.tscn" id="3_h2yge"]
 [ext_resource type="Shader" uid="uid://b52ixj2xsgiha" path="res://shaft_mask.gdshader" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://camera.gd" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://belt.tscn" id="7_272bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 texture = ExtResource("2_1bvp3")
@@ -30,7 +31,9 @@ tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_0xm2m")
 
 [node name="CursorSelection" type="Sprite2D" parent="."]
-texture = ExtResource("1_ig7tw")
+z_index = 20
+scale = Vector2(8, 8)
+texture = ExtResource("3_7mycd")
 centered = false
 
 [node name="Shaft" parent="." instance=ExtResource("3_h2yge")]
@@ -40,3 +43,6 @@ bottom_shown = false
 [node name="Cam" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
 script = ExtResource("6_7mycd")
+
+[node name="Belt" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(256, 0)
