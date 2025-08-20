@@ -19,16 +19,16 @@ func _unhandled_input(event: InputEvent) -> void:
             $Components.add_child(new_component)
             new_component.position = $CursorSelection.position
             var grid_pos = Vector2i($CursorSelection.position / 128.0) 
-            print(grid_pos)
             all_components[grid_pos] = new_component
             
             for test_dir in MechanicalComponent.DIR_MAPPINGS:
                 var offset = MechanicalComponent.DIR_MAPPINGS[test_dir]
                 var test_pos = grid_pos + offset
                 if all_components.has(test_pos):
-                    new_component.neighbors[test_dir] = all_components[test_pos]
-                    all_components[test_pos].neighbors[MechanicalComponent.OPPOSITE_DIRS[test_dir]] = new_component
-                
+                    var neighbor = all_components[test_pos]
+                    var opposite_dir = MechanicalComponent.OPPOSITE_DIRS[test_dir]
+                    new_component.neighbors[test_dir] = neighbor
+                    neighbor.neighbors[opposite_dir] = new_component
+                    neighbor.connections[opposite_dir].connected_to = new_component.connections[test_dir]
+                    
             print(new_component.neighbors)
-            for shaft in get_tree().get_nodes_in_group(&"Shaft"):
-                shaft.restart()

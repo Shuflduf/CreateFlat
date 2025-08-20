@@ -27,7 +27,7 @@ var neighbors: Dictionary[Dir, MechanicalComponent] = {
     Dir.Right: null,
 }
 
-@export var shafts: Dictionary[Dir, MechanicalComponent] = {
+@export var connections: Dictionary[Dir, MechanicalConnector] = {
     Dir.Up: null,
     Dir.Down: null,
     Dir.Left: null,

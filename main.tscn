@@ -21,4 +21,10 @@ script = ExtResource("6_7mycd")
 [node name="Components" type="Node2D" parent="."]
 position = Vector2(64, 64)
 
-[node name="Motor" parent="Components" instance=ExtResource("4_7mycd")]
+[node name="Motor" parent="Components" node_paths=PackedStringArray("connections") instance=ExtResource("4_7mycd")]
+connections = {
+0: NodePath("Connector"),
+1: null,
+2: null,
+3: null
+}

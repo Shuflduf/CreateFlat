@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=3 uid="uid://c8jgkm8qshiah"]
+
+[ext_resource type="Script" uid="uid://b0fp5h1ec6gl1" path="res://Blocks/Connector/connector.gd" id="1_p133w"]
+[ext_resource type="Shader" uid="uid://b52ixj2xsgiha" path="res://Blocks/Shaft/shaft_mask.gdshader" id="3_6coob"]
+[ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="4_ssw7k"]
+[ext_resource type="Texture2D" uid="uid://vppf0gks6vy4" path="res://Blocks/Shaft/Textures/file(0).png" id="5_mn38i"]
+[ext_resource type="Texture2D" uid="uid://dyeareyg0nwmb" path="res://Blocks/Shaft/Textures/file(1).png" id="6_mnkt6"]
+[ext_resource type="Texture2D" uid="uid://dffklr32stkgd" path="res://Blocks/Shaft/Textures/file(2).png" id="7_q6pi7"]
+[ext_resource type="Texture2D" uid="uid://dgs5p1m4jkix4" path="res://Blocks/Shaft/Textures/file(3).png" id="8_3s3w2"]
+[ext_resource type="Texture2D" uid="uid://cli65ofi2fsav" path="res://Blocks/Shaft/Textures/file(4).png" id="9_fjesc"]
+[ext_resource type="Texture2D" uid="uid://b0d4vry3irmqf" path="res://Blocks/Shaft/Textures/file(5).png" id="10_x587v"]
+[ext_resource type="Texture2D" uid="uid://kihtq4b1dvau" path="res://Blocks/Shaft/Textures/file(6).png" id="11_cojjw"]
+[ext_resource type="Texture2D" uid="uid://bggqknfcyerba" path="res://Blocks/Shaft/Textures/file(7).png" id="12_sjrt6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ui1l"]
+resource_local_to_scene = true
+shader = ExtResource("3_6coob")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aeb63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ssw7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mn38i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mnkt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q6pi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3s3w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fjesc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x587v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cojjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sjrt6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Connector" type="Node2D"]
+script = ExtResource("1_p133w")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6ui1l")
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_aeb63")
+autoplay = "default"
+speed_scale = 0.0
