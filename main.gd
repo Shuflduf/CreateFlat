@@ -30,3 +30,5 @@ func _unhandled_input(event: InputEvent) -> void:
                     all_components[test_pos].neighbors[MechanicalComponent.OPPOSITE_DIRS[test_dir]] = new_component
                 
             print(new_component.neighbors)
+            for shaft in get_tree().get_nodes_in_group(&"Shaft"):
+                shaft.restart()

@@ -11,11 +11,18 @@ shader = ExtResource("2_cdrnf")
 shader_parameter/top_shown = true
 shader_parameter/bottom_shown = false
 
-[node name="Motor" type="Node2D"]
+[node name="Motor" type="Node2D" node_paths=PackedStringArray("shafts")]
 script = ExtResource("1_cdrnf")
+shafts = {
+0: NodePath("Shaft"),
+1: null,
+2: null,
+3: null
+}
 
 [node name="Shaft" parent="." instance=ExtResource("1_l0xdg")]
 material = SubResource("ShaderMaterial_cdrnf")
+bottom_shown = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)

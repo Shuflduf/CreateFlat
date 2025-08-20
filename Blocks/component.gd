@@ -27,6 +27,13 @@ var neighbors: Dictionary[Dir, MechanicalComponent] = {
     Dir.Right: null,
 }
 
+@export var shafts: Dictionary[Dir, MechanicalComponent] = {
+    Dir.Up: null,
+    Dir.Down: null,
+    Dir.Left: null,
+    Dir.Right: null,
+}
+
 #func force_update():
     #return
 

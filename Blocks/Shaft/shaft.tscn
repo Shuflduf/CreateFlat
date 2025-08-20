@@ -53,13 +53,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Shaft" type="Node2D" groups=["Shaft"]]
+[node name="Shaft" type="Node2D" node_paths=PackedStringArray("shafts") groups=["Shaft"]]
 script = ExtResource("11_pmkp2")
+shafts = {
+0: NodePath("."),
+1: NodePath("."),
+2: null,
+3: null
+}
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_pmkp2")
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_1k11s")
 autoplay = "default"
-frame_progress = 0.845636
 speed_scale = 0.0

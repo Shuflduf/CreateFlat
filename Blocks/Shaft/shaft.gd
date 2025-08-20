@@ -12,6 +12,11 @@ var speed = 0.0:
         speed = val
         $Sprites.speed_scale = val
 
+func restart():
+    $Sprites.frame = 0
+
+func _ready() -> void:
+    update_halves()
 
 func update_halves():
     var mat: ShaderMaterial = $Sprites.material
@@ -22,7 +27,7 @@ func accept_rotation(su: float, new_speed: float):
     stress_units = su
     speed = new_speed
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if neighbors[Dir.Up]:
         transfer_rotation(neighbors[Dir.Up])
 
