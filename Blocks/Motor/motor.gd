@@ -2,7 +2,6 @@ extends MechanicalComponent
 
 func _physics_process(_delta: float) -> void:
     connections[Dir.Up].speed = 1.0
-    connections[Dir.Up].stress_units = 100000.0
     connections[Dir.Up].transfer_rotation()
     
     #$Shaft.stress_units = 1000000.0

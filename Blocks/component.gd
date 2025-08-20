@@ -20,13 +20,6 @@ const OPPOSITE_DIRS: Dictionary[Dir, Dir] = {
     Dir.Right: Dir.Left,
 }
 
-var neighbors: Dictionary[Dir, MechanicalComponent] = {
-    Dir.Up: null,
-    Dir.Down: null,
-    Dir.Left: null,
-    Dir.Right: null,
-}
-
 @export var connections: Dictionary[Dir, MechanicalConnector] = {}
 
 #func force_update():
