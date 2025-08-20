@@ -1,6 +1,6 @@
 @tool
 class_name Shaft
-extends AnimatedSprite2D
+extends MechanicalComponent
 
 @export var top_shown = true
 @export var bottom_shown = true
@@ -10,10 +10,10 @@ var stress_units = 0.0
 var speed = 0.0:
     set(val):
         speed = val
-        speed_scale = val
+        $Sprites.speed_scale = val
 
 
 func update_halves():
-    var mat: ShaderMaterial = material
+    var mat: ShaderMaterial = $Sprites.material
     mat.set_shader_parameter(&"top_shown", top_shown)
     mat.set_shader_parameter(&"bottom_shown", bottom_shown)

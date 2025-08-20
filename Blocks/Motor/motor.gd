@@ -1,4 +1,4 @@
-extends Node2D
+extends MechanicalComponent
 
 func _physics_process(_delta: float) -> void:
     $Shaft.stress_units = 1000000.0
