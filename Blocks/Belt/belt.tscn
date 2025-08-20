@@ -38,13 +38,11 @@ shader_parameter/small = false
 
 [node name="Belt" type="Node2D"]
 script = ExtResource("1_6m2es")
-type = 2
 
 [node name="Parts" type="Node2D" parent="."]
 
 [node name="BottomStart" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_dy5sx")
 position = Vector2(0, -16)
 scale = Vector2(8, 8)
@@ -53,6 +51,7 @@ centered = false
 
 [node name="BottomEnd" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_6m2es")
 position = Vector2(128, -16)
 scale = Vector2(-8, 8)
@@ -70,7 +69,6 @@ centered = false
 
 [node name="SideStart" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
-visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_3xib2")
 position = Vector2(128, 24)
@@ -81,6 +79,7 @@ centered = false
 
 [node name="SideEnd" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_3xib2")
 position = Vector2(0, 104)
@@ -91,7 +90,6 @@ centered = false
 
 [node name="TopStart" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_rgkw3")
 position = Vector2(0, 144)
 scale = Vector2(8, -8)
@@ -100,6 +98,7 @@ centered = false
 
 [node name="TopEnd" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_dcwgi")
 position = Vector2(128, 144)
 scale = Vector2(-8, -8)

@@ -57,3 +57,4 @@ type = 1
 
 [node name="Belt4" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(640, 0)
+type = 2

@@ -15,6 +15,9 @@ enum BeltType {
     BeltType.End: [%BottomEnd, %SideEnd, %TopEnd],
 }
 
+func _ready() -> void:
+    update_type()
+
 func update_type():
     for c in $Parts.get_children():
         c.hide()
