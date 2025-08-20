@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://dlxgqbso1kloa"]
+
+[ext_resource type="Shader" uid="uid://b52ixj2xsgiha" path="res://Blocks/Shaft/shaft_mask.gdshader" id="1_lwrw8"]
+[ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="1_rvak8"]
+[ext_resource type="Texture2D" uid="uid://vppf0gks6vy4" path="res://Blocks/Shaft/Textures/file(0).png" id="2_lwrw8"]
+[ext_resource type="Texture2D" uid="uid://dyeareyg0nwmb" path="res://Blocks/Shaft/Textures/file(1).png" id="3_pmkp2"]
+[ext_resource type="Texture2D" uid="uid://dffklr32stkgd" path="res://Blocks/Shaft/Textures/file(2).png" id="4_aevbb"]
+[ext_resource type="Texture2D" uid="uid://dgs5p1m4jkix4" path="res://Blocks/Shaft/Textures/file(3).png" id="5_1pmuf"]
+[ext_resource type="Texture2D" uid="uid://cli65ofi2fsav" path="res://Blocks/Shaft/Textures/file(4).png" id="6_f4iip"]
+[ext_resource type="Texture2D" uid="uid://b0d4vry3irmqf" path="res://Blocks/Shaft/Textures/file(5).png" id="7_mj3nr"]
+[ext_resource type="Texture2D" uid="uid://kihtq4b1dvau" path="res://Blocks/Shaft/Textures/file(6).png" id="8_hixfx"]
+[ext_resource type="Texture2D" uid="uid://bggqknfcyerba" path="res://Blocks/Shaft/Textures/file(7).png" id="9_wipkr"]
+[ext_resource type="Script" uid="uid://dhpjtq45n86uo" path="res://Blocks/Shaft/shaft.gd" id="11_pmkp2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmkp2"]
+resource_local_to_scene = true
+shader = ExtResource("1_lwrw8")
+shader_parameter/top_shown = true
+shader_parameter/bottom_shown = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k11s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rvak8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lwrw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pmkp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aevbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1pmuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f4iip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mj3nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hixfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wipkr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Shaft" type="Node2D" groups=["Shaft"]]
+script = ExtResource("11_pmkp2")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pmkp2")
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_1k11s")
+autoplay = "default"
+frame_progress = 0.845636
+speed_scale = 0.0

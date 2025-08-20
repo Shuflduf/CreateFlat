@@ -15,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.is_pressed():
         if event.button_index == MOUSE_BUTTON_LEFT:
-            var new_component = preload("res://shaft.tscn").instantiate()
+            var new_component = preload("res://Blocks/Shaft/shaft.tscn").instantiate()
             $Components.add_child(new_component)
             new_component.position = $CursorSelection.position
             var grid_pos = Vector2i($CursorSelection.position / 128.0) 

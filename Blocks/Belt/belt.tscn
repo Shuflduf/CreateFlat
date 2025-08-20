@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dv4mw6mdkpqxp"]
 
 [ext_resource type="Script" uid="uid://c70dbrqkk6u47" path="res://Blocks/Belt/belt.gd" id="1_6m2es"]
-[ext_resource type="Shader" uid="uid://dgpvmu1fvx63o" path="res://belt_move.gdshader" id="1_rfspg"]
+[ext_resource type="Shader" uid="uid://dgpvmu1fvx63o" path="res://Blocks/Belt/belt_move.gdshader" id="1_rfspg"]
 [ext_resource type="Texture2D" uid="uid://dlxb7spdkyt2c" path="res://Blocks/Belt/belt_part_start.png" id="2_dy5sx"]
 [ext_resource type="Texture2D" uid="uid://b4veklkbcsiks" path="res://Blocks/Belt/belt_part_side.png" id="3_dy5sx"]
 [ext_resource type="Texture2D" uid="uid://wxds8qpfcknd" path="res://Blocks/Belt/belt_part_full.png" id="3_smakq"]

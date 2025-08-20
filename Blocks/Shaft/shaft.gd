@@ -17,3 +17,14 @@ func update_halves():
     var mat: ShaderMaterial = $Sprites.material
     mat.set_shader_parameter(&"top_shown", top_shown)
     mat.set_shader_parameter(&"bottom_shown", bottom_shown)
+
+func accept_rotation(su: float, new_speed: float):
+    stress_units = su
+    speed = new_speed
+
+func _physics_process(delta: float) -> void:
+    if neighbors[Dir.Up]:
+        transfer_rotation(neighbors[Dir.Up])
+
+func transfer_rotation(component: MechanicalComponent):
+    component.accept_rotation(stress_units, speed)

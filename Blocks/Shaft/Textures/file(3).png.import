@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bggqknfcyerba"
-path="res://.godot/imported/file(7).png-27409ea2bc5d53f80c6e25ea31b09815.ctex"
+uid="uid://dgs5p1m4jkix4"
+path="res://.godot/imported/file(3).png-b7c1d8ca98dd0082530125c3198abdc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Shaft/file(7).png"
-dest_files=["res://.godot/imported/file(7).png-27409ea2bc5d53f80c6e25ea31b09815.ctex"]
+source_file="res://Blocks/Shaft/Textures/file(3).png"
+dest_files=["res://.godot/imported/file(3).png-b7c1d8ca98dd0082530125c3198abdc0.ctex"]
 
 [params]
 

@@ -26,3 +26,9 @@ var neighbors: Dictionary[Dir, MechanicalComponent] = {
     Dir.Left: null,
     Dir.Right: null,
 }
+
+#func force_update():
+    #return
+
+func accept_rotation(_su: float, _new_speed: float):
+    return
