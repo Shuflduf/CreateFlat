@@ -15,6 +15,10 @@ var speed = 0.0:
 var connected_to: MechanicalConnector
 var facing_dir = MechanicalComponent.Dir
 
+func _physics_process(delta: float) -> void:
+    modulate.h = 0.5 + (speed / 3.0)
+    #print(modulate.h)
+    
 func transfer_rotation():
     if not connected_to:
         return

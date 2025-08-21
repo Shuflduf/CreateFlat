@@ -52,6 +52,7 @@ animations = [{
 }]
 
 [node name="Connector" type="Node2D"]
+modulate = Color(0, 0.733333, 1, 1)
 script = ExtResource("1_p133w")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
