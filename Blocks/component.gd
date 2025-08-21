@@ -43,6 +43,7 @@ func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[V
                 neighbor_connector.connected_to = connector
                 neighbor_connector.sprites.frame = connector.sprites.frame
 
+
 func get_connector(dir: Dir) -> MechanicalConnector:
     return connections[(dir + rotation_index) % 4]
 

@@ -1,1 +1,23 @@
 extends MechanicalComponent
+
+@onready var connectors = [
+    $Up,
+    $Right,
+    $Down,
+    $Left,
+]
+
+func _ready() -> void:
+    for conn in connectors:
+        conn.rotated.connect(_on_dir_rotated.bind(conn))
+
+
+func _on_dir_rotated(connector: MechanicalConnector):
+    
+    for i in connectors.size():
+        var current = connectors[i]
+        if current == connector:
+            continue
+        current.speed = connector.speed
+        
+    #pass

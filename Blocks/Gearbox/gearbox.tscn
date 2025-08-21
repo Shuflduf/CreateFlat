@@ -7,22 +7,26 @@
 [node name="Gearbox" type="Node2D" node_paths=PackedStringArray("connections")]
 script = ExtResource("1_oyyyy")
 connections = {
-0: NodePath("Connector"),
-1: NodePath("Connector2"),
-2: NodePath("Connector3"),
-3: NodePath("Connector4")
+0: NodePath("Up"),
+1: NodePath("Right"),
+2: NodePath("Down"),
+3: NodePath("Left")
 }
 
-[node name="Connector" parent="." instance=ExtResource("2_oyyyy")]
+[node name="Up" parent="." instance=ExtResource("2_oyyyy")]
+scale = Vector2(-1, 1)
 
-[node name="Connector2" parent="." instance=ExtResource("2_oyyyy")]
+[node name="Right" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 1.57079
+scale = Vector2(-1, 1)
 
-[node name="Connector3" parent="." instance=ExtResource("2_oyyyy")]
+[node name="Down" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 3.14159
+scale = Vector2(-1, 1)
 
-[node name="Connector4" parent="." instance=ExtResource("2_oyyyy")]
+[node name="Left" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 4.71238
+scale = Vector2(-1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
