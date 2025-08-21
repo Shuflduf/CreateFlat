@@ -21,6 +21,7 @@ func _physics_process(_delta: float) -> void:
         var target = all_components[grid_pos]
         DebugDraw2D.set_text("Component", target.connections)
         DebugDraw2D.set_text("Connections", target.connections.values().map(func(c): return c.connected_to))
+        DebugDraw2D.set_text("Speeds", target.connections.values().map(func(c): return c.speed))
     DebugDraw2D.set_text("Position", grid_pos)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -35,8 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
             #var new_component = %Preview.get_child(0).duplicate()
             $Components.add_child(new_component)
             new_component.position = $CursorSelection.position
-            new_component.rotation = HALF_PI * rotation_index
-            new_component.rotation_index = rotation_index
+            new_component.rotation = HALF_PI * (rotation_index % new_component.max_rotations)
+            new_component.rotation_index = rotation_index % new_component.max_rotations
             
             all_components[grid_pos] = new_component
             
@@ -79,6 +80,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_sidebar_item_selected(scene: PackedScene) -> void:
     selected_component = scene
+    #rot
     for c in %Preview.get_children():
         c.queue_free()
     var new_preview = scene.instantiate()

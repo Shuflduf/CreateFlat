@@ -21,7 +21,7 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
 #}
 
 @export var connections: Dictionary[Dir, MechanicalConnector] = {}
-
+@export var max_rotations = 4
 #func force_update():
     #return
 
