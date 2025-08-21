@@ -40,6 +40,7 @@ selected_component = ExtResource("4_7mycd")
 position = Vector2(-128, 0)
 
 [node name="Indicator" type="Sprite2D" parent="CursorSelection"]
+visible = false
 z_index = 20
 scale = Vector2(8, 8)
 texture = ExtResource("3_7mycd")

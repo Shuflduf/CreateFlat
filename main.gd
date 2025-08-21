@@ -2,12 +2,15 @@ extends Node2D
 
 const TILE_SIZE = 128.0
 const HALF_TILE = TILE_SIZE / 2.0
+const HALF_PI = 1.5708
 
 @onready var all_components: Dictionary[Vector2i, MechanicalComponent] = {
     Vector2i(0, 0): $Components/Motor
 }
 
 @export var selected_component: PackedScene
+
+var rotation_index = 0
 
 func _physics_process(_delta: float) -> void:
     var mouse_pos = get_global_mouse_position() - Vector2(HALF_TILE, HALF_TILE)
@@ -24,28 +27,37 @@ func _unhandled_input(event: InputEvent) -> void:
         if event.button_index == MOUSE_BUTTON_LEFT:
             var grid_pos = Vector2i($CursorSelection.position / 128.0) 
             if not all_components.has(grid_pos):
-                var new_component = selected_component.instantiate()
+                var new_component: MechanicalComponent = selected_component.instantiate()
+                #var new_component = %Preview.get_child(0).duplicate()
                 $Components.add_child(new_component)
                 new_component.position = $CursorSelection.position
+                new_component.rotation = HALF_PI * rotation_index
+                new_component.rotation_index = rotation_index
                 
                 all_components[grid_pos] = new_component
-            connect_neighbors(grid_pos)
+                
+                new_component.connect_neighbors(grid_pos, all_components)
+                
+    elif event.is_action_pressed(&"rotate"):
+        rotation_index = (rotation_index + 1) % 4
+        #%Preview.getchi
+        %Preview.rotation = HALF_PI * rotation_index
     
-func connect_neighbors(new_component_pos: Vector2i):
-    var new_component = all_components[new_component_pos]
-    print(new_component.connections)
-    for test_dir in new_component.connections:
-        var connector: MechanicalConnector = new_component.connections[test_dir]
-        var offset = MechanicalComponent.DIR_MAPPINGS[test_dir]
-        var test_pos = new_component_pos + offset
-        if all_components.has(test_pos):
-            var neighbor = all_components[test_pos]
-            var opposite_dir = MechanicalComponent.OPPOSITE_DIRS[test_dir]
-            if neighbor.connections.has(opposite_dir):
-                var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
-                connector.connected_to = neighbor_connector
-                neighbor_connector.connected_to = connector
-                neighbor_connector.sprites.frame = connector.sprites.frame
+#func connect_neighbors(new_component_pos: Vector2i):
+    #var new_component = all_components[new_component_pos]
+    #print(new_component.connections)
+    #for test_dir in new_component.connections:
+        #var connector: MechanicalConnector = new_component.connections[test_dir]
+        #var offset = MechanicalComponent.DIR_MAPPINGS[test_dir]
+        #var test_pos = new_component_pos + offset
+        #if all_components.has(test_pos):
+            #var neighbor = all_components[test_pos]
+            #var opposite_dir = (test_dir + 2) % 4
+            #if neighbor.connections.has(opposite_dir):
+                #var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
+                #connector.connected_to = neighbor_connector
+                #neighbor_connector.connected_to = connector
+                #neighbor_connector.sprites.frame = connector.sprites.frame
         
 
 
