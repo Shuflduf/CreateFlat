@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=16 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_7mycd"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dd41jxinu7o6f" path="res://Blocks/component_info.gd" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bjvlrki0jrqgj" path="res://Blocks/Gearbox/gearbox.tscn" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="11_dg77c"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_272bh")
@@ -22,6 +24,13 @@ script = ExtResource("6_272bh")
 name = "Shaft"
 scene = ExtResource("8_kek77")
 thumbnail = ExtResource("9_4c57u")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_ycdy4"]
+script = ExtResource("6_272bh")
+name = "Gearbox"
+scene = ExtResource("10_efxa6")
+thumbnail = ExtResource("11_dg77c")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
@@ -79,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_7mycd")
-components = Array[ExtResource("6_272bh")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6")])
+components = Array[ExtResource("6_272bh")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4")])
 
 [node name="Components" type="VBoxContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1

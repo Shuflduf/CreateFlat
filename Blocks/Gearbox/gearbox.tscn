@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjvlrki0jrqgj"]
+
+[ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="1_mudlm"]
+[ext_resource type="Script" uid="uid://co83m41wbnivr" path="res://Blocks/Gearbox/gearbox.gd" id="1_oyyyy"]
+[ext_resource type="PackedScene" uid="uid://c8jgkm8qshiah" path="res://Blocks/Connector/connector.tscn" id="2_oyyyy"]
+
+[node name="Gearbox" type="Node2D" node_paths=PackedStringArray("connections")]
+script = ExtResource("1_oyyyy")
+connections = {
+0: NodePath("Connector"),
+1: NodePath("Connector2"),
+2: NodePath("Connector3"),
+3: NodePath("Connector4")
+}
+
+[node name="Connector" parent="." instance=ExtResource("2_oyyyy")]
+
+[node name="Connector2" parent="." instance=ExtResource("2_oyyyy")]
+rotation = 1.57079
+
+[node name="Connector3" parent="." instance=ExtResource("2_oyyyy")]
+rotation = 3.14159
+
+[node name="Connector4" parent="." instance=ExtResource("2_oyyyy")]
+rotation = 4.71238
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_mudlm")

@@ -46,6 +46,8 @@ func _unhandled_input(event: InputEvent) -> void:
                 for dir in target.connections:
                     var connection = target.connections[dir]
                     if connection.connected_to:
+                        #connection.connected_to.speed = 0.0
+                        #connection.connected_to.rotated.emit()
                         connection.connected_to.connected_to = null
                 
                 target.queue_free()
