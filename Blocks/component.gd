@@ -35,7 +35,7 @@ func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[V
         var test_pos = new_component_pos + offset
         if all_components.has(test_pos):
             var neighbor = all_components[test_pos]
-            var opposite_dir = (test_dir + 2) % 4
+            var opposite_dir = (test_dir + 2 + neighbor.rotation_index + rotation_index) % 4
             if neighbor.connections.has(opposite_dir):
                 var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
                 connector.connected_to = neighbor_connector
