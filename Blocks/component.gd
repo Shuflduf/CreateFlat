@@ -29,7 +29,6 @@ var rotation_index = 0
 
 
 func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]):
-    #print(new_component.connections)
     for test_dir in connections:
         var connector: MechanicalConnector = connections[test_dir]
         var offset = MechanicalComponent.DIR_MAPPINGS[(test_dir + rotation_index) % 4]

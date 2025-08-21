@@ -14,11 +14,9 @@ connections = {
 }
 
 [node name="Up" parent="." instance=ExtResource("2_oyyyy")]
-scale = Vector2(-1, 1)
 
 [node name="Right" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 1.57079
-scale = Vector2(-1, 1)
 
 [node name="Down" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 3.14159
@@ -26,7 +24,6 @@ scale = Vector2(-1, 1)
 
 [node name="Left" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 4.71238
-scale = Vector2(-1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)

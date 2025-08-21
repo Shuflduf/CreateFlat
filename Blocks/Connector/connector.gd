@@ -19,6 +19,6 @@ func transfer_rotation():
         return
     
     sprites.frame = connected_to.sprites.frame
-    connected_to.speed = -speed
+    connected_to.speed = speed
     connected_to.rotated.emit()
     #connected_to.transfer_rotation()

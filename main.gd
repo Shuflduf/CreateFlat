@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
     if all_components.has(grid_pos):
         var target = all_components[grid_pos]
         DebugDraw2D.set_text("Component", target.connections)
+        DebugDraw2D.set_text("Connections", target.connections.values().map(func(c): return c.connected_to))
     DebugDraw2D.set_text("Position", grid_pos)
 
 func _unhandled_input(event: InputEvent) -> void:
