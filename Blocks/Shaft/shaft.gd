@@ -2,6 +2,7 @@ class_name Shaft
 extends MechanicalComponent
 
 func _ready() -> void:
+    super()
     $Bottom.rotated.connect(func():
         $Top.speed = $Bottom.speed
         $Top.transfer_rotation()

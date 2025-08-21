@@ -8,6 +8,7 @@ extends MechanicalComponent
 ]
 
 func _ready() -> void:
+    super()
     for conn in connectors:
         conn.rotated.connect(_on_dir_rotated.bind(conn))
 

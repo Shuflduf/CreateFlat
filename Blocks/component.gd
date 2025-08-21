@@ -27,6 +27,13 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
 
 var rotation_index = 0
 
+func _ready() -> void:
+    await get_tree().physics_frame
+    prints("a", connections, rotation_index)
+    for dir in connections:
+        print(dir)
+        #print((rotation_index + dir) % 4)
+        connections[dir].rotation_index = rotation_index
 
 func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]):
     for test_dir in connections:
