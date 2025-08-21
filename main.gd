@@ -24,19 +24,32 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.is_pressed():
+        var grid_pos = Vector2i($CursorSelection.position / 128.0) 
         if event.button_index == MOUSE_BUTTON_LEFT:
-            var grid_pos = Vector2i($CursorSelection.position / 128.0) 
-            if not all_components.has(grid_pos):
-                var new_component: MechanicalComponent = selected_component.instantiate()
-                #var new_component = %Preview.get_child(0).duplicate()
-                $Components.add_child(new_component)
-                new_component.position = $CursorSelection.position
-                new_component.rotation = HALF_PI * rotation_index
-                new_component.rotation_index = rotation_index
+            if all_components.has(grid_pos):
+                all_components[grid_pos].queue_free()
+            
                 
-                all_components[grid_pos] = new_component
+            var new_component: MechanicalComponent = selected_component.instantiate()
+            #var new_component = %Preview.get_child(0).duplicate()
+            $Components.add_child(new_component)
+            new_component.position = $CursorSelection.position
+            new_component.rotation = HALF_PI * rotation_index
+            new_component.rotation_index = rotation_index
+            
+            all_components[grid_pos] = new_component
+            
+            new_component.connect_neighbors(grid_pos, all_components)
+        elif event.button_index == MOUSE_BUTTON_RIGHT:
+            if all_components.has(grid_pos):
+                var target = all_components[grid_pos]
+                for dir in target.connections:
+                    var connection = target.connections[dir]
+                    if connection.connected_to:
+                        connection.connected_to.connected_to = null
                 
-                new_component.connect_neighbors(grid_pos, all_components)
+                target.queue_free()
+                all_components.erase(grid_pos)
                 
     elif event.is_action_pressed(&"rotate"):
         rotation_index = (rotation_index + 1) % 4
