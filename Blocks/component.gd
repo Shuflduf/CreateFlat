@@ -30,7 +30,7 @@ var rotation_index = 0
 func _ready() -> void:
     await get_tree().physics_frame
     for dir in connections:
-        connections[dir].rotation_index = rotation_index
+        connections[dir].facing_dir = dir
 
 func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]):
     for test_dir in connections:
