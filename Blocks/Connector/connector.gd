@@ -14,7 +14,8 @@ var speed = 0.0:
 #var external_connector: MechanicalConnector
 var connected_to: MechanicalConnector
 var facing_dir = MechanicalComponent.Dir
-var flipped = true
+var flipped = false
+var parent: MechanicalComponent
 
 func _physics_process(delta: float) -> void:
     modulate.h = 0.5 + (sprites.speed_scale / 3.0)
@@ -24,7 +25,7 @@ func transfer_rotation():
     if not connected_to:
         return
     
-    connected_to.flipped = facing_dir in [MechanicalComponent.Dir.Down, MechanicalComponent.Dir.Right]
+    connected_to.flipped = parent.rotation_index in [MechanicalComponent.Dir.Down, MechanicalComponent.Dir.Right]
     #if connected_to.facing_dir == facing_dir:
         #connected_to.speed = -speed
     #else:

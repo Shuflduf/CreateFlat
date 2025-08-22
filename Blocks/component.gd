@@ -31,6 +31,7 @@ func _ready() -> void:
     await get_tree().physics_frame
     for dir in connections:
         connections[dir].facing_dir = dir
+        connections[dir].parent = self
 
 func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]):
     for test_dir in connections:
