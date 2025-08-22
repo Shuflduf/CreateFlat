@@ -21,7 +21,6 @@ rotation = 1.57079
 
 [node name="Down" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 3.14159
-scale = Vector2(-1, 1)
 
 [node name="Left" parent="." instance=ExtResource("2_oyyyy")]
 rotation = 4.71238
