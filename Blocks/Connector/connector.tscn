@@ -52,10 +52,10 @@ animations = [{
 }]
 
 [node name="Connector" type="Node2D"]
-modulate = Color(0, 0.733333, 1, 1)
 script = ExtResource("1_p133w")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
 material = SubResource("ShaderMaterial_6ui1l")
 scale = Vector2(0.145, 0.147806)
 sprite_frames = SubResource("SpriteFrames_aeb63")

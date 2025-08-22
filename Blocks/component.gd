@@ -50,7 +50,7 @@ func connect_neighbors(
         if all_components.has(test_pos):
             var neighbor = all_components[test_pos]
             var opposite_dir = (
-                (test_dir + rotation_index + 2 + neighbor.rotation_index) % 4
+                (test_dir + rotation_index + 2 - neighbor.rotation_index) % 4
             )
             if neighbor.connections.has(opposite_dir):
                 var neighbor_connector: MechanicalConnector = (

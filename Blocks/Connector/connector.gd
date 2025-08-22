@@ -16,7 +16,7 @@ var parent: MechanicalComponent
 
 
 func _physics_process(_delta: float) -> void:
-    modulate.h = 0.5 + (speed / 3.0)
+    $Sprites.modulate.h = 0.5 + (speed / 3.0)
 
 
 #speed = 0.0
@@ -36,13 +36,13 @@ func transfer_rotation():
         #in [MechanicalComponent.Dir.UP, MechanicalComponent.Dir.LEFT]
     #) and speed > 0.0
     
-    match global_dir:
-        MechanicalComponent.Dir.UP:
-            should_flip = false
-        MechanicalComponent.Dir.DOWN:
-            should_flip = true 
+    #match global_dir:
+        #MechanicalComponent.Dir.UP:
+            #should_flip = true
+        #MechanicalComponent.Dir.DOWN:
+            #should_flip = true 
     #should_flip = true
-    connected_to.speed = -speed if should_flip else speed
+    connected_to.speed = -speed
 
     #sprites.frame = connected_to.sprites.frame
     connected_to.rotated.emit()
