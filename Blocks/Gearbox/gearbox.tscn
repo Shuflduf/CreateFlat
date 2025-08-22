@@ -21,10 +21,11 @@ max_rotations = 1
 rotation = 1.57079
 
 [node name="Down" parent="." instance=ExtResource("2_oyyyy")]
-rotation = 3.14159
+shaft_bottom = true
 
 [node name="Left" parent="." instance=ExtResource("2_oyyyy")]
-rotation = 4.71238
+rotation = 1.5708
+shaft_bottom = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)

@@ -1,36 +1,36 @@
 [gd_scene load_steps=16 format=3 uid="uid://bri4bsuu8weqc"]
 
-[ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="4_7mycd"]
-[ext_resource type="Script" uid="uid://ccjr6p7spuw0a" path="res://sidebar.gd" id="5_7mycd"]
-[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://camera.gd" id="6_7mycd"]
-[ext_resource type="Script" uid="uid://dd41jxinu7o6f" path="res://Blocks/component_info.gd" id="6_272bh"]
-[ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="8_kek77"]
-[ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="9_4c57u"]
-[ext_resource type="PackedScene" uid="uid://bjvlrki0jrqgj" path="res://Blocks/Gearbox/gearbox.tscn" id="10_efxa6"]
-[ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="11_dg77c"]
+[ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
+[ext_resource type="Texture2D" uid="uid://ctiw8h2m0w4rx" path="res://Assets/selection.png" id="3_fdnlq"]
+[ext_resource type="Script" uid="uid://y6x72o5gmdt1" path="res://World/camera.gd" id="4_jkdf5"]
+[ext_resource type="Script" uid="uid://ccjr6p7spuw0a" path="res://World/sidebar.gd" id="5_wsu2k"]
+[ext_resource type="Script" uid="uid://dd41jxinu7o6f" path="res://Blocks/component_info.gd" id="6_k12tt"]
+[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="7_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="8_b3802"]
+[ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="9_fevyy"]
+[ext_resource type="PackedScene" uid="uid://bjvlrki0jrqgj" path="res://Blocks/Gearbox/gearbox.tscn" id="10_hibaj"]
+[ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="11_pdsj5"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
-script = ExtResource("6_272bh")
+script = ExtResource("6_k12tt")
 name = "Motor"
-scene = ExtResource("4_7mycd")
-thumbnail = ExtResource("5_lquwl")
+scene = ExtResource("2_6iyac")
+thumbnail = ExtResource("7_h1bgf")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_efxa6"]
-script = ExtResource("6_272bh")
+script = ExtResource("6_k12tt")
 name = "Shaft"
-scene = ExtResource("8_kek77")
-thumbnail = ExtResource("9_4c57u")
+scene = ExtResource("8_b3802")
+thumbnail = ExtResource("9_fevyy")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_ycdy4"]
-script = ExtResource("6_272bh")
+script = ExtResource("6_k12tt")
 name = "Gearbox"
-scene = ExtResource("10_efxa6")
-thumbnail = ExtResource("11_dg77c")
+scene = ExtResource("10_hibaj")
+thumbnail = ExtResource("11_pdsj5")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
@@ -42,8 +42,8 @@ bg_color = Color(0, 0, 0, 0.47451)
 border_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_0xm2m")
-selected_component = ExtResource("4_7mycd")
+script = ExtResource("1_d1ilt")
+selected_component = ExtResource("2_6iyac")
 
 [node name="CursorSelection" type="Node2D" parent="."]
 position = Vector2(-128, 0)
@@ -52,7 +52,7 @@ position = Vector2(-128, 0)
 visible = false
 z_index = 20
 scale = Vector2(8, 8)
-texture = ExtResource("3_7mycd")
+texture = ExtResource("3_fdnlq")
 centered = false
 
 [node name="Preview" type="CanvasGroup" parent="CursorSelection"]
@@ -60,19 +60,19 @@ unique_name_in_owner = true
 self_modulate = Color(0.51, 1, 0.8775, 0.6)
 position = Vector2(64, 64)
 
-[node name="Motor" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("4_7mycd")]
+[node name="Motor" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("2_6iyac")]
 connections = {
 0: NodePath("Connector")
 }
 
 [node name="Cam" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
-script = ExtResource("6_7mycd")
+script = ExtResource("4_jkdf5")
 
 [node name="Components" type="Node2D" parent="."]
 position = Vector2(64, 64)
 
-[node name="Motor" parent="Components" node_paths=PackedStringArray("connections") instance=ExtResource("4_7mycd")]
+[node name="Motor" parent="Components" node_paths=PackedStringArray("connections") instance=ExtResource("2_6iyac")]
 connections = {
 0: NodePath("Connector")
 }
@@ -87,8 +87,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("5_7mycd")
-components = Array[ExtResource("6_272bh")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4")])
+script = ExtResource("5_wsu2k")
+components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4")])
 
 [node name="Components" type="VBoxContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1
@@ -108,7 +108,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Sidebar/Components/Base"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("5_lquwl")
+texture = ExtResource("7_h1bgf")
 expand_mode = 4
 stretch_mode = 5
 
