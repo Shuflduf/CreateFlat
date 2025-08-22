@@ -1,15 +1,15 @@
 shader_type canvas_item;
 
-//uniform bool top_shown = true;
-//uniform bool bottom_shown = true;
+uniform bool top_shown = true;
+uniform bool bottom_shown = false;
 
 void fragment() {
-    //if ((UV.y < 0.5 && !top_shown) || (UV.y > 0.5 && !bottom_shown)) {
-        //COLOR.a = 0.0;
-    //}
-    if (UV.y > 0.5) {
+    if ((UV.y < 0.5 && !top_shown) || (UV.y > 0.5 && !bottom_shown)) {
         COLOR.a = 0.0;
     }
+    //if (UV.y > 0.5) {
+        //COLOR.a = 0.0;
+    //}
 	// Called for every pixel the material is visible on.
 }
 

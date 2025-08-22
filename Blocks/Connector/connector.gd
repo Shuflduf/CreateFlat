@@ -30,7 +30,6 @@ func transfer_rotation():
     #sprites.frame = connected_to.sprites.frame
 
     #connected_to.transfer_rotation()
-    var should_flip = false
     #var should_flip = (
         #global_dir
         #in [MechanicalComponent.Dir.UP, MechanicalComponent.Dir.LEFT]

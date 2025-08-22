@@ -4,6 +4,8 @@ extends MechanicalComponent
 
 func _ready() -> void:
     super()
+    #$Bottom.sprites.material.set_shader_parameter(&"bottom_shown", true)
+    #$Bottom.sprites.material.set_shader_parameter(&"top_shown", false)
     $Bottom.rotated.connect(
         func():
             $Top.speed = -$Bottom.speed

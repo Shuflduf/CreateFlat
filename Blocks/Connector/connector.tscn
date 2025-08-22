@@ -15,6 +15,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ui1l"]
 resource_local_to_scene = true
 shader = ExtResource("3_6coob")
+shader_parameter/top_shown = true
+shader_parameter/bottom_shown = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aeb63"]
 animations = [{
@@ -63,6 +65,7 @@ autoplay = "default"
 speed_scale = 0.0
 
 [node name="Debug" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 0.46, 0.46, 1)
 position = Vector2(0, -56)
 scale = Vector2(0.442396, 0.00923788)

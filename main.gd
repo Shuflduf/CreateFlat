@@ -14,6 +14,7 @@ var rotation_index = 0
 
 
 func _physics_process(_delta: float) -> void:
+    DebugDraw2D.set_text("FPS", Engine.get_frames_per_second())
     var mouse_pos = get_global_mouse_position() - Vector2(HALF_TILE, HALF_TILE)
     var tile_pos = mouse_pos.snapped(Vector2(TILE_SIZE, TILE_SIZE))
     $CursorSelection.position = tile_pos

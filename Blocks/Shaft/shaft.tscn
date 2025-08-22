@@ -14,4 +14,3 @@ max_rotations = 2
 [node name="Top" parent="." instance=ExtResource("2_maxws")]
 
 [node name="Bottom" parent="." instance=ExtResource("2_maxws")]
-rotation = 3.14159
