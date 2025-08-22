@@ -23,15 +23,16 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
 @export var connections: Dictionary[Dir, MechanicalConnector] = {}
 @export var flipped_dirs: Array[Dir]
 @export var max_rotations = 4
+@export var flip_thresh = 2
 #func force_update():
     #return
 
-var rotation_index = 0
+var rotation_index = Dir.Up
 
 func _ready() -> void:
     await get_tree().physics_frame
     for dir in connections:
-        connections[dir].facing_dir = dir
+        connections[dir].facing_dir = ((dir + rotation_index) % 4) as Dir
         connections[dir].parent = self
 
 func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]):

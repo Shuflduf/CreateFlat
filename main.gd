@@ -37,23 +37,17 @@ func _unhandled_input(event: InputEvent) -> void:
             $Components.add_child(new_component)
             new_component.position = $CursorSelection.position
             new_component.rotation = HALF_PI * (rotation_index % new_component.max_rotations)
-            new_component.rotation_index = rotation_index % new_component.max_rotations
+            new_component.rotation_index = (rotation_index % new_component.max_rotations) as MechanicalComponent.Dir
             
             all_components[grid_pos] = new_component
-            
+            #_on_refresh_pressed()
             new_component.connect_neighbors(grid_pos, all_components)
         elif event.button_index == MOUSE_BUTTON_RIGHT:
             if all_components.has(grid_pos):
                 var target = all_components[grid_pos]
-                for dir in target.connections:
-                    var connection = target.connections[dir]
-                    if connection.connected_to:
-                        #connection.connected_to.speed = 0.0
-                        #connection.connected_to.rotated.emit()
-                        connection.connected_to.connected_to = null
-                
                 target.queue_free()
                 all_components.erase(grid_pos)
+                _on_refresh_pressed()
                 
     elif event.is_action_pressed(&"rotate"):
         rotation_index = (rotation_index + 1) % 4
@@ -94,7 +88,7 @@ func _on_refresh_pressed() -> void:
             var conn: MechanicalConnector = target.connections[dir]
             conn.connected_to = null
             conn.speed = 0.0
-            conn.sprites.frame = 0
+            #conn.sprites.frame = 0
     
     for pos in all_components:
         var target = all_components[pos]
