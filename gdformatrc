@@ -3,4 +3,4 @@ excluded_directories: !!set
   addons: null
 line_length: 100
 safety_checks: null
-use_spaces: 1
+use_spaces: 4
