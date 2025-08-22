@@ -24,7 +24,7 @@ func transfer_rotation():
     if not connected_to:
         return
 
-    var should_flip = (parent.rotation_index in connected_to.parent.flipped_dirs) and speed > 0.0
+    var should_flip = (parent.rotation_index in connected_to.parent.flipped_dirs)
     #connected_to.flipped = 
     #if connected_to.facing_dir == facing_dir:
         #connected_to.speed = -speed
