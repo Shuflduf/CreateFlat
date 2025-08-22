@@ -64,6 +64,9 @@ func _unhandled_input(event: InputEvent) -> void:
         #%Preview.getchi
         elif event.button_index == MOUSE_BUTTON_RIGHT:
             remove_at(grid_pos)
+            # fuck if i know
+            await get_tree().physics_frame
+            await get_tree().physics_frame
             _on_refresh_pressed()
 
     #%Preview.getchi
