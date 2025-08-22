@@ -10,7 +10,7 @@ func _ready() -> void:
         func():
             $Top.speed = -$Bottom.speed
             #$Top.flipped = $Bottom.flipped
-            #$Top.sprites.frame = $Bottom.sprites.frame
+            $Top.sprites.frame = $Bottom.sprites.frame
             $Top.transfer_rotation()
             #$Bottom.flipped = $Top.flipped
             #$Bottom.sprites.frame = $Top.sprites.frame
@@ -19,6 +19,6 @@ func _ready() -> void:
         func():
             $Bottom.speed = -$Top.speed
             #$Bottom.flipped = $Top.flipped
-            #$Bottom.sprites.frame = $Top.sprites.frame
+            $Bottom.sprites.frame = $Top.sprites.frame
             $Bottom.transfer_rotation()
     )
