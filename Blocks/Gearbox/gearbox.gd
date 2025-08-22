@@ -19,7 +19,7 @@ func _on_dir_rotated(connector: MechanicalConnector):
         var current = connectors[i]
         if current == connector:
             continue
-        current.speed = connector.speed if i % 2 == 0 else -connector.speed
+        current.speed = connector.speed if (i + connector.facing_dir) % 2 == 0 else -connector.speed
         current.transfer_rotation()
     #connector.speed = -connector.speed
         
