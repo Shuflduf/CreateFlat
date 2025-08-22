@@ -76,8 +76,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func remove_at(pos: Vector2i):
     if all_components.has(pos):
         disconnect_neighbors(pos)
-        var target = all_components[pos]
-        target.queue_free()
+        all_components[pos].queue_free()
         all_components.erase(pos)
 
 
@@ -86,6 +85,7 @@ func disconnect_neighbors(pos: Vector2i):
     for dir in target.connections:
         var conn: MechanicalConnector = target.connections[dir]
         if conn.connected_to:
+            print(conn.connected_to)
             conn.connected_to.connected_to = null
             conn.connected_to.speed = 0.0
             conn.connected_to.rotated.emit()
