@@ -2,8 +2,10 @@ extends MechanicalComponent
 
 
 func _physics_process(_delta: float) -> void:
-    connections[Dir.UP].speed = 1.0
-    connections[Dir.UP].transfer_rotation()
+    var conn = connections[Dir.UP]
+    #conn.speed = -1.0 if conn.facing_dir in flipped_dirs else 1.0
+    conn.speed = 1.0
+    conn.transfer_rotation()
 
 #$Shaft.stress_units = 1000000.0
 #$Shaft.speed = 1.0

@@ -57,7 +57,7 @@ centered = false
 
 [node name="Preview" type="CanvasGroup" parent="CursorSelection"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.6)
+self_modulate = Color(0.51, 1, 0.8775, 0.6)
 position = Vector2(64, 64)
 
 [node name="Motor" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("4_7mycd")]

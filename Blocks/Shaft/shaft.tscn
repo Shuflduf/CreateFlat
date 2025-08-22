@@ -9,7 +9,6 @@ connections = {
 0: NodePath("Top"),
 2: NodePath("Bottom")
 }
-flipped_dirs = Array[int]([0, 1])
 max_rotations = 2
 
 [node name="Top" parent="." instance=ExtResource("2_maxws")]

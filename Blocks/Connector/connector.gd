@@ -29,8 +29,8 @@ func transfer_rotation():
     #sprites.frame = connected_to.sprites.frame
 
     #connected_to.transfer_rotation()
-    var should_flip = connected_to.facing_dir in connected_to.parent.flipped_dirs
-    should_flip = true
+    var should_flip = facing_dir in parent.flipped_dirs
+    #should_flip = false
     connected_to.speed = -speed if should_flip else speed
 
     #sprites.frame = connected_to.sprites.frame

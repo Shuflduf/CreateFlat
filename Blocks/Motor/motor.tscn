@@ -9,6 +9,7 @@ script = ExtResource("1_cdrnf")
 connections = {
 0: NodePath("Connector")
 }
+flipped_dirs = Array[int]([2, 3])
 
 [node name="Connector" parent="." instance=ExtResource("2_l0xdg")]
 

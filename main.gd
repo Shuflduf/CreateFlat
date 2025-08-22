@@ -68,7 +68,7 @@ func remove_at(pos: Vector2i):
         var target = all_components[pos]
         target.queue_free()
         all_components.erase(pos)
-        
+
 
 func disconnect_neighbors(pos: Vector2i):
     var target = all_components[pos]
@@ -78,6 +78,7 @@ func disconnect_neighbors(pos: Vector2i):
             conn.connected_to.connected_to = null
             conn.connected_to.speed = 0.0
             conn.connected_to.rotated.emit()
+
 
 func _on_sidebar_item_selected(scene: PackedScene) -> void:
     selected_component = scene

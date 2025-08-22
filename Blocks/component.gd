@@ -40,18 +40,13 @@ func _ready() -> void:
 func connect_neighbors(
     new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]
 ):
-    prints("=====", new_component_pos)
     for test_dir in connections:
-        prints("----- testing", test_dir)
         var connector: MechanicalConnector = connections[test_dir]
         var offset = MechanicalComponent.DIR_MAPPINGS[(test_dir + rotation_index) % 4]
         var test_pos = new_component_pos + offset
-        prints("pos", test_pos)
         if all_components.has(test_pos):
             var neighbor = all_components[test_pos]
-
             var opposite_dir = (test_dir + rotation_index + 2 - neighbor.rotation_index) % 4
-            prints("FOUND", neighbor, opposite_dir)
             if neighbor.connections.has(opposite_dir):
                 var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
                 connector.connected_to = neighbor_connector
