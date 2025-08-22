@@ -95,3 +95,7 @@ func _on_refresh_pressed() -> void:
             conn.connected_to = null
             conn.speed = 0.0
             conn.sprites.frame = 0
+    
+    for pos in all_components:
+        var target = all_components[pos]
+        target.connect_neighbors(pos, all_components)
