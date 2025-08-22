@@ -61,3 +61,9 @@ scale = Vector2(0.145, 0.147806)
 sprite_frames = SubResource("SpriteFrames_aeb63")
 autoplay = "default"
 speed_scale = 0.0
+
+[node name="Debug" type="Sprite2D" parent="."]
+modulate = Color(1, 0.46, 0.46, 1)
+position = Vector2(0, -56)
+scale = Vector2(0.442396, 0.00923788)
+texture = ExtResource("4_ssw7k")

@@ -9,9 +9,10 @@ var speed = 0.0:
         sprites.speed_scale = value
 
 var connected_to: MechanicalConnector
-var facing_dir = MechanicalComponent.Dir
+var global_dir: MechanicalComponent.Dir
 var parent: MechanicalComponent
 @onready var sprites: AnimatedSprite2D = $Sprites
+@onready var debug: Sprite2D = $Debug
 
 
 func _physics_process(_delta: float) -> void:
@@ -29,8 +30,18 @@ func transfer_rotation():
     #sprites.frame = connected_to.sprites.frame
 
     #connected_to.transfer_rotation()
-    var should_flip = facing_dir in parent.flipped_dirs
-    #should_flip = false
+    var should_flip = false
+    #var should_flip = (
+        #global_dir
+        #in [MechanicalComponent.Dir.UP, MechanicalComponent.Dir.LEFT]
+    #) and speed > 0.0
+    
+    match global_dir:
+        MechanicalComponent.Dir.UP:
+            should_flip = false
+        MechanicalComponent.Dir.DOWN:
+            should_flip = true 
+    #should_flip = true
     connected_to.speed = -speed if should_flip else speed
 
     #sprites.frame = connected_to.sprites.frame

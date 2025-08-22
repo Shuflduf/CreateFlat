@@ -8,8 +8,9 @@ const HALF_PI = 1.5708
 
 var rotation_index = 0
 
-@onready
-var all_components: Dictionary[Vector2i, MechanicalComponent] = {Vector2i(0, 0): $Components/Motor}
+@onready var all_components: Dictionary[Vector2i, MechanicalComponent] = {
+    Vector2i(0, 0): $Components/Motor
+}
 
 
 func _physics_process(_delta: float) -> void:
@@ -21,9 +22,12 @@ func _physics_process(_delta: float) -> void:
         var target = all_components[grid_pos]
         DebugDraw2D.set_text("Component", target.connections)
         DebugDraw2D.set_text(
-            "Connections", target.connections.values().map(func(c): return c.connected_to)
+            "Connections",
+            target.connections.values().map(func(c): return c.connected_to)
         )
-        DebugDraw2D.set_text("Speeds", target.connections.values().map(func(c): return c.speed))
+        DebugDraw2D.set_text(
+            "Speeds", target.connections.values().map(func(c): return c.speed)
+        )
     DebugDraw2D.set_text("Position", grid_pos)
 
 
@@ -39,12 +43,18 @@ func _unhandled_input(event: InputEvent) -> void:
             #_on_refresh_pressed()
 
             #%Preview.getchi
-            var new_component: MechanicalComponent = selected_component.instantiate()
+            var new_component: MechanicalComponent = (
+                selected_component.instantiate()
+            )
             #var new_component = %Preview.get_child(0).duplicate()
             $Components.add_child(new_component)
             new_component.position = $CursorSelection.position
-            new_component.rotation = HALF_PI * (rotation_index % new_component.max_rotations)
-            new_component.rotation_index = (rotation_index % new_component.max_rotations)
+            new_component.rotation = (
+                HALF_PI * (rotation_index % new_component.max_rotations)
+            )
+            new_component.rotation_index = (
+                rotation_index % new_component.max_rotations
+            )
 
             all_components[grid_pos] = new_component
             #_on_refresh_pressed()
@@ -96,7 +106,7 @@ func _on_refresh_pressed() -> void:
             var conn: MechanicalConnector = target.connections[dir]
             conn.connected_to = null
             conn.speed = 0.0
-    #conn.sprites.frame = 0
+            conn.sprites.frame = 0
     await get_tree().physics_frame
     for pos in all_components:
         var target = all_components[pos]

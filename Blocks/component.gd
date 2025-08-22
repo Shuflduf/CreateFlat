@@ -33,22 +33,32 @@ var rotation_index = 0
 func _ready() -> void:
     await get_tree().physics_frame
     for dir in connections:
-        connections[dir].facing_dir = (dir + rotation_index) % 4 as Dir
+        connections[dir].global_dir = (dir + rotation_index) % 4 as Dir
         connections[dir].parent = self
 
 
 func connect_neighbors(
-    new_component_pos: Vector2i, all_components: Dictionary[Vector2i, MechanicalComponent]
+    new_component_pos: Vector2i,
+    all_components: Dictionary[Vector2i, MechanicalComponent]
 ):
     for test_dir in connections:
         var connector: MechanicalConnector = connections[test_dir]
-        var offset = MechanicalComponent.DIR_MAPPINGS[(test_dir + rotation_index) % 4]
+        var offset = MechanicalComponent.DIR_MAPPINGS[
+            (test_dir + rotation_index) % 4
+        ]
         var test_pos = new_component_pos + offset
         if all_components.has(test_pos):
             var neighbor = all_components[test_pos]
-            var opposite_dir = (test_dir + rotation_index + 2 - neighbor.rotation_index) % 4
+            var opposite_dir = (
+                (test_dir + rotation_index + 2 + neighbor.rotation_index) % 4
+            )
             if neighbor.connections.has(opposite_dir):
-                var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
+                var neighbor_connector: MechanicalConnector = (
+                    neighbor.connections[opposite_dir]
+                )
+                var random_hue = randf()
+                connector.debug.modulate.h = random_hue
                 connector.connected_to = neighbor_connector
                 neighbor_connector.connected_to = connector
+                neighbor_connector.debug.modulate.h = random_hue
                 neighbor_connector.sprites.frame = connector.sprites.frame

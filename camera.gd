@@ -14,14 +14,18 @@ func _unhandled_input(event: InputEvent) -> void:
             event.button_index == MOUSE_BUTTON_WHEEL_DOWN
             or event.button_index == MOUSE_BUTTON_WHEEL_UP
         ):
-            var zoom_factor = 1.2 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1 / 1.2
+            var zoom_factor = (
+                1.2 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1 / 1.2
+            )
             var mouse_pos = -get_local_mouse_position()
 
             zoom *= zoom_factor
             if zoom.x < MAX_ZOOM_IN and zoom.x > MAX_ZOOM_OUT:
                 global_position += mouse_pos * (1 - zoom_factor)
             zoom = clamp(
-                zoom, Vector2(MAX_ZOOM_OUT, MAX_ZOOM_OUT), Vector2(MAX_ZOOM_IN, MAX_ZOOM_IN)
+                zoom,
+                Vector2(MAX_ZOOM_OUT, MAX_ZOOM_OUT),
+                Vector2(MAX_ZOOM_IN, MAX_ZOOM_IN)
             )
     elif event is InputEventMouseMotion and moving_cam:
         global_position -= event.relative / zoom
