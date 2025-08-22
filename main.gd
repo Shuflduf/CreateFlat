@@ -4,12 +4,12 @@ const TILE_SIZE = 128.0
 const HALF_TILE = TILE_SIZE / 2.0
 const HALF_PI = 1.5708
 
-@onready
-var all_components: Dictionary[Vector2i, MechanicalComponent] = {Vector2i(0, 0): $Components/Motor}
-
 @export var selected_component: PackedScene
 
 var rotation_index = 0
+
+@onready
+var all_components: Dictionary[Vector2i, MechanicalComponent] = {Vector2i(0, 0): $Components/Motor}
 
 
 func _physics_process(_delta: float) -> void:

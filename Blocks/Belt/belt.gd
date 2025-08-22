@@ -2,17 +2,18 @@
 extends Node2D
 
 enum BeltType {
-    Start,
-    Full,
-    End,
+    START,
+    FULL,
+    END,
 }
-@export var type: BeltType = BeltType.Start
+
+@export var type: BeltType = BeltType.START
 @export_tool_button("Update") var update_type_action = update_type
 
 @onready var section_mappings = {
-    BeltType.Start: [%BottomStart, %SideStart, %TopStart],
-    BeltType.Full: [%BottomFull, %TopFull],
-    BeltType.End: [%BottomEnd, %SideEnd, %TopEnd],
+    BeltType.START: [%BottomStart, %SideStart, %TopStart],
+    BeltType.FULL: [%BottomFull, %TopFull],
+    BeltType.END: [%BottomEnd, %SideEnd, %TopEnd],
 }
 
 

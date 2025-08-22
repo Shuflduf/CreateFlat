@@ -3,18 +3,20 @@ extends Node2D
 
 signal rotated
 
-@onready var sprites: AnimatedSprite2D = $Sprites
-
 var speed = 0.0:
     set(value):
         speed = value
         sprites.speed_scale = value
+
+
+
 
 #@export var internal_connector: MechanicalConnector
 #var external_connector: MechanicalConnector
 var connected_to: MechanicalConnector
 var facing_dir = MechanicalComponent.Dir
 var parent: MechanicalComponent
+@onready var sprites: AnimatedSprite2D = $Sprites
 
 
 func _physics_process(_delta: float) -> void:
