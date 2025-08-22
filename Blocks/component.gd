@@ -33,7 +33,7 @@ var rotation_index = 0
 func _ready() -> void:
     await get_tree().physics_frame
     for dir in connections:
-        connections[dir].facing_dir = (dir + rotation_index) % 4
+        connections[dir].facing_dir = (dir + rotation_index) % 4 as Dir
         connections[dir].parent = self
 
 

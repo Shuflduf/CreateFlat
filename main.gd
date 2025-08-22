@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
         var grid_pos = Vector2i($CursorSelection.position / 128.0)
         if event.button_index == MOUSE_BUTTON_LEFT:
             if all_components.has(grid_pos):
-                all_components[grid_pos].queue_free()
+                remove_at(grid_pos)
 
             #var new_component = %Preview.get_child(0).duplicate()
 
@@ -53,6 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
         #%Preview.getchi
         elif event.button_index == MOUSE_BUTTON_RIGHT:
             remove_at(grid_pos)
+            _on_refresh_pressed()
 
     #%Preview.getchi
     elif event.is_action_pressed(&"rotate"):
@@ -63,28 +64,20 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func remove_at(pos: Vector2i):
     if all_components.has(pos):
+        disconnect_neighbors(pos)
         var target = all_components[pos]
         target.queue_free()
         all_components.erase(pos)
-        _on_refresh_pressed()
+        
 
-
-#func connect_neighbors(new_component_pos: Vector2i):
-#var new_component = all_components[new_component_pos]
-#print(new_component.connections)
-#for test_dir in new_component.connections:
-#var connector: MechanicalConnector = new_component.connections[test_dir]
-#var offset = MechanicalComponent.DIR_MAPPINGS[test_dir]
-#var test_pos = new_component_pos + offset
-#if all_components.has(test_pos):
-#var neighbor = all_components[test_pos]
-#var opposite_dir = (test_dir + 2) % 4
-#if neighbor.connections.has(opposite_dir):
-#var neighbor_connector: MechanicalConnector = neighbor.connections[opposite_dir]
-#connector.connected_to = neighbor_connector
-#neighbor_connector.connected_to = connector
-#neighbor_connector.sprites.frame = connector.sprites.frame
-
+func disconnect_neighbors(pos: Vector2i):
+    var target = all_components[pos]
+    for dir in target.connections:
+        var conn: MechanicalConnector = target.connections[dir]
+        if conn.connected_to:
+            conn.connected_to.connected_to = null
+            conn.connected_to.speed = 0.0
+            conn.connected_to.rotated.emit()
 
 func _on_sidebar_item_selected(scene: PackedScene) -> void:
     selected_component = scene

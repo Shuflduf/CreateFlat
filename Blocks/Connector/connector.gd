@@ -8,11 +8,6 @@ var speed = 0.0:
         speed = value
         sprites.speed_scale = value
 
-
-
-
-#@export var internal_connector: MechanicalConnector
-#var external_connector: MechanicalConnector
 var connected_to: MechanicalConnector
 var facing_dir = MechanicalComponent.Dir
 var parent: MechanicalComponent
@@ -35,6 +30,7 @@ func transfer_rotation():
 
     #connected_to.transfer_rotation()
     var should_flip = connected_to.facing_dir in connected_to.parent.flipped_dirs
+    should_flip = true
     connected_to.speed = -speed if should_flip else speed
 
     #sprites.frame = connected_to.sprites.frame
