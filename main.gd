@@ -30,7 +30,6 @@ func _unhandled_input(event: InputEvent) -> void:
         if event.button_index == MOUSE_BUTTON_LEFT:
             if all_components.has(grid_pos):
                 all_components[grid_pos].queue_free()
-            
                 
             var new_component: MechanicalComponent = selected_component.instantiate()
             #var new_component = %Preview.get_child(0).duplicate()
@@ -43,17 +42,20 @@ func _unhandled_input(event: InputEvent) -> void:
             #_on_refresh_pressed()
             new_component.connect_neighbors(grid_pos, all_components)
         elif event.button_index == MOUSE_BUTTON_RIGHT:
-            if all_components.has(grid_pos):
-                var target = all_components[grid_pos]
-                target.queue_free()
-                all_components.erase(grid_pos)
-                _on_refresh_pressed()
+            remove_at(grid_pos)
                 
     elif event.is_action_pressed(&"rotate"):
         rotation_index = (rotation_index + 1) % 4
         #%Preview.getchi
         %Preview.rotation = HALF_PI * rotation_index
-    
+
+func remove_at(pos: Vector2i):
+    if all_components.has(pos):
+        var target = all_components[pos]
+        target.queue_free()
+        all_components.erase(pos)
+        _on_refresh_pressed()
+        
 #func connect_neighbors(new_component_pos: Vector2i):
     #var new_component = all_components[new_component_pos]
     #print(new_component.connections)
@@ -89,7 +91,8 @@ func _on_refresh_pressed() -> void:
             conn.connected_to = null
             conn.speed = 0.0
             #conn.sprites.frame = 0
-    
+            
+    await get_tree().physics_frame
     for pos in all_components:
         var target = all_components[pos]
         target.connect_neighbors(pos, all_components)
