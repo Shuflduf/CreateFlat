@@ -25,7 +25,7 @@ func transfer_rotation():
     if not connected_to:
         return
     
-    connected_to.flipped = parent.rotation_index in [MechanicalComponent.Dir.Down, MechanicalComponent.Dir.Right]
+    connected_to.flipped = (parent.rotation_index in [MechanicalComponent.Dir.Down, MechanicalComponent.Dir.Right]) || flipped
     #if connected_to.facing_dir == facing_dir:
         #connected_to.speed = -speed
     #else:
