@@ -45,10 +45,3 @@ func connect_neighbors(new_component_pos: Vector2i, all_components: Dictionary[V
                 connector.connected_to = neighbor_connector
                 neighbor_connector.connected_to = connector
                 neighbor_connector.sprites.frame = connector.sprites.frame
-
-
-func get_connector(dir: Dir) -> MechanicalConnector:
-    return connections[(dir + rotation_index) % 4]
-
-func accept_rotation(_su: float, _new_speed: float):
-    return
