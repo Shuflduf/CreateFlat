@@ -85,3 +85,13 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
         c.queue_free()
     var new_preview = scene.instantiate()
     %Preview.add_child(new_preview)
+
+
+func _on_refresh_pressed() -> void:
+    for pos in all_components:
+        var target = all_components[pos]
+        for dir in target.connections:
+            var conn: MechanicalConnector = target.connections[dir]
+            conn.connected_to = null
+            conn.speed = 0.0
+            conn.sprites.frame = 0

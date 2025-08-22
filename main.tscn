@@ -112,4 +112,15 @@ texture = ExtResource("5_lquwl")
 expand_mode = 4
 stretch_mode = 5
 
+[node name="Refresh" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 68.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Refresh"
+
 [connection signal="item_selected" from="CanvasLayer/Sidebar" to="." method="_on_sidebar_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Refresh" to="." method="_on_refresh_pressed"]
