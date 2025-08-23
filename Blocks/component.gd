@@ -27,6 +27,7 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
 #return
 
 var rotation_index = 0
+var active = false
 
 
 func _ready() -> void:
@@ -54,6 +55,7 @@ func connect_neighbors(
     component_pos: Vector2i,
     all_components: Dictionary[Vector2i, MechanicalComponent]
 ):
+    active = true
     for test_dir in connections:
         var connector: MechanicalConnector = connections[test_dir]
         var offset = MechanicalComponent.DIR_MAPPINGS[
