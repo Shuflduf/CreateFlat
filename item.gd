@@ -10,5 +10,5 @@ func _physics_process(delta: float) -> void:
 func temp_disable():
     var current_col = collision_layer
     collision_layer = 0
-    await get_tree().create_timer(1).timeout
+    await get_tree().create_timer(0.5).timeout
     collision_layer = current_col

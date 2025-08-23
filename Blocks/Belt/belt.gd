@@ -55,19 +55,6 @@ func _physics_process(_delta: float) -> void:
             held_item.temp_disable()
             held_item = null
 
-        #else:
-        #if ri
-
-        print(on_belt)
-        #held_item.velocity.x = 200.0
-
-        #if held_item.global_position.x > global_position.x + 88.0:
-        #held_item = null
-        #if right_belt and not right_belt.held_item:
-        #right_belt.held_item = held_item
-        #held_item = null
-        #else:
-
     if not held_item and queue.size() >= 1:
         held_item = queue.pop_front()
 
@@ -75,7 +62,7 @@ func _physics_process(_delta: float) -> void:
         print("A")
         var item = queue[i]
         item.velocity.y = 0.0
-        item.global_position.y = global_position.y - 32 * (i + 1) - 74
+        item.global_position.y = global_position.y - 80.0 - (32.0 * i)
 
 
 func _post_update_neighbors(
