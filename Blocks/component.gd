@@ -13,18 +13,10 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
     Dir.DOWN: Vector2i(0, 1),
     Dir.LEFT: Vector2i(-1, 0),
 }
-#const OPPOSITE_DIRS: Dictionary[Dir, Dir] = {
-#Dir.Up: Dir.Down,
-#Dir.Right: Dir.Left,
-#Dir.Down: Dir.Up,
-#Dir.Left: Dir.Right,
-#}
 
 @export var connections: Dictionary[Dir, MechanicalConnector] = {}
 @export var flipped_dirs: Array[Dir]
 @export var max_rotations = 4
-#func force_update():
-#return
 
 var rotation_index = 0
 var active = false

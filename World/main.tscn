@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=23 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="11_pdsj5"]
 [ext_resource type="Texture2D" uid="uid://fbkhde7egcyy" path="res://Blocks/Belt/belt_thumbnail.png" id="12_eso2c"]
 [ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="12_ps454"]
+[ext_resource type="PackedScene" uid="uid://by7s731rskf0" path="res://Blocks/Depot/depot.tscn" id="14_4pper"]
 [ext_resource type="PackedScene" uid="uid://bqgkg1iaoy673" path="res://temp_item_spawner.tscn" id="14_sfxlf"]
+[ext_resource type="Texture2D" uid="uid://b6tq6vj52com0" path="res://Blocks/Depot/depot.png" id="15_r6hqv"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_k12tt")
@@ -41,6 +43,13 @@ script = ExtResource("6_k12tt")
 name = "Belt"
 scene = ExtResource("12_ps454")
 thumbnail = ExtResource("12_eso2c")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_lh7yw"]
+script = ExtResource("6_k12tt")
+name = "Depot"
+scene = ExtResource("14_4pper")
+thumbnail = ExtResource("15_r6hqv")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
@@ -98,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_wsu2k")
-components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf")])
+components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw")])
 
 [node name="Components" type="VBoxContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1

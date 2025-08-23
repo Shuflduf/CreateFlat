@@ -45,7 +45,7 @@ position = Vector2(-64, -64)
 [node name="BottomFull" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_dy5sx")
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 scale = Vector2(8, 8)
 texture = ExtResource("3_smakq")
 centered = false
@@ -54,7 +54,7 @@ region_rect = Rect2(0, 13, 16, 3)
 [node name="TopFull" type="Sprite2D" parent="Parts"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_rgkw3")
-position = Vector2(128, 40)
+position = Vector2(128, 48)
 rotation = -3.14159
 scale = Vector2(8, 8)
 texture = ExtResource("3_smakq")
@@ -94,5 +94,3 @@ rotation = 1.57079
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2(0, -44)
 shape = SubResource("RectangleShape2D_6m2es")
-
-[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
