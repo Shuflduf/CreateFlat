@@ -23,7 +23,6 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
 @export var connections: Dictionary[Dir, MechanicalConnector] = {}
 @export var flipped_dirs: Array[Dir]
 @export var max_rotations = 4
-@export var flip_thresh = 2
 #func force_update():
 #return
 
@@ -37,8 +36,15 @@ func _ready() -> void:
         connections[dir].parent = self
 
 
+func _post_update_neighbors(
+    _component_pos: Vector2i,
+    _all_components: Dictionary[Vector2i, MechanicalComponent]
+):
+    return
+
+
 func connect_neighbors(
-    new_component_pos: Vector2i,
+    component_pos: Vector2i,
     all_components: Dictionary[Vector2i, MechanicalComponent]
 ):
     for test_dir in connections:
@@ -46,7 +52,7 @@ func connect_neighbors(
         var offset = MechanicalComponent.DIR_MAPPINGS[
             (test_dir + rotation_index) % 4
         ]
-        var test_pos = new_component_pos + offset
+        var test_pos = component_pos + offset
         if all_components.has(test_pos):
             var neighbor = all_components[test_pos]
             var opposite_dir = (
@@ -62,3 +68,4 @@ func connect_neighbors(
                 neighbor_connector.connected_to = connector
                 neighbor_connector.debug.modulate.h = random_hue
                 neighbor_connector.sprites.frame = connector.sprites.frame
+    _post_update_neighbors(component_pos, all_components)

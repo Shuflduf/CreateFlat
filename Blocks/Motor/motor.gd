@@ -9,7 +9,7 @@ func _physics_process(_delta: float) -> void:
     else:
         $Connector.shaft_bottom = false
         $Connector.rotation = 0.0
-    conn.speed = 1.0    
+    conn.speed = 1.0
     conn.transfer_rotation()
 
 #$Shaft.stress_units = 1000000.0

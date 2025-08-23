@@ -8,7 +8,6 @@ signal rotated
         shaft_bottom = value
         update_visuals()
 
-
 var speed = 0.0:
     set(value):
         speed = value
@@ -22,7 +21,8 @@ var parent: MechanicalComponent
 @onready var debug: Sprite2D = $Debug
 
 #func _physics_process(_delta: float) -> void:
-    #$Sprites.modulate.h = 0.5 + (speed / 3.0)
+#$Sprites.modulate.h = 0.5 + (speed / 3.0)
+
 
 func update_visuals():
     if sprites:
@@ -33,6 +33,7 @@ func update_visuals():
 func _ready() -> void:
     update_visuals()
 
+
 #speed = 0.0
 #print(modulate.h)
 
@@ -40,7 +41,6 @@ func _ready() -> void:
 func transfer_rotation():
     if not connected_to:
         return
-
 
     connected_to.speed = -speed
     connected_to.sprites.frame = sprites.frame
