@@ -8,7 +8,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     if held_item:
         var distance_to_center = held_item.global_position.x - global_position.x
-        prints(held_item.global_position.x, global_position.x)
         var centered = abs(distance_to_center) < 1.0
         if !centered:
             held_item.velocity.y = 0.0

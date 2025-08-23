@@ -13,3 +13,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
         var new_item = preload("res://item.tscn").instantiate()
         add_child(new_item)
         new_item.global_position = global_position
+        # how the fuck does waiting two physics frames fix all my problems
+        await get_tree().physics_frame
+        await get_tree().physics_frame
+        new_item.is_ready = true

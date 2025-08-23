@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_area_item_entered(body: Node2D) -> void:
-    if body is Item and active and body != held_item:
+    if body is Item and active and body != held_item and body.is_ready:
         if held_item:
             body.global_position.x = (
                 global_position.x + randf_range(-16.0, 16.0)
@@ -37,8 +37,6 @@ func _post_update_neighbors(
         if all_components.has(test_pos):
             var target = all_components[test_pos]
             if target is ItemTransport:
-                print(target)
-                var is_belt = target is Belt
                 if dir == Dir.LEFT:
                     left_connection = target
                     target.right_connection = self
@@ -46,9 +44,6 @@ func _post_update_neighbors(
                     right_connection = target
                     target.left_connection = self
 
-                #if is_belt:
-                    #update_visuals()
-                    #target.update_visuals()
 
 func _post_disconnect_neighbors(
     _component_pos: Vector2i,
@@ -56,7 +51,5 @@ func _post_disconnect_neighbors(
 ):
     if left_connection:
         left_connection.right_connection = null
-        left_connection.update_visuals()
     if right_connection:
         right_connection.left_connection = null
-        right_connection.update_visuals()

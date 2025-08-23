@@ -43,11 +43,11 @@ func _physics_process(_delta: float) -> void:
                 held_item.velocity.x = 0.0
                 held_item.position.y = global_position.y - 80.0
             else:
-                print("MOVED")
                 target_transfer.held_item = held_item
                 held_item = null
         else:
             held_item.velocity.x = BELT_SPEED * speed
+            #held_item.temp_disable()
             held_item = null
 
     super(_delta)
@@ -65,6 +65,16 @@ func _post_update_neighbors(
                 update_visuals()
                 target.update_visuals()
 
+
+func _post_disconnect_neighbors(
+    _component_pos: Vector2i,
+    _all_components: Dictionary[Vector2i, MechanicalComponent]
+):
+    super(_component_pos, _all_components)
+    if left_connection and left_connection is Belt:
+        left_connection.update_visuals()
+    if right_connection and right_connection is Belt:
+        right_connection.update_visuals()
 
 
 func update_visuals():
