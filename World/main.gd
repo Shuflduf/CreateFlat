@@ -62,7 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
             _on_refresh_pressed()
 
     elif event.is_action_pressed(&"rotate"):
-        rotation_index = (rotation_index + 1) % 4
+        rotation_index = (rotation_index + 1) % %Preview.get_child(0).max_rotations
         %Preview.rotation = HALF_PI * rotation_index
 
 
@@ -80,7 +80,8 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
         c.queue_free()
     var new_preview = scene.instantiate()
     %Preview.add_child(new_preview)
-
+    rotation_index %= new_preview.max_rotations
+    %Preview.rotation = HALF_PI * rotation_index
 
 func _on_refresh_pressed() -> void:
     for pos in all_components:
