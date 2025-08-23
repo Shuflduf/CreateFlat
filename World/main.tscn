@@ -73,15 +73,17 @@ border_color = Color(1, 1, 1, 1)
 script = ExtResource("1_d1ilt")
 selected_component = ExtResource("2_6iyac")
 
-[node name="CursorSelection" type="Node2D" parent="."]
-position = Vector2(-128, 0)
-
-[node name="Indicator" type="Sprite2D" parent="CursorSelection"]
+[node name="Indicator" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 visible = false
 z_index = 20
+position = Vector2(-128, 0)
 scale = Vector2(8, 8)
 texture = ExtResource("3_fdnlq")
 centered = false
+
+[node name="CursorSelection" type="Node2D" parent="."]
+position = Vector2(-128, 0)
 
 [node name="Preview" type="CanvasGroup" parent="CursorSelection"]
 unique_name_in_owner = true

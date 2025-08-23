@@ -15,12 +15,13 @@ const DIR_MAPPINGS: Dictionary[Dir, Vector2i] = {
 }
 
 @export var connections: Dictionary[Dir, MechanicalConnector] = {}
-@export var flipped_dirs: Array[Dir]
 @export var max_rotations = 4
+@export var needs_target_pos = false
 
 var rotation_index = 0
 var active = false
-
+var target_pos: Vector2i
+var tile_pos: Vector2i
 
 func _ready() -> void:
     await get_tree().physics_frame

@@ -4,6 +4,8 @@ extends ItemTransport
 func _ready() -> void:
     super()
     $Area.body_entered.connect(_on_area_item_entered)
+    print(target_pos)
+    $Sprites.scale.x = (-1.0 if target_pos.x <= tile_pos.x else 1.0)
 
 
 func _physics_process(delta: float) -> void:

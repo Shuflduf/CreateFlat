@@ -14,19 +14,22 @@ connections = {
 2: NodePath("Connector")
 }
 max_rotations = 1
+needs_target_pos = true
 
 [node name="Connector" parent="." instance=ExtResource("4_gafpr")]
 shaft_bottom = true
 
-[node name="Pivot" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="Sprites"]
 position = Vector2(-54, -24)
 
-[node name="Top" type="Sprite2D" parent="Pivot"]
+[node name="Top" type="Sprite2D" parent="Sprites/Pivot"]
 position = Vector2(47, 24.9019)
 scale = Vector2(0.311404, 0.311403)
 texture = ExtResource("2_qrjvd")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="Sprites"]
 scale = Vector2(8, 8)
 texture = ExtResource("2_tt8g6")
 

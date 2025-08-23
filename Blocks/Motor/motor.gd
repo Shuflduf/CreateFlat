@@ -3,7 +3,7 @@ extends MechanicalComponent
 
 func _physics_process(_delta: float) -> void:
     var conn = connections[Dir.UP]
-    if conn.global_dir in flipped_dirs:
+    if conn.global_dir in [Dir.LEFT, Dir.DOWN]:
         $Connector.shaft_bottom = true
         $Connector.rotation = PI
     else:
