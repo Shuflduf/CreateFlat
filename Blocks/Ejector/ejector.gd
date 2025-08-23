@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
             held_item.velocity.y = (difference.y * 64.0) - 1000.0
             held_item.velocity.x = difference.x * 64.0
             held_item.flying = true
-            held_item.fly_destination = Vector2(target_pos * 128)
+            held_item.fly_destination = Vector2(target_pos * 128) + Vector2(64, 64)
             held_item = null
             $Anim.play(&"launch")
 
