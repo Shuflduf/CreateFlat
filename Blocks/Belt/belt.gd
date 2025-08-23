@@ -6,10 +6,10 @@ var right_belt: Belt
 
 var speed = 0.0:
     set(value):
-        print(value)
         speed = value
         for part in $Parts.get_children():
             part.material.set_shader_parameter(&"speed", value)
+
 
 func _ready() -> void:
     super()
@@ -49,18 +49,5 @@ func _post_update_neighbors(
 
 
 func update_type():
-    #for c in $Parts.get_children():
-        #c.hide()
-    
     %SideStart.visible = left_belt == null
     %SideEnd.visible = right_belt == null
-    
-    #if left_belt and right_belt:
-        #type = BeltType.FULL
-    #elif left_belt:
-        #type = BeltType.END
-    #else:
-        #type = BeltType.START
-    
-    #for p in section_mappings[type]:
-        #p.show()

@@ -78,10 +78,8 @@ texture = ExtResource("3_dy5sx")
 centered = false
 
 [node name="LeftConn" parent="." instance=ExtResource("5_6m2es")]
-visible = false
 rotation = 1.57079
 shaft_bottom = true
 
 [node name="RightConn" parent="." instance=ExtResource("5_6m2es")]
-visible = false
 rotation = 1.57079

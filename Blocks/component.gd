@@ -69,3 +69,17 @@ func connect_neighbors(
                 neighbor_connector.debug.modulate.h = random_hue
                 neighbor_connector.sprites.frame = connector.sprites.frame
     _post_update_neighbors(component_pos, all_components)
+
+
+func disconnect_neighbors(
+    component_pos: Vector2i,
+    all_components: Dictionary[Vector2i, MechanicalComponent]
+):
+    var target = all_components[component_pos]
+    for dir in target.connections:
+        var conn: MechanicalConnector = target.connections[dir]
+        if conn.connected_to:
+            print(conn.connected_to)
+            conn.connected_to.connected_to = null
+            conn.connected_to.speed = 0.0
+            conn.connected_to.rotated.emit()

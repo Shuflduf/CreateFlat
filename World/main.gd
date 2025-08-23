@@ -39,15 +39,9 @@ func _unhandled_input(event: InputEvent) -> void:
             if all_components.has(grid_pos):
                 remove_at(grid_pos)
 
-            #var new_component = %Preview.get_child(0).duplicate()
-
-            #_on_refresh_pressed()
-
-            #%Preview.getchi
             var new_component: MechanicalComponent = (
                 selected_component.instantiate()
             )
-            #var new_component = %Preview.get_child(0).duplicate()
             $Components.add_child(new_component)
             new_component.position = $CursorSelection.position
             new_component.rotation = (
@@ -58,10 +52,8 @@ func _unhandled_input(event: InputEvent) -> void:
             )
 
             all_components[grid_pos] = new_component
-            #_on_refresh_pressed()
             new_component.connect_neighbors(grid_pos, all_components)
 
-        #%Preview.getchi
         elif event.button_index == MOUSE_BUTTON_RIGHT:
             remove_at(grid_pos)
             # fuck if i know
@@ -69,29 +61,16 @@ func _unhandled_input(event: InputEvent) -> void:
             await get_tree().physics_frame
             _on_refresh_pressed()
 
-    #%Preview.getchi
     elif event.is_action_pressed(&"rotate"):
         rotation_index = (rotation_index + 1) % 4
-        #%Preview.getchi
         %Preview.rotation = HALF_PI * rotation_index
 
 
 func remove_at(pos: Vector2i):
     if all_components.has(pos):
-        disconnect_neighbors(pos)
+        all_components[pos].disconnect_neighbors(pos, all_components)
         all_components[pos].queue_free()
         all_components.erase(pos)
-
-
-func disconnect_neighbors(pos: Vector2i):
-    var target = all_components[pos]
-    for dir in target.connections:
-        var conn: MechanicalConnector = target.connections[dir]
-        if conn.connected_to:
-            print(conn.connected_to)
-            conn.connected_to.connected_to = null
-            conn.connected_to.speed = 0.0
-            conn.connected_to.rotated.emit()
 
 
 func _on_sidebar_item_selected(scene: PackedScene) -> void:
@@ -106,12 +85,15 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
 func _on_refresh_pressed() -> void:
     for pos in all_components:
         var target = all_components[pos]
+        #target.disconnect_neighbors(pos, all_components)
         for dir in target.connections:
             var conn: MechanicalConnector = target.connections[dir]
-            conn.connected_to = null
             conn.speed = 0.0
-            conn.sprites.frame = 0
-    await get_tree().physics_frame
+            conn.transfer_rotation()
+            #conn.sprites.frame = 0
+            conn.connected_to = null
+
+    #await get_tree().physics_frame
     for pos in all_components:
         var target = all_components[pos]
         target.connect_neighbors(pos, all_components)
