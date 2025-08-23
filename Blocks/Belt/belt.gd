@@ -37,20 +37,21 @@ func _physics_process(_delta: float) -> void:
         var on_belt = (
             abs(global_position.x - held_item.global_position.x) < 64.0
         )
+        var target_belt = right_belt if speed > 0 else left_belt
         if on_belt:
             held_item.velocity.y = 0.0
-            held_item.velocity.x = BELT_SPEED
+            held_item.velocity.x = BELT_SPEED * speed
             held_item.position.y = global_position.y - 80.0
-        elif right_belt:
-            if right_belt.held_item:
+        elif target_belt:
+            if target_belt.held_item:
                 held_item.velocity.y = 0.0
                 held_item.velocity.x = 0.0
                 held_item.position.y = global_position.y - 80.0
             else:
-                right_belt.held_item = held_item
+                target_belt.held_item = held_item
                 held_item = null
         else:
-            held_item.velocity.x = BELT_SPEED
+            held_item.velocity.x = BELT_SPEED * speed
             held_item.temp_disable()
             held_item = null
 
