@@ -1,4 +1,3 @@
-class_name Depot
 extends ItemTransport
 
 func _ready() -> void:

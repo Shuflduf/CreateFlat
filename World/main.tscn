@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=26 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://by7s731rskf0" path="res://Blocks/Depot/depot.tscn" id="14_4pper"]
 [ext_resource type="PackedScene" uid="uid://bqgkg1iaoy673" path="res://temp_item_spawner.tscn" id="14_sfxlf"]
 [ext_resource type="Texture2D" uid="uid://b6tq6vj52com0" path="res://Blocks/Depot/depot.png" id="15_r6hqv"]
+[ext_resource type="PackedScene" uid="uid://cmyclgwog4m7x" path="res://Blocks/Ejector/ejector.tscn" id="16_lh7yw"]
+[ext_resource type="Texture2D" uid="uid://b68e7lkq1lsfw" path="res://Blocks/Ejector/ejector_top.png" id="17_scvq1"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_k12tt")
@@ -50,6 +52,13 @@ script = ExtResource("6_k12tt")
 name = "Depot"
 scene = ExtResource("14_4pper")
 thumbnail = ExtResource("15_r6hqv")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_m0hhd"]
+script = ExtResource("6_k12tt")
+name = "Ejector"
+scene = ExtResource("16_lh7yw")
+thumbnail = ExtResource("17_scvq1")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
@@ -107,24 +116,41 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_wsu2k")
-components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw")])
+components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd")])
 
-[node name="Components" type="VBoxContainer" parent="CanvasLayer/Sidebar"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Sidebar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+
+[node name="Components" type="VBoxContainer" parent="CanvasLayer/Sidebar/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Base" type="PanelContainer" parent="CanvasLayer/Sidebar/Components"]
+[node name="Base" type="PanelContainer" parent="CanvasLayer/Sidebar/MarginContainer/ScrollContainer/Components"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Sidebar/Components/Base"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Sidebar/MarginContainer/ScrollContainer/Components/Base"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 texture = ExtResource("7_h1bgf")

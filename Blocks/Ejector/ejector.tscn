@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmyclgwog4m7x"]
+
+[ext_resource type="Script" uid="uid://f2bgsb2hlufv" path="res://Blocks/Ejector/ejector.gd" id="1_1idt8"]
+[ext_resource type="Texture2D" uid="uid://b68e7lkq1lsfw" path="res://Blocks/Ejector/ejector_top.png" id="2_qrjvd"]
+[ext_resource type="Texture2D" uid="uid://dtl7n7g57hxit" path="res://Blocks/Ejector/ejector_base.png" id="2_tt8g6"]
+[ext_resource type="PackedScene" uid="uid://c8jgkm8qshiah" path="res://Blocks/Connector/connector.tscn" id="4_gafpr"]
+
+[node name="Ejector" type="Node2D" node_paths=PackedStringArray("connections")]
+script = ExtResource("1_1idt8")
+connections = {
+2: NodePath("Connector")
+}
+max_rotations = 1
+
+[node name="Connector" parent="." instance=ExtResource("4_gafpr")]
+shaft_bottom = true
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(-54, -24)
+
+[node name="Top" type="Sprite2D" parent="Pivot"]
+position = Vector2(47, 24.9019)
+scale = Vector2(0.311404, 0.311403)
+texture = ExtResource("2_qrjvd")
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("2_tt8g6")

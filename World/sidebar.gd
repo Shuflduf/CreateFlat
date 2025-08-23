@@ -8,7 +8,7 @@ signal item_selected(scene: PackedScene)
 func _ready() -> void:
     for c in components:
         var new_item = %Base.duplicate()
-        $Components.add_child(new_item)
+        %Components.add_child(new_item)
         new_item.get_child(0).texture = c.thumbnail
         new_item.show()
         new_item.gui_input.connect(_on_item_input.bind(c.scene))
