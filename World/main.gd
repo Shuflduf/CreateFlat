@@ -8,9 +8,7 @@ const HALF_PI = 1.5708
 
 var rotation_index = 0
 
-@onready var all_components: Dictionary[Vector2i, MechanicalComponent] = {
-    Vector2i(0, 0): $Components/Motor
-}
+@onready var all_components: Dictionary[Vector2i, MechanicalComponent] = {}
 
 
 func _physics_process(_delta: float) -> void:

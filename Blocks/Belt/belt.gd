@@ -3,12 +3,12 @@ extends ItemTransport
 
 const BELT_SPEED = 200.0
 
-
 var speed = 0.0:
     set(value):
         speed = value
         for part in $Parts.get_children():
             part.material.set_shader_parameter(&"speed", value)
+
 
 func _ready() -> void:
     super()
@@ -51,6 +51,7 @@ func _physics_process(_delta: float) -> void:
             held_item = null
 
     super(_delta)
+
 
 func _post_update_neighbors(
     component_pos: Vector2i,

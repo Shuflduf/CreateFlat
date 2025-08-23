@@ -100,11 +100,6 @@ script = ExtResource("4_jkdf5")
 [node name="Components" type="Node2D" parent="."]
 position = Vector2(64, 64)
 
-[node name="Motor" parent="Components" node_paths=PackedStringArray("connections") instance=ExtResource("2_6iyac")]
-connections = {
-0: NodePath("Connector")
-}
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sidebar" type="Control" parent="CanvasLayer"]

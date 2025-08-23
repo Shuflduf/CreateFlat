@@ -7,6 +7,7 @@ var right_connection: ItemTransport
 var held_item: Item
 var queue: Array[Item]
 
+
 func _physics_process(_delta: float) -> void:
     if not held_item and queue.size() >= 1:
         held_item = queue.pop_front()
@@ -27,6 +28,7 @@ func _on_area_item_entered(body: Node2D) -> void:
             queue.append(body)
         else:
             held_item = body
+
 
 func _post_update_neighbors(
     component_pos: Vector2i,
