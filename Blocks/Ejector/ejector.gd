@@ -20,10 +20,9 @@ func _physics_process(delta: float) -> void:
             )
             held_item.position.y = global_position.y - 80.0
         else:
-            held_item.velocity.y = -1000.0
-            held_item.velocity.x = 200.0
+            var difference = target_pos - tile_pos
+            held_item.velocity.y = (difference.y * 64.0) - 1000.0
+            held_item.velocity.x = difference.x * 64.0
             held_item = null
-            #held_item.temp_disable()
-            #held_item = null
 
     super(delta)
