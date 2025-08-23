@@ -11,9 +11,9 @@ enum BeltType {
 @export_tool_button("Update") var update_type_action = update_type
 
 @onready var section_mappings = {
-    BeltType.START: [%BottomStart, %SideStart, %TopStart],
+    BeltType.START: [%BottomFull, %TopFull, %SideStart],
     BeltType.FULL: [%BottomFull, %TopFull],
-    BeltType.END: [%BottomEnd, %SideEnd, %TopEnd],
+    BeltType.END: [%BottomFull, %TopFull, %SideEnd],
 }
 
 
