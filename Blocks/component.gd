@@ -43,6 +43,13 @@ func _post_update_neighbors(
     return
 
 
+func _post_disconnect_neighbors(
+    _component_pos: Vector2i,
+    _all_components: Dictionary[Vector2i, MechanicalComponent]
+):
+    return
+
+
 func connect_neighbors(
     component_pos: Vector2i,
     all_components: Dictionary[Vector2i, MechanicalComponent]
@@ -79,7 +86,8 @@ func disconnect_neighbors(
     for dir in target.connections:
         var conn: MechanicalConnector = target.connections[dir]
         if conn.connected_to:
-            print(conn.connected_to)
             conn.connected_to.connected_to = null
             conn.connected_to.speed = 0.0
             conn.connected_to.rotated.emit()
+
+    _post_disconnect_neighbors(component_pos, all_components)

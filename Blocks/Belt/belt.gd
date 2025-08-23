@@ -39,15 +39,27 @@ func _post_update_neighbors(
                 if dir == Dir.LEFT:
                     left_belt = target
                     target.right_belt = self
-                    update_type()
-                    target.update_type()
+                    update_visuals()
+                    target.update_visuals()
                 elif dir == Dir.RIGHT:
                     right_belt = target
                     target.left_belt = self
-                    update_type()
-                    target.update_type()
+                    update_visuals()
+                    target.update_visuals()
 
 
-func update_type():
+func _post_disconnect_neighbors(
+    _component_pos: Vector2i,
+    _all_components: Dictionary[Vector2i, MechanicalComponent]
+):
+    if left_belt:
+        left_belt.right_belt = null
+        left_belt.update_visuals()
+    if right_belt:
+        right_belt.left_belt = null
+        right_belt.update_visuals()
+
+
+func update_visuals():
     %SideStart.visible = left_belt == null
     %SideEnd.visible = right_belt == null
