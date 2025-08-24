@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhxvdh835jteg"]
+
+[ext_resource type="Texture2D" uid="uid://plr3h48j15ql" path="res://Blocks/Press/press_head_top.png" id="1_6etwx"]
+[ext_resource type="Script" uid="uid://b0xaffmonphoo" path="res://Blocks/Press/press.gd" id="1_mcbx4"]
+[ext_resource type="Texture2D" uid="uid://dr41kj58nvfyw" path="res://Blocks/Press/press_base.png" id="1_rag6d"]
+[ext_resource type="Texture2D" uid="uid://bd3tqkhsarpso" path="res://Blocks/Press/press_head_bottom.png" id="2_mcbx4"]
+
+[sub_resource type="Animation" id="Animation_mcbx4"]
+resource_name = "press"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 152, 0, -21.5, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1)
+}
+
+[sub_resource type="Animation" id="Animation_l562k"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l562k"]
+_data = {
+&"RESET": SubResource("Animation_l562k"),
+&"press": SubResource("Animation_mcbx4")
+}
+
+[node name="Press" type="Node2D"]
+script = ExtResource("1_mcbx4")
+
+[node name="Head" type="Node2D" parent="."]
+
+[node name="Top" type="Sprite2D" parent="Head"]
+position = Vector2(0, -128)
+scale = Vector2(8, 8)
+texture = ExtResource("1_6etwx")
+
+[node name="Bottom" type="Sprite2D" parent="Head"]
+scale = Vector2(8, 8)
+texture = ExtResource("2_mcbx4")
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_rag6d")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l562k")
+}
+autoplay = "press"

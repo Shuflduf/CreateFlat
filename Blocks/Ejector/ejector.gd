@@ -15,6 +15,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+    debug_data = target_pos
     if held_item:
         held_item.velocity.y = 0.0
         held_item.velocity.x = 0
@@ -27,6 +28,7 @@ func _physics_process(delta: float) -> void:
             is_ready = false
             var difference = target_pos - tile_pos
             # I PULLED THESE NUMBERS OUT OF MY ASS
+            held_item.global_position.x = global_position.x
             held_item.velocity.y = (difference.y * 64.0) - 970.0
             held_item.velocity.x = difference.x * 64.0
             held_item.flying = true

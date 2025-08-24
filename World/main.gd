@@ -34,6 +34,7 @@ func _physics_process(_delta: float) -> void:
         DebugDraw2D.set_text(
             "Speeds", target.connections.values().map(func(c): return c.speed)
         )
+        DebugDraw2D.set_text("Debug", target.debug_data)
     DebugDraw2D.set_text("Position", grid_pos)
     DebugDraw2D.set_text("Global Pos", get_global_mouse_position())
 
