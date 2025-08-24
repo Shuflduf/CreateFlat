@@ -6,7 +6,8 @@ var right_connection: ItemTransport
 
 var held_item: Item
 var queue: Array[Item]
-
+var item_processed = false
+var press: MechanicalPress
 
 func _physics_process(_delta: float) -> void:
     if not held_item and queue.size() >= 1:
@@ -46,6 +47,17 @@ func _post_update_neighbors(
                 elif dir == Dir.RIGHT:
                     right_connection = target
                     target.left_connection = self
+    
+    var press_target_pos = component_pos - Vector2i(0, 2)
+    if all_components.has(press_target_pos):
+        var target = all_components[press_target_pos]
+        if target is MechanicalPress:
+            #print("PRES")
+            press = target
+            press.finished.connect(func():
+                print("A")
+                item_processed = true
+            )
 
 
 func _post_disconnect_neighbors(
