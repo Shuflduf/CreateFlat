@@ -27,7 +27,7 @@ func _ready() -> void:
     $Area.body_entered.connect(_on_area_item_entered)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
     if held_item:
         var on_belt = (
             abs(global_position.x - held_item.global_position.x) < 64.0
@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
             #held_item.temp_disable()
             held_item = null
 
-    super(_delta)
+    super(delta)
 
 
 func _post_update_neighbors(
