@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=32 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://b68e7lkq1lsfw" path="res://Blocks/Ejector/ejector_top.png" id="17_scvq1"]
 [ext_resource type="PackedScene" uid="uid://bhxvdh835jteg" path="res://Blocks/Press/press.tscn" id="18_m0hhd"]
 [ext_resource type="Texture2D" uid="uid://bd3tqkhsarpso" path="res://Blocks/Press/press_head_bottom.png" id="19_rqan7"]
+[ext_resource type="PackedScene" uid="uid://p2ejtjkyrp6c" path="res://Blocks/Basin/basin.tscn" id="20_44n3w"]
+[ext_resource type="Texture2D" uid="uid://b0p2bn00ffey5" path="res://Blocks/Basin/basin.png" id="21_2sp6a"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_k12tt")
@@ -70,6 +72,13 @@ scene = ExtResource("18_m0hhd")
 thumbnail = ExtResource("19_rqan7")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
+[sub_resource type="Resource" id="Resource_6y664"]
+script = ExtResource("6_k12tt")
+name = "Basin"
+scene = ExtResource("20_44n3w")
+thumbnail = ExtResource("21_2sp6a")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -97,7 +106,7 @@ position = Vector2(-128, 0)
 
 [node name="Preview" type="CanvasGroup" parent="CursorSelection"]
 unique_name_in_owner = true
-self_modulate = Color(0.51, 1, 0.8775, 0.6)
+self_modulate = Color(0.509804, 1, 0.878431, 0.6)
 position = Vector2(64, 64)
 
 [node name="Motor" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("2_6iyac")]
@@ -123,7 +132,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_wsu2k")
-components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd"), SubResource("Resource_44n3w")])
+components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd"), SubResource("Resource_44n3w"), SubResource("Resource_6y664")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1

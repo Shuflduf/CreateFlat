@@ -1,0 +1,40 @@
+class_name Basin
+extends ItemTransport
+
+var held_items: Array[Item]
+#var mixer: MechanicalMixer
+
+func _physics_process(delta: float) -> void:
+    if held_items.size() > 0 and press:
+        held_items = press.start_compact(held_items)
+    
+    for item in held_items:
+        item.global_position = global_position
+        item.velocity = Vector2.ZERO
+
+
+func _ready() -> void:
+    super()
+    # wow i dont have to wait two whole physics frames
+    await get_tree().physics_frame
+    if active:
+        $Sprite2D.z_index = 10
+
+
+func _on_area_body_entered(body: Node2D) -> void:
+    if body is Item:
+        held_items.append(body)
+
+
+func _post_update_neighbors(
+    component_pos: Vector2i,
+    all_components: Dictionary[Vector2i, MechanicalComponent]
+):
+    super(component_pos, all_components)
+    #var mixer_target_pos = component_pos - Vector2i(0, 2)
+    #if all_components.has(mixer_target_pos):
+        #var target = all_components[mixer_target_pos]
+        #if target is MechanicalMixer:
+            #print("PRES")
+            #press = target
+            #press.target_transport = self

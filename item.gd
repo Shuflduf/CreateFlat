@@ -26,3 +26,7 @@ func temp_disable():
     collision_layer = 0
     await get_tree().create_timer(0.5).timeout
     collision_layer = default_collision
+
+static func from_id(_id: String) -> Item:
+    var new_item = preload("res://item.tscn").instantiate()
+    return new_item

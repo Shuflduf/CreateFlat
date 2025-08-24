@@ -53,8 +53,9 @@ func _post_update_neighbors(
     if all_components.has(press_target_pos):
         var target = all_components[press_target_pos]
         if target is MechanicalPress:
-            print("PRES")
+            print("PRES but from transport")
             press = target
+            press.target_transport = self
 
 
 func _post_disconnect_neighbors(

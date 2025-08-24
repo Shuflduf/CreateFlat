@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://p2ejtjkyrp6c"]
+
+[ext_resource type="Script" uid="uid://lu3xriexp2vs" path="res://Blocks/Basin/basin.gd" id="1_lgvq7"]
+[ext_resource type="Texture2D" uid="uid://b0p2bn00ffey5" path="res://Blocks/Basin/basin.png" id="1_qbqpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgvq7"]
+size = Vector2(112, 88)
+
+[node name="Basin" type="Node2D"]
+script = ExtResource("1_lgvq7")
+max_rotations = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_qbqpv")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_lgvq7")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

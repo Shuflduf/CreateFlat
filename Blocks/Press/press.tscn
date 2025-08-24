@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhxvdh835jteg"]
+[gd_scene load_steps=10 format=3 uid="uid://bhxvdh835jteg"]
 
 [ext_resource type="Texture2D" uid="uid://plr3h48j15ql" path="res://Blocks/Press/press_head_top.png" id="1_6etwx"]
 [ext_resource type="Script" uid="uid://b0xaffmonphoo" path="res://Blocks/Press/press.gd" id="1_mcbx4"]
@@ -35,10 +35,26 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 1)
 }
 
+[sub_resource type="Animation" id="Animation_p51df"]
+resource_name = "press_basin"
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 200, 0, -21.5, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l562k"]
 _data = {
 &"RESET": SubResource("Animation_l562k"),
-&"press": SubResource("Animation_mcbx4")
+&"press": SubResource("Animation_mcbx4"),
+&"press_basin": SubResource("Animation_p51df")
 }
 
 [node name="Press" type="Node2D" node_paths=PackedStringArray("connections")]
@@ -47,6 +63,14 @@ connections = {
 1: NodePath("Right"),
 3: NodePath("Left")
 }
+max_rotations = 1
+
+[node name="Right" parent="." instance=ExtResource("5_l562k")]
+rotation = 1.57079
+
+[node name="Left" parent="." instance=ExtResource("5_l562k")]
+rotation = 1.57079
+shaft_bottom = true
 
 [node name="Head" type="Node2D" parent="."]
 
@@ -67,14 +91,5 @@ texture = ExtResource("1_rag6d")
 libraries = {
 &"": SubResource("AnimationLibrary_l562k")
 }
-
-[node name="Right" parent="." instance=ExtResource("5_l562k")]
-visible = false
-rotation = 1.57079
-
-[node name="Left" parent="." instance=ExtResource("5_l562k")]
-visible = false
-rotation = 1.57079
-shaft_bottom = true
 
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
