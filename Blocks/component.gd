@@ -24,6 +24,7 @@ var target_pos: Vector2i
 var tile_pos: Vector2i
 var debug_data: Variant
 
+
 func _ready() -> void:
     await get_tree().physics_frame
     for dir in connections:

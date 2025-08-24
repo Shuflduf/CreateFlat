@@ -4,11 +4,12 @@ extends CharacterBody2D
 const CATCH_RADIUS = 64.0
 const CATCH_RADIUS_SQUARED = CATCH_RADIUS * CATCH_RADIUS
 
-@onready var default_collision = collision_layer
-
 var is_ready = false
 var flying = false
 var fly_destination: Vector2
+
+@onready var default_collision = collision_layer
+
 
 func _physics_process(delta: float) -> void:
     velocity.y += get_gravity().y * delta

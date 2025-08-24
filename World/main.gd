@@ -11,6 +11,7 @@ var target_placed = true
 
 @onready var all_components: Dictionary[Vector2i, MechanicalComponent] = {}
 
+
 func needs_target():
     return %Preview.get_child(0).needs_target_pos
 
@@ -65,7 +66,6 @@ func _unhandled_input(event: InputEvent) -> void:
             )
             $Components.add_child(new_component)
 
-
             all_components[grid_pos] = new_component
             new_component.connect_neighbors(grid_pos, all_components)
             target_placed = false
@@ -106,7 +106,6 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
     target_placed = false
     %Indicator.visible = new_preview.needs_target_pos
     new_preview.visible = not new_preview.needs_target_pos
-
 
 
 func _on_refresh_pressed() -> void:
