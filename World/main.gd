@@ -28,10 +28,7 @@ func _physics_process(_delta: float) -> void:
     if all_components.has(grid_pos):
         var target = all_components[grid_pos]
         DebugDraw2D.set_text("Component", target.connections)
-        DebugDraw2D.set_text(
-            "Component Pos",
-            target.position
-        )
+        DebugDraw2D.set_text("Component Pos", target.position)
         DebugDraw2D.set_text(
             "Speeds", target.connections.values().map(func(c): return c.speed)
         )

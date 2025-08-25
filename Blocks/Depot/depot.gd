@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
         if press and not item_processed:
             press.start(held_item)
 
-        if (press and item_processed) or (not press):
+        if (press and item_processed) or (not press and centered):
             held_item.temp_disable()
             held_item = null
             item_processed = false

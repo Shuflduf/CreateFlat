@@ -76,7 +76,7 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
             new_item.position.y += 32.0
             get_parent().add_child(new_item)
             #await get_tree().physics_frame
-            
+
             #new_item.temp_disable(0.01)
             print(new_item.global_position)
             #target_transport.
