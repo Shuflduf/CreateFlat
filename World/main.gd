@@ -115,7 +115,8 @@ func _on_refresh_pressed() -> void:
         for dir in target.connections:
             var conn: MechanicalConnector = target.connections[dir]
             conn.speed = 0.0
-            conn.transfer_rotation()
+            conn.rotated.emit()
+            #conn.transfer_rotation()
             #conn.sprites.frame = 0
             conn.connected_to = null
 
