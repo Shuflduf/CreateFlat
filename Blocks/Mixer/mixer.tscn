@@ -1,0 +1,119 @@
+[gd_scene load_steps=18 format=3 uid="uid://i4hgtsfr05y6"]
+
+[ext_resource type="Script" uid="uid://cyboniqu3721f" path="res://Blocks/Mixer/mixer.gd" id="1_4m3oy"]
+[ext_resource type="Texture2D" uid="uid://gqp2ovvc175v" path="res://Blocks/Mixer/Textures/file.png" id="1_87ddt"]
+[ext_resource type="Texture2D" uid="uid://plr3h48j15ql" path="res://Blocks/Press/press_head_top.png" id="1_hiuug"]
+[ext_resource type="Texture2D" uid="uid://bd3tqkhsarpso" path="res://Blocks/Press/press_head_bottom.png" id="2_4m3oy"]
+[ext_resource type="Texture2D" uid="uid://bdbo2pv4rlgrn" path="res://Blocks/Mixer/Textures/file(8).png" id="2_pmidf"]
+[ext_resource type="Texture2D" uid="uid://di07dxfdxlgvb" path="res://Blocks/Mixer/Textures/file(7).png" id="3_xwi7h"]
+[ext_resource type="Texture2D" uid="uid://cj1mb4cwvhd0t" path="res://Blocks/Mixer/Textures/file(6).png" id="4_higb2"]
+[ext_resource type="Texture2D" uid="uid://cucnor2qgc0vu" path="res://Blocks/Mixer/Textures/file(5).png" id="5_hiuug"]
+[ext_resource type="Texture2D" uid="uid://cm8djqk1ftjel" path="res://Blocks/Mixer/Textures/file(4).png" id="6_4m3oy"]
+[ext_resource type="Texture2D" uid="uid://dkhm2x54c5o0w" path="res://Blocks/Mixer/Textures/file(3).png" id="7_t8fnr"]
+[ext_resource type="Texture2D" uid="uid://b4m4ailnchkfd" path="res://Blocks/Mixer/Textures/file(2).png" id="8_wpaay"]
+[ext_resource type="Texture2D" uid="uid://bb135fqxd6sae" path="res://Blocks/Mixer/Textures/file(1).png" id="9_1rcbh"]
+[ext_resource type="Texture2D" uid="uid://dr41kj58nvfyw" path="res://Blocks/Press/press_base.png" id="13_wpaay"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0sdmw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_87ddt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pmidf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xwi7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_higb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hiuug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4m3oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t8fnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wpaay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1rcbh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Animation" id="Animation_l562k"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mcbx4"]
+resource_name = "mix"
+length = 1.5
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 3, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.306113, 3.5, 136, -0.125, 0, 0.125, 0, 133, -0.05, 0, 0.206113, 1.5, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hiuug"]
+_data = {
+&"RESET": SubResource("Animation_l562k"),
+&"mix": SubResource("Animation_mcbx4")
+}
+
+[node name="Mixer" type="Node2D"]
+script = ExtResource("1_4m3oy")
+max_rotations = 1
+
+[node name="Head" type="Node2D" parent="."]
+
+[node name="Top" type="Sprite2D" parent="Head"]
+position = Vector2(0, -128)
+scale = Vector2(8, 8)
+texture = ExtResource("1_hiuug")
+
+[node name="Bottom" type="Sprite2D" parent="Head"]
+position = Vector2(0, -16)
+scale = Vector2(8, 8)
+texture = ExtResource("2_4m3oy")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head"]
+position = Vector2(0, 80)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_0sdmw")
+frame_progress = 0.421499
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("13_wpaay")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hiuug")
+}

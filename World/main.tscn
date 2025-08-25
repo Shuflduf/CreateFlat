@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=35 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://bd3tqkhsarpso" path="res://Blocks/Press/press_head_bottom.png" id="19_rqan7"]
 [ext_resource type="PackedScene" uid="uid://p2ejtjkyrp6c" path="res://Blocks/Basin/basin.tscn" id="20_44n3w"]
 [ext_resource type="Texture2D" uid="uid://b0p2bn00ffey5" path="res://Blocks/Basin/basin.png" id="21_2sp6a"]
+[ext_resource type="PackedScene" uid="uid://i4hgtsfr05y6" path="res://Blocks/Mixer/mixer.tscn" id="22_6y664"]
+[ext_resource type="Texture2D" uid="uid://gqp2ovvc175v" path="res://Blocks/Mixer/Textures/file.png" id="23_ixdso"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_k12tt")
@@ -79,6 +81,13 @@ scene = ExtResource("20_44n3w")
 thumbnail = ExtResource("21_2sp6a")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
+[sub_resource type="Resource" id="Resource_5iy0x"]
+script = ExtResource("6_k12tt")
+name = "Mixer"
+scene = ExtResource("22_6y664")
+thumbnail = ExtResource("23_ixdso")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -132,7 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_wsu2k")
-components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd"), SubResource("Resource_44n3w"), SubResource("Resource_6y664")])
+components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd"), SubResource("Resource_44n3w"), SubResource("Resource_6y664"), SubResource("Resource_5iy0x")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1
