@@ -30,7 +30,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     if held_item:
         var on_belt = (
-            abs(global_position.x - held_item.global_position.x) < 64.0
+            abs(global_position.x - held_item.global_position.x) < 76.0
         )
         var target_transfer = right_connection if speed > 0 else left_connection
         if on_belt:
