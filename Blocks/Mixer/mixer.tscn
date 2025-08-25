@@ -63,8 +63,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_mcbx4"]
-resource_name = "mix"
+[sub_resource type="Animation" id="Animation_hiuug"]
+resource_name = "mix2"
 length = 1.5
 step = 0.1
 tracks/0/type = "bezier"
@@ -74,15 +74,15 @@ tracks/0/path = NodePath("Head:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 3, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.306113, 3.5, 136, -0.125, 0, 0.125, 0, 133, -0.05, 0, 0.206113, 1.5, 0, -0.25, 0, 0.25, 0),
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, -21.5, 0.25, 0, 136, 0, -21.5, 0.25, 0, 136, 0, -21.5, 0.25, 0, 0, 0, -21.5, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiuug"]
 _data = {
 &"RESET": SubResource("Animation_l562k"),
-&"mix": SubResource("Animation_mcbx4")
+&"mix2": SubResource("Animation_hiuug")
 }
 
 [node name="Mixer" type="Node2D"]
@@ -107,7 +107,7 @@ region_rect = Rect2(0, 0, 16, 12)
 position = Vector2(0, 80)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_0sdmw")
-frame_progress = 0.36165
+frame_progress = 0.72461
 
 [node name="Base" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
