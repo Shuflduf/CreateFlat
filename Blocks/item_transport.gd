@@ -7,8 +7,9 @@ var right_connection: ItemTransport
 var held_item: Item
 var queue: Array[Item]
 var item_processed = false
-var press: MechanicalPress
 
+var press: MechanicalPress
+var mixer: MechanicalMixer
 
 func _physics_process(_delta: float) -> void:
     if not held_item and queue.size() >= 1:
@@ -57,6 +58,10 @@ func _post_update_neighbors(
             print("PRES but from transport")
             press = target
             press.target_transport = self
+        elif target is MechanicalMixer:
+            print("MIX from transport")
+            mixer = target
+            mixer.target_transport = self
 
 
 func _post_disconnect_neighbors(

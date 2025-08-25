@@ -6,9 +6,11 @@ var held_items: Array[Item]
 
 
 func _physics_process(_delta: float) -> void:
-    if held_items.size() > 0 and press:
-        var tmp = press.start_compact(held_items)
-        held_items = tmp
+    if held_items.size() > 0:
+        if press:
+            held_items = press.start_compact(held_items)
+        elif mixer:
+            held_items = mixer.start_mix(held_items)
 
     for item in held_items:
         item.global_position = global_position
