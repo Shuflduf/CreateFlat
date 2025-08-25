@@ -4,13 +4,18 @@ extends ItemTransport
 var held_items: Array[Item]
 #var mixer: MechanicalMixer
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if held_items.size() > 0 and press:
         held_items = press.start_compact(held_items)
     
     for item in held_items:
         item.global_position = global_position
         item.velocity = Vector2.ZERO
+    
+    if held_item:
+        held_items.append(held_item)
+        held_item = null
+    debug_data = held_items
 
 
 func _ready() -> void:
@@ -22,7 +27,7 @@ func _ready() -> void:
 
 
 func _on_area_body_entered(body: Node2D) -> void:
-    if body is Item:
+    if body is Item and active:
         held_items.append(body)
 
 

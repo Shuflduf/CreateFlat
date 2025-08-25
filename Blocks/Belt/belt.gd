@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
                 item_processed = false
         else:
             held_item.velocity.x = BELT_SPEED * speed
-            #held_item.temp_disable()
+            held_item.temp_disable()
             held_item = null
             item_processed = false
 

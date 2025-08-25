@@ -18,14 +18,17 @@ func start_compact(items: Array[Item]) -> Array[Item]:
             for i in COMPACT_THRESHOLD:
                 process_targets.append(items.pop_front())
             running = true
-            print(items)
+            print(process_targets)
             $Anim.play(&"press_basin")
     
     return items
 
-func _physics_process(delta: float) -> void:
-    for item in process_targets:
-        item.global_position = target_transport.global_position
+func _physics_process(_delta: float) -> void:
+    #debug_data = process_targets
+    if target_transport:
+        for item in process_targets:
+            item.global_position = target_transport.global_position
+            item.velocity.y = 0.0
 
 
 func start(item: Item):
