@@ -22,12 +22,13 @@ func _physics_process(delta: float) -> void:
             collision_layer = default_collision
 
 
-func temp_disable():
+func temp_disable(time: float = 0.5):
     collision_layer = 0
-    await get_tree().create_timer(0.5).timeout
+    await get_tree().create_timer(time).timeout
     collision_layer = default_collision
 
 
 static func from_id(_id: String) -> Item:
     var new_item = preload("res://item.tscn").instantiate()
+    new_item.is_ready = true
     return new_item

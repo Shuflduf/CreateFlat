@@ -33,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func start(item: Item):
-    if not running:
+    if not running and speed != 0.0:
         target_items = [item]
         running = true
         item.z_index = -1
@@ -73,7 +73,8 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
             var new_item = Item.from_id("")
             get_parent().add_child(new_item)
             new_item.global_position = target_transport.global_position
-            new_item.temp_disable()
+            new_item.global_position.y += 32.0
+            #new_item.temp_disable(0.01)
             print(new_item.global_position)
             #target_transport.
 
