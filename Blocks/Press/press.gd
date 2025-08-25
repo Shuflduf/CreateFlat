@@ -10,18 +10,19 @@ var speed = 0.0:
         speed = value
         $Anim.speed_scale = abs(speed)
 
+
 func start_compact(items: Array[Item]) -> Array[Item]:
-    if not running:
-        const COMPACT_THRESHOLD = 3
-        if items.size() >= COMPACT_THRESHOLD:
-            process_targets = []
-            for i in COMPACT_THRESHOLD:
-                process_targets.append(items.pop_front())
-            running = true
-            print(process_targets)
-            $Anim.play(&"press_basin")
-    
+    const COMPACT_THRESHOLD = 3
+    if not running and speed != 0 and items.size() >= COMPACT_THRESHOLD:
+        process_targets = []
+        for i in COMPACT_THRESHOLD:
+            process_targets.append(items.pop_front())
+        running = true
+        print(process_targets)
+        $Anim.play(&"press_basin")
+
     return items
+
 
 func _physics_process(_delta: float) -> void:
     #debug_data = process_targets
@@ -59,7 +60,7 @@ func _ready() -> void:
 func _on_anim_animation_finished(anim_name: StringName) -> void:
     if anim_name != &"reset":
         running = false
-        
+
     if anim_name == &"press":
         target_items[0].z_index = 0
         if target_transport:

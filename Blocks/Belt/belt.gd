@@ -36,11 +36,11 @@ func _physics_process(delta: float) -> void:
         if on_belt:
             held_item.velocity.y = 0.0
             held_item.position.y = global_position.y - 80.0
-            
+
             #if press and not item_processed
             if (not press) or item_processed:
                 held_item.velocity.x = BELT_SPEED * speed
-            
+
             if press and not item_processed:
                 if abs(global_position.x - held_item.global_position.x) > 4.0:
                     held_item.velocity.x = BELT_SPEED * speed
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
                     held_item.velocity.x = 0
                     held_item.global_position.x = global_position.x
                     press.start(held_item)
-            
+
         elif target_transfer:
             if target_transfer.held_item:
                 held_item.velocity.y = 0.0

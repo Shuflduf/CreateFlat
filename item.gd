@@ -10,6 +10,7 @@ var fly_destination: Vector2
 
 @onready var default_collision = collision_layer
 
+
 func _physics_process(delta: float) -> void:
     velocity.y += get_gravity().y * delta
     move_and_slide()
@@ -25,6 +26,7 @@ func temp_disable():
     collision_layer = 0
     await get_tree().create_timer(0.5).timeout
     collision_layer = default_collision
+
 
 static func from_id(_id: String) -> Item:
     var new_item = preload("res://item.tscn").instantiate()

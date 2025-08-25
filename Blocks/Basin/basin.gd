@@ -4,16 +4,18 @@ extends ItemTransport
 var held_items: Array[Item]
 #var mixer: MechanicalMixer
 
+
 func _physics_process(_delta: float) -> void:
     if held_items.size() > 0 and press:
-        held_items = press.start_compact(held_items)
-    
+        var tmp = press.start_compact(held_items)
+        held_items = tmp
+
     for item in held_items:
         item.global_position = global_position
         item.velocity = Vector2.ZERO
-    
+
     if held_item:
-        held_items.append(held_item)
+        #held_items.append(held_item)
         held_item = null
     debug_data = held_items
 
@@ -38,8 +40,8 @@ func _post_update_neighbors(
     super(component_pos, all_components)
     #var mixer_target_pos = component_pos - Vector2i(0, 2)
     #if all_components.has(mixer_target_pos):
-        #var target = all_components[mixer_target_pos]
-        #if target is MechanicalMixer:
-            #print("PRES")
-            #press = target
-            #press.target_transport = self
+    #var target = all_components[mixer_target_pos]
+    #if target is MechanicalMixer:
+    #print("PRES")
+    #press = target
+    #press.target_transport = self
