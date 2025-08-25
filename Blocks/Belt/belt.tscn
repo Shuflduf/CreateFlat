@@ -28,7 +28,7 @@ shader_parameter/small = true
 shader_parameter/speed = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6m2es"]
-size = Vector2(128, 8)
+size = Vector2(80, 8)
 
 [node name="Belt" type="Node2D" node_paths=PackedStringArray("connections")]
 script = ExtResource("1_6m2es")
