@@ -71,9 +71,12 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
                 item.queue_free()
             process_targets = []
             var new_item = Item.from_id("")
+            new_item.position = target_transport.position
+            new_item.position += Vector2(64.0, 64.0)
+            new_item.position.y += 32.0
             get_parent().add_child(new_item)
-            new_item.global_position = target_transport.global_position
-            new_item.global_position.y += 32.0
+            #await get_tree().physics_frame
+            
             #new_item.temp_disable(0.01)
             print(new_item.global_position)
             #target_transport.

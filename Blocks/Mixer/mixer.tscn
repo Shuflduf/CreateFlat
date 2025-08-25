@@ -107,7 +107,7 @@ region_rect = Rect2(0, 0, 16, 12)
 position = Vector2(0, 80)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_0sdmw")
-frame_progress = 0.421499
+frame_progress = 0.36165
 
 [node name="Base" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
