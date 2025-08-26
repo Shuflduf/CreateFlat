@@ -18,9 +18,14 @@ func _physics_process(_delta: float) -> void:
     for item in process_targets:
         item.global_position = global_position
         item.velocity = Vector2.ZERO
-
+    
+    if held_item:
+        held_item = null
+    
     held_items = start_mill(held_items)
     #print(held_items)
+    debug_data = held_items
+    
 
 
 func start_mill(items: Array[Item]) -> Array[Item]:
@@ -57,8 +62,7 @@ func _on_area_body_entered(body: Node2D) -> void:
 func _on_mill_timer_timeout() -> void:
     running = false
     for item in process_targets:
-        prints("removing", item)
-        #item.queue_free()
+        item.queue_free()
     process_targets = []
     var new_item = Item.from_id("")
     new_item.position = position
