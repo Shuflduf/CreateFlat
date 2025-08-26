@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ii0soku1ixbx"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ddwigugho4b56"]
 
-[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_ck1ak"]
-[ext_resource type="Texture2D" uid="uid://bef4nf2vb3ysk" path="res://Assets/Items/iron_ingot.png" id="2_48dp4"]
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_1d2ov"]
+[ext_resource type="Texture2D" uid="uid://bef4nf2vb3ysk" path="res://Assets/Items/iron_ingot.png" id="2_634pk"]
 
 [resource]
-script = ExtResource("1_ck1ak")
+script = ExtResource("1_1d2ov")
 name = "Iron Ingot"
 id = "iron"
-texture = ExtResource("2_48dp4")
+texture = ExtResource("2_634pk")

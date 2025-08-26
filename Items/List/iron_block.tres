@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ba5mqpvegtcb3"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_m7p22"]
+[ext_resource type="Texture2D" uid="uid://cv8bd2vdkwel6" path="res://Assets/Items/iron_block.png" id="2_m7p22"]
+
+[resource]
+script = ExtResource("1_m7p22")
+name = "Iron Block"
+id = "iron_block"
+texture = ExtResource("2_m7p22")
