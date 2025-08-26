@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://dpo6jtkrsu6ag"]
+
+[ext_resource type="Texture2D" uid="uid://bjgmn68myyw4q" path="res://Blocks/Millstone/millstone_base.png" id="1_8e1kr"]
+[ext_resource type="Script" uid="uid://cpwy3u75lo4nu" path="res://Blocks/Millstone/millstone.gd" id="1_gtv28"]
+[ext_resource type="Texture2D" uid="uid://duevd3bdgu438" path="res://Blocks/Millstone/GearPart/file(8).png" id="2_qwdyo"]
+[ext_resource type="Texture2D" uid="uid://dj50f2lup1xhv" path="res://Blocks/Millstone/GearPart/file(7).png" id="3_swp0c"]
+[ext_resource type="Texture2D" uid="uid://jkbye4aimvip" path="res://Blocks/Millstone/GearPart/file(6).png" id="4_gtv28"]
+[ext_resource type="Texture2D" uid="uid://wmrc0x4c1q60" path="res://Blocks/Millstone/GearPart/file(5).png" id="5_c031b"]
+[ext_resource type="Texture2D" uid="uid://irehfxjdvkpe" path="res://Blocks/Millstone/GearPart/file(4).png" id="6_ap7ky"]
+[ext_resource type="Texture2D" uid="uid://cg7ey1x18geac" path="res://Blocks/Millstone/GearPart/file(3).png" id="7_smg05"]
+[ext_resource type="Texture2D" uid="uid://bkwfho3td05wh" path="res://Blocks/Millstone/GearPart/file(2).png" id="8_ctna3"]
+[ext_resource type="Texture2D" uid="uid://c21cqyryp4bbg" path="res://Blocks/Millstone/GearPart/file(1).png" id="9_8hddg"]
+[ext_resource type="Texture2D" uid="uid://lxpsk1s1csek" path="res://Blocks/Millstone/GearPart/file.png" id="10_tincj"]
+[ext_resource type="PackedScene" uid="uid://c8jgkm8qshiah" path="res://Blocks/Connector/connector.tscn" id="11_swp0c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lh7dx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qwdyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_swp0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gtv28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c031b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ap7ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_smg05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ctna3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8hddg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tincj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwdyo"]
+size = Vector2(112, 28)
+
+[node name="Millstone" type="Node2D" node_paths=PackedStringArray("connections")]
+script = ExtResource("1_gtv28")
+connections = {
+2: NodePath("Connector")
+}
+max_rotations = 1
+
+[node name="Connector" parent="." instance=ExtResource("11_swp0c")]
+shaft_bottom = true
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_8e1kr")
+
+[node name="GearPart" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.53674e-07, -8)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_lh7dx")
+autoplay = "default"
+frame_progress = 0.220836
+speed_scale = 0.0
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_qwdyo")

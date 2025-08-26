@@ -52,7 +52,6 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
     if anim_name != &"reset":
         running = false
 
-
     if anim_name == &"mix" and target_transport:
         for item in process_targets:
             item.queue_free()
