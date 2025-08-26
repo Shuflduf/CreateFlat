@@ -2,7 +2,6 @@ class_name Basin
 extends ItemTransport
 
 var held_items: Array[Item]
-#var mixer: MechanicalMixer
 
 
 func _physics_process(_delta: float) -> void:
@@ -27,7 +26,7 @@ func _ready() -> void:
     # wow i dont have to wait two whole physics frames
     await get_tree().physics_frame
     if active:
-        $Sprite2D.z_index = 10
+        z_index = 10
 
 
 func _on_area_body_entered(body: Node2D) -> void:
