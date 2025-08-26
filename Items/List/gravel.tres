@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dm5s2vo83qav1"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_nv2rw"]
+[ext_resource type="Texture2D" uid="uid://cj8ss6fbnl7su" path="res://Assets/Items/gravel.png" id="2_nv2rw"]
+
+[resource]
+script = ExtResource("1_nv2rw")
+name = "Gravel"
+id = "gravel"
+texture = ExtResource("2_nv2rw")

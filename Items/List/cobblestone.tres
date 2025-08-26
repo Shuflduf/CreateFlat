@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://by5ml6j8yb8yw"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_ipfog"]
+[ext_resource type="Texture2D" uid="uid://dwnasf1k4tgna" path="res://Assets/Items/cobblestone.png" id="2_ipfog"]
+
+[resource]
+script = ExtResource("1_ipfog")
+name = "Cobblestone"
+id = "cobblestone"
+texture = ExtResource("2_ipfog")

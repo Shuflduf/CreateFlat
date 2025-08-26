@@ -29,6 +29,6 @@ func temp_disable(time: float = 0.5):
 
 
 static func from_id(_id: String) -> Item:
-    var new_item = preload("res://item.tscn").instantiate()
+    var new_item = preload("res://Items/item.tscn").instantiate()
     new_item.is_ready = true
     return new_item
