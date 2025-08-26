@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://6nabqr5vg1du"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_x84cw"]
+[ext_resource type="Texture2D" uid="uid://ncyjbbj8bl4m" path="res://Assets/Items/iron_sheet.png" id="2_x84cw"]
+
+[resource]
+script = ExtResource("1_x84cw")
+name = "Iron Sheet"
+id = "iron_sheet"
+texture = ExtResource("2_x84cw")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://g56oxkfqpnyl"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_fernh"]
+[ext_resource type="Texture2D" uid="uid://ddpl01fduoo1i" path="res://Assets/Items/brass_sheet.png" id="2_fernh"]
+
+[resource]
+script = ExtResource("1_fernh")
+name = "Brass Sheet"
+id = "brass_sheet"
+texture = ExtResource("2_fernh")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://si1dppbu26sw"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_jd6a3"]
+[ext_resource type="Texture2D" uid="uid://crotir3qx7cdh" path="res://Assets/Items/brass_block.png" id="2_jd6a3"]
+
+[resource]
+script = ExtResource("1_jd6a3")
+name = "Brass Block"
+id = "brass_block"
+texture = ExtResource("2_jd6a3")

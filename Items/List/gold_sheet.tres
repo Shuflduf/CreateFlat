@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cpnhf7svq5p8j"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_dm7pd"]
+[ext_resource type="Texture2D" uid="uid://cj72kgc4dld0" path="res://Assets/Items/golden_sheet.png" id="2_dm7pd"]
+
+[resource]
+script = ExtResource("1_dm7pd")
+name = "Gold Sheet"
+id = "gold_sheet"
+texture = ExtResource("2_dm7pd")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://weswdf1uiy82"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_1c84r"]
+[ext_resource type="Texture2D" uid="uid://dtkfadxyf0iua" path="res://Assets/Items/brass_nugget.png" id="2_1c84r"]
+
+[resource]
+script = ExtResource("1_1c84r")
+name = "Brass Nugget"
+id = "brass_nugget"
+texture = ExtResource("2_1c84r")
