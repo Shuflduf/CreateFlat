@@ -54,18 +54,19 @@ func _press_item():
         RecipeSystem.RecipeType.PRESSING, [target_transport.held_items[0].data.id]
     )
     if recipe != null:
+        var new_item_pos = target_transport.held_items[0].position
+        target_transport.held_items[0].queue_free()
+        target_transport.held_items.pop_front()
         for result in recipe.results:
             var amount = recipe.results[result]
             for i in amount:
                 var new_item = Item.from_id(result)
-                new_item.position.x = target_transport.held_items[0].position.x
+                new_item.position = new_item_pos
                 new_item.z_index = -1
                 new_item.modulate.s = 1.0
                 new_item.modulate.h = (i * 0.2)
-                target_transport.held_items.append(new_item)
+                target_transport.held_items.push_front(new_item)
                 target_transport.items_processed += 1
-        target_transport.held_items[0].queue_free()
-        target_transport.held_items.pop_front()
         print(target_transport.held_items)
         print(target_transport.items_processed)
         # var new_items = recipe.results.
