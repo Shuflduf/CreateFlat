@@ -5,7 +5,6 @@ const CATCH_RADIUS = 64.0
 const CATCH_RADIUS_SQUARED = CATCH_RADIUS * CATCH_RADIUS
 const BASE_Z_INDEX = 1
 
-var is_ready = false
 var flying = false
 var fly_destination: Vector2
 var data: ItemData
@@ -15,9 +14,10 @@ var data: ItemData
 
 func _ready() -> void:
     z_index = BASE_Z_INDEX
+    collision_layer = 0
     await get_tree().physics_frame
     await get_tree().physics_frame
-    is_ready = true
+    collision_layer = default_collision
 
 
 func _physics_process(delta: float) -> void:

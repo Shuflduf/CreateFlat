@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_area_item_entered(body: Node2D) -> void:
-    if body is Item and active and body != held_item and body.is_ready:
+    if body is Item and active and body != held_item:
         #body.flying = false
         #body.collision_layer = 0
         if held_item:
