@@ -59,6 +59,11 @@ func _physics_process(delta: float) -> void:
                 held_items.pop_front()
                 if items_processed > 0:
                     items_processed -= 1
+        elif main_item.just_teleported and not on_belt:
+            print("TP")
+            held_items.pop_front()
+            if items_processed > 0:
+                items_processed -= 1
         else:
             main_item.velocity.x = BELT_SPEED * speed
             main_item.temp_disable()

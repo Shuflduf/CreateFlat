@@ -9,6 +9,8 @@ var flying = false
 var fly_destination: Vector2
 var data: ItemData
 var temp_disabled = false
+var just_teleported = false
+var last_pos = Vector2.ZERO
 
 @onready var default_collision = collision_layer
 
@@ -23,6 +25,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+    just_teleported = false
+    var diff = last_pos - position
+    last_pos = position + (velocity * delta)
+    if diff.length_squared() > 4900.0:
+        just_teleported = true
+
     velocity.y += get_gravity().y * delta
     move_and_slide()
     if flying:
