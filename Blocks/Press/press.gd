@@ -47,9 +47,12 @@ func _press_item():
 
 
 func start_press():
-    if press_recipe() != null and speed != 0.0:
+    var recipe = press_recipe()
+    if recipe != null and speed != 0.0:
         running = true
         $Anim.play(&"press")
+    elif recipe == null:
+        target_transport.items_processed += 1
 
 
 func pack_recipe() -> ItemRecipe:
