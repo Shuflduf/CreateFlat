@@ -1,7 +1,7 @@
 extends Camera2D
 
 const MAX_ZOOM_IN = 2.0
-const MAX_ZOOM_OUT = 0.2
+const MAX_ZOOM_OUT = 0.1
 
 var moving_cam = false
 

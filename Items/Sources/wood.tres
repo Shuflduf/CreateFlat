@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://hnbn8wg7x2mn"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_28mt7"]
+[ext_resource type="Texture2D" uid="uid://c65uowcljqs4j" path="res://Assets/Items/oak_log.png" id="2_28mt7"]
+
+[resource]
+script = ExtResource("1_28mt7")
+name = "Wood"
+id = "wood"
+texture = ExtResource("2_28mt7")

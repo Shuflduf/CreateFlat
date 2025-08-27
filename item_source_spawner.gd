@@ -3,9 +3,9 @@ extends Node2D
 
 @export var item_source_scene: PackedScene
 @export var circle_radius = 5.0
-@export var materials: Array[ItemData]
 
 var current_blocks_pos: Array[Vector2i]
+var item_data: ItemData
 
 func create_sources():
     current_blocks_pos = []
@@ -21,7 +21,7 @@ func create_sources():
                 continue
             var new_source: ItemSource = item_source_scene.instantiate()
             new_source.position = Vector2(pos) * 128.0
+            new_source.item_data = item_data
 
             add_child(new_source)
-            new_source.item_data = materials.pick_random()
             new_source.update_texture()

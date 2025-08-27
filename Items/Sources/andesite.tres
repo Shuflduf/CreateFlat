@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bnol65ikdrth7"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_1tjxl"]
+[ext_resource type="Texture2D" uid="uid://1y0ffs636ih6" path="res://Assets/Items/andesite.png" id="2_mriqs"]
+
+[resource]
+script = ExtResource("1_1tjxl")
+name = "Andesite"
+id = "andesite"
+texture = ExtResource("2_mriqs")

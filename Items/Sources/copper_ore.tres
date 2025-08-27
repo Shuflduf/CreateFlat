@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://wtqrmirxtf8b"]
+
+[ext_resource type="Script" uid="uid://mjfhmkok4dx" path="res://Items/item_data.gd" id="1_cpelp"]
+[ext_resource type="Texture2D" uid="uid://bwt4uibuw5x4q" path="res://Assets/Items/copper_ore.png" id="2_cpelp"]
+
+[resource]
+script = ExtResource("1_cpelp")
+name = "Copper Ore"
+id = "copper_ore"
+texture = ExtResource("2_cpelp")
