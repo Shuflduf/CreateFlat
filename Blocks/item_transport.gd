@@ -13,7 +13,7 @@ var mixer: MechanicalMixer
 
 func _physics_process(_delta: float) -> void:
     stack_queue()
-    debug_data = items_processed
+    debug_data = [held_items.size()]
 
 
 func stack_queue():

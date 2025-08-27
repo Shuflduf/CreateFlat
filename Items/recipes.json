@@ -58,14 +58,6 @@
 	"pressing": [
 		{
 			"ingredients": {
-				"iron_sheet": 1.0
-			},
-			"results": {
-				"gold_sheet": 4.0
-			}
-		},
-		{
-			"ingredients": {
 				"iron": 1.0
 			},
 			"results": {

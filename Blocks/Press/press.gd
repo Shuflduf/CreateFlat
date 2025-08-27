@@ -11,28 +11,6 @@ var speed = 0.0:
         $Anim.speed_scale = abs(speed)
 
 
-func start_compact(items: Array[Item]) -> Array[Item]:
-    const COMPACT_THRESHOLD = 9
-    if not running and speed != 0 and items.size() >= COMPACT_THRESHOLD:
-        $Anim.play(&"press_basin")
-
-    return items
-
-
-# func _physics_process(_delta: float) -> void:
-#debug_data = process_targets
-# if target_transport:
-#     for item in process_targets:
-#         item.global_position = target_transport.global_position
-#         item.velocity.y = 0.0
-
-
-# func start_press():
-#     if not running and speed != 0.0:
-#         running = true
-#         $Anim.play(&"press")
-
-
 func _ready() -> void:
     super()
     $Right.rotated.connect(
@@ -48,9 +26,11 @@ func _ready() -> void:
             $Right.transfer_rotation()
     )
 
+
 func press_recipe() -> ItemRecipe:
     var recipe = RecipeSystem.find_recipe(
-        RecipeSystem.RecipeType.PRESSING, [target_transport.held_items[0].data.id]
+        RecipeSystem.RecipeType.PRESSING,
+        [target_transport.held_items[0].data.id]
     )
     return recipe
 
@@ -76,23 +56,46 @@ func start_press():
     if press_recipe() != null and speed != 0.0:
         running = true
         $Anim.play(&"press")
-    # else:
-    #     target_transport.item_processed = true
 
 
-func _pack_items():
+func pack_recipe() -> ItemRecipe:
     var ids: Array[String]
     target_transport.held_items.map(func(i: Item): ids.append(i.data.id))
     var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.PACKING, ids)
+    return recipe
+
+
+func _pack_items():
+    var recipe = pack_recipe()
     if recipe != null:
+        var ingredients_needed = recipe.ingredients.duplicate()
+        var items_to_remove = []
+        for item in target_transport.held_items:
+            if (
+                ingredients_needed.has(item.data.id)
+                and ingredients_needed[item.data.id] > 0
+            ):
+                ingredients_needed[item.data.id] -= 1
+                items_to_remove.append(item)
+        for item in items_to_remove:
+            target_transport.held_items.erase(item)
+            item.queue_free()
+
         for result in recipe.results:
-            # var amount = recipe.results[ingredient]
-            var new_item = Item.from_id(result)
-            new_item.position = target_transport.position
-            new_item.position += Vector2(64.0, 96.0)
-            new_item.z_index = -1
+            var amount = recipe.results[result]
+            for i in amount:
+                var new_item = Item.from_id(result)
+                new_item.position = target_transport.position
+                new_item.position += Vector2(64.0, 96.0)
+                new_item.z_index = -1
         # target_transport.held_item.queue_free()
         # target_transport.held_item = last_item
+
+
+func start_pack():
+    if not running and speed != 0 and pack_recipe() != null:
+        running = true
+        $Anim.play(&"press_basin")
 
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:

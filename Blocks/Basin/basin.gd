@@ -5,7 +5,7 @@ extends ItemTransport
 func _physics_process(_delta: float) -> void:
     if held_items.size() > 0:
         if press:
-            press.start_press()
+            press.start_pack()
         elif mixer:
             held_items = mixer.start_mix(held_items)
 
@@ -13,7 +13,7 @@ func _physics_process(_delta: float) -> void:
         item.global_position = global_position
         item.velocity = Vector2.ZERO
 
-    debug_data = held_items
+    debug_data = held_items.size()
 
 
 func _ready() -> void:
