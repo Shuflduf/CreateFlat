@@ -14,11 +14,10 @@ var data: ItemData
 
 
 func _ready() -> void:
-    # fucking horrific
-    get_tree().physics_frame.connect(
-        func(): get_tree().physics_frame.connect(func(): is_ready = true)
-    )
     z_index = BASE_Z_INDEX
+    await get_tree().physics_frame
+    await get_tree().physics_frame
+    is_ready = true
 
 
 func _physics_process(delta: float) -> void:

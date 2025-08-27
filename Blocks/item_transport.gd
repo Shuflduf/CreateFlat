@@ -15,6 +15,7 @@ var mixer: MechanicalMixer
 func _physics_process(_delta: float) -> void:
     if not held_item and queue.size() >= 1:
         held_item = queue.pop_front()
+        held_item.global_position.x = global_position.x
 
     for i in queue.size():
         var item = queue[i]
