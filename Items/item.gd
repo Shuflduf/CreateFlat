@@ -10,7 +10,6 @@ var fly_destination: Vector2
 var data: ItemData
 var temp_disabled = false
 
-
 @onready var default_collision = collision_layer
 
 

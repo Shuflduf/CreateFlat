@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=43 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://bjgmn68myyw4q" path="res://Blocks/Millstone/millstone_base.png" id="25_flgxl"]
 [ext_resource type="PackedScene" uid="uid://4iek0cn16121" path="res://Blocks/Tunnel/tunnel.tscn" id="26_bs7a0"]
 [ext_resource type="Texture2D" uid="uid://burfs6qqorcal" path="res://Blocks/Tunnel/tunnel.png" id="27_40rxn"]
+[ext_resource type="Script" uid="uid://j88dbiqwleil" path="res://World/item_source_spawner_spawner.gd" id="29_40rxn"]
+[ext_resource type="PackedScene" uid="uid://c6vw3pv6p2rjo" path="res://item_source_spawner.tscn" id="30_5k5ia"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_k12tt")
@@ -142,6 +144,10 @@ connections = {
 }
 
 [node name="Cam" type="Camera2D" parent="."]
+limit_left = -128000
+limit_top = -128000
+limit_right = 128000
+limit_bottom = 128000
 position_smoothing_speed = 10.0
 script = ExtResource("4_jkdf5")
 
@@ -212,6 +218,10 @@ text = "Refresh"
 
 [node name="TempItemSpawner" parent="." instance=ExtResource("14_sfxlf")]
 position = Vector2(192, -384)
+
+[node name="ItemSourceSpawnerSpawner" type="Node2D" parent="."]
+script = ExtResource("29_40rxn")
+item_source_spawner_scene = ExtResource("30_5k5ia")
 
 [connection signal="item_selected" from="CanvasLayer/Sidebar" to="." method="_on_sidebar_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Refresh" to="." method="_on_refresh_pressed"]

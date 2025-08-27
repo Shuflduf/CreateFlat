@@ -16,8 +16,10 @@ func _physics_process(_delta: float) -> void:
     start_mill()
     debug_data = held_items.size()
 
+
 func can_accept_item() -> bool:
     return true
+
 
 func mill_recipe() -> ItemRecipe:
     var ids: Array[String]

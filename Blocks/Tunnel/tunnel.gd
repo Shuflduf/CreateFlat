@@ -1,7 +1,7 @@
 extends MechanicalComponent
 
 #@onready var item_connections = {
-    #$Left: [$Right, $Bottom]
+#$Left: [$Right, $Bottom]
 #}
 # Dictionary[Area2D, Array[Area2D]]
 
@@ -17,6 +17,7 @@ extends MechanicalComponent
 }
 var queued_items: Array[Item]
 
+
 func _ready() -> void:
     await get_tree().physics_frame
     if active:
@@ -24,9 +25,11 @@ func _ready() -> void:
         for area in item_connections:
             area.body_entered.connect(_on_item_entered.bind(area))
 
+
 func _physics_process(_delta: float) -> void:
     for item in queued_items:
         item.position = position + Vector2(64.0, 64.0)
+
 
 func _on_item_entered(body: Node2D, area: Area2D):
     var item = body as Item
@@ -51,9 +54,9 @@ func _on_item_entered(body: Node2D, area: Area2D):
         item.velocity = Vector2(strength, 0)
 
     item.velocity = item.velocity.rotated(rotation_index * 1.5708)
-        #item.velocity.x = 0.0
-        #item.velocity.y = item.velocity.length()
-        # item.velocity = item.velocity.rotated(90)
+    #item.velocity.x = 0.0
+    #item.velocity.y = item.velocity.length()
+    # item.velocity = item.velocity.rotated(90)
 
     item.temp_disable(0.2)
     queued_items.erase(item)
