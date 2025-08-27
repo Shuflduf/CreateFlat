@@ -28,6 +28,7 @@ func stack_queue():
 
 func _on_area_item_entered(body: Node2D) -> void:
     if body is Item and active:
+        prints(self, body)
         held_items.append(body)
         #body.flying = false
         #body.collision_layer = 0

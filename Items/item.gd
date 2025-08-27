@@ -8,6 +8,7 @@ const BASE_Z_INDEX = 1
 var flying = false
 var fly_destination: Vector2
 var data: ItemData
+var temp_disabled = false
 
 @onready var default_collision = collision_layer
 
@@ -17,7 +18,8 @@ func _ready() -> void:
     collision_layer = 0
     await get_tree().physics_frame
     await get_tree().physics_frame
-    collision_layer = default_collision
+    if not temp_disabled:
+        collision_layer = default_collision
 
 
 func _physics_process(delta: float) -> void:
@@ -32,9 +34,11 @@ func _physics_process(delta: float) -> void:
 
 
 func temp_disable(time: float = 0.5):
+    temp_disabled = true
     collision_layer = 0
     await get_tree().create_timer(time).timeout
     collision_layer = default_collision
+    temp_disabled = false
 
 
 static func from_id(id: String) -> Item:
