@@ -36,7 +36,6 @@ func start(item: Item):
     if not running and speed != 0.0:
         target_items = [item]
         running = true
-        item.z_index = -1
         print(item)
         $Anim.play(&"press")
 
@@ -57,12 +56,26 @@ func _ready() -> void:
     )
 
 
+func process_items():
+    var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.PRESSING, [target_transport.held_item.data.id])
+    print(recipe.results)
+    if recipe != null:
+        var last_item: Item
+        for ingredient in recipe.results:
+            # var amount = recipe.results[ingredient]
+            last_item = Item.from_id(ingredient)
+            last_item.position = target_transport.held_item.position
+            last_item.z_index = -1
+        target_transport.held_item.queue_free()
+        target_transport.held_item = last_item
+        # var new_items = recipe.results.
+
+
 func _on_anim_animation_finished(anim_name: StringName) -> void:
     if anim_name != &"reset":
         running = false
 
     if anim_name == &"press":
-        target_items[0].z_index = 0
         if target_transport:
             target_transport.item_processed = true
     elif anim_name == &"press_basin":
@@ -74,7 +87,6 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
             new_item.position = target_transport.position
             new_item.position += Vector2(64.0, 64.0)
             new_item.position.y += 32.0
-            get_parent().add_child(new_item)
             #await get_tree().physics_frame
 
             #new_item.temp_disable(0.01)

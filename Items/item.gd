@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const CATCH_RADIUS = 64.0
 const CATCH_RADIUS_SQUARED = CATCH_RADIUS * CATCH_RADIUS
+const BASE_Z_INDEX = 1
 
 var is_ready = false
 var flying = false
@@ -10,6 +11,14 @@ var fly_destination: Vector2
 var data: ItemData
 
 @onready var default_collision = collision_layer
+
+
+func _ready() -> void:
+    # fucking horrific
+    get_tree().physics_frame.connect(
+        func(): get_tree().physics_frame.connect(func(): is_ready = true)
+    )
+    z_index = BASE_Z_INDEX
 
 
 func _physics_process(delta: float) -> void:
@@ -32,8 +41,8 @@ func temp_disable(time: float = 0.5):
 static func from_id(id: String) -> Item:
     var new_item = preload("res://Items/item.tscn").instantiate()
     new_item.data = RecipeSystem.all_item_data.filter(func(i: ItemData): return i.id == id)[0]
-    new_item.is_ready = true
     new_item.update_sprite()
+    RecipeSystem.add_child(new_item)
     return new_item
 
 
