@@ -32,6 +32,9 @@ func _physics_process(delta: float) -> void:
             flying = false
             collision_layer = default_collision
 
+    if position.y > MoreConsts.MAP_SIZE * 128.0:
+        queue_free()
+
 
 func temp_disable(time: float = 0.5):
     temp_disabled = true
