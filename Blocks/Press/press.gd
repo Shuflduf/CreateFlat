@@ -48,11 +48,15 @@ func _ready() -> void:
             $Right.transfer_rotation()
     )
 
-
-func _press_item():
+func press_recipe() -> ItemRecipe:
     var recipe = RecipeSystem.find_recipe(
         RecipeSystem.RecipeType.PRESSING, [target_transport.held_items[0].data.id]
     )
+    return recipe
+
+
+func _press_item():
+    var recipe = press_recipe()
     if recipe != null:
         var new_item_pos = target_transport.held_items[0].position
         target_transport.held_items[0].queue_free()
@@ -63,18 +67,13 @@ func _press_item():
                 var new_item = Item.from_id(result)
                 new_item.position = new_item_pos
                 new_item.z_index = -1
-                new_item.modulate.s = 1.0
-                new_item.modulate.h = (i * 0.2)
                 target_transport.held_items.push_front(new_item)
                 target_transport.items_processed += 1
-        print(target_transport.held_items)
-        print(target_transport.items_processed)
         # var new_items = recipe.results.
 
 
 func start_press():
-    var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.PRESSING, [target_transport.held_items[0].data.id])
-    if recipe != null:
+    if press_recipe() != null and speed != 0.0:
         running = true
         $Anim.play(&"press")
     # else:
