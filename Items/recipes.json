@@ -121,6 +121,22 @@
 			"results": {
 				"brass_block": 1.0
 			}
-		}
+		},
+		{
+			"ingredients": {
+				"iron_nugget": 9.0
+			},
+			"results": {
+				"iron": 1.0
+			}
+		},
+		{
+			"ingredients": {
+				"gold_nugget": 9.0
+			},
+			"results": {
+				"gold": 1.0
+			}
+		},
 	]
 }
