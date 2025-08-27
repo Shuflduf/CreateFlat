@@ -40,6 +40,11 @@ debug={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Item"
+2d_physics/layer_2="Item Source"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

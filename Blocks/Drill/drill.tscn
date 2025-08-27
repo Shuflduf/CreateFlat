@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4lq6iv02ktr8"]
+[gd_scene load_steps=21 format=3 uid="uid://c4lq6iv02ktr8"]
 
 [ext_resource type="Shader" uid="uid://bts132c5rbmkv" path="res://Blocks/Drill/drill_clip.gdshader" id="1_1bunw"]
 [ext_resource type="Script" uid="uid://41mxeukh7sus" path="res://Blocks/Drill/drill.gd" id="1_i5kx7"]
@@ -74,6 +74,9 @@ scale_min = 0.7
 scale_max = 1.3
 scale_curve = SubResource("CurveTexture_1bunw")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bunw"]
+size = Vector2(80, 80)
+
 [node name="Drill" type="Node2D" node_paths=PackedStringArray("connections")]
 script = ExtResource("1_i5kx7")
 connections = {
@@ -94,10 +97,21 @@ position = Vector2(0, -60.5)
 scale = Vector2(0.202273, 0.202273)
 sprite_frames = SubResource("SpriteFrames_k8w6c")
 autoplay = "default"
-frame_progress = 0.635623
+frame_progress = 0.013587
+speed_scale = 0.0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="BreakParticles" type="GPUParticles2D" parent="."]
 amount = 16
 texture = ExtResource("13_hwucv")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_1bunw")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_1bunw")
+debug_color = Color(0, 0.7, 0.291667, 0.419608)

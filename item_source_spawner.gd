@@ -7,6 +7,7 @@ extends Node2D
 var current_blocks_pos: Array[Vector2i]
 var item_data: ItemData
 
+
 func create_sources():
     current_blocks_pos = []
     for child in get_children():

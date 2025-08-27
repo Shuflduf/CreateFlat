@@ -158,7 +158,8 @@ limit_top = -128000
 limit_right = 128000
 limit_bottom = 128000
 limit_smoothed = true
-position_smoothing_speed = 10.0
+position_smoothing_enabled = true
+position_smoothing_speed = 50.0
 script = ExtResource("4_jkdf5")
 
 [node name="Components" type="Node2D" parent="."]
