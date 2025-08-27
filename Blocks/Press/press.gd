@@ -39,18 +39,13 @@ func _press_item():
     var recipe = press_recipe()
     if recipe != null:
         var new_item_pos = target_transport.held_items[0].position
-        target_transport.held_items[0].queue_free()
-        target_transport.held_items.pop_front()
-        for result in recipe.results:
-            var amount = recipe.results[result]
-            for i in amount:
-                var new_item = Item.from_id(result)
-                new_item.position = new_item_pos
-                new_item.z_index = -1
-                target_transport.held_items.push_front(new_item)
+        target_transport.follow_recipe(
+            recipe,
+            func(item: Item):
+                item.position = new_item_pos
+                target_transport.held_items.push_front(item)
                 target_transport.items_processed += 1
-        # var new_items = recipe.results.
-
+        )
 
 func start_press():
     if press_recipe() != null and speed != 0.0:

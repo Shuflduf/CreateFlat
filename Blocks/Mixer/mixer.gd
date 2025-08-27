@@ -26,26 +26,12 @@ func start_mix():
 func _mix_items():
     var recipe = mix_recipe()
     if recipe != null:
-        var ingredients_needed = recipe.ingredients.duplicate()
-        var items_to_remove = []
-        for item in target_transport.held_items:
-            if (
-                ingredients_needed.has(item.data.id)
-                and ingredients_needed[item.data.id] > 0
-            ):
-                ingredients_needed[item.data.id] -= 1
-                items_to_remove.append(item)
-        for item in items_to_remove:
-            target_transport.held_items.erase(item)
-            item.queue_free()
-
-        for result in recipe.results:
-            var amount = recipe.results[result]
-            for i in amount:
-                var new_item = Item.from_id(result)
-                new_item.position = target_transport.position
-                new_item.position += Vector2(64.0, 96.0)
-                new_item.z_index = -1
+        target_transport.follow_recipe(
+            recipe,
+            func(item: Item):
+                item.position += Vector2(64.0, 64.0)
+                item.position.y += 32.0
+        )
 
 
 func _ready() -> void:

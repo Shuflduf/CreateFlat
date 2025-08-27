@@ -13,6 +13,33 @@ var mixer: MechanicalMixer
 
 func _physics_process(_delta: float) -> void:
     stack_queue()
+    debug_data = held_items.size()
+
+
+func follow_recipe(recipe: ItemRecipe, each_item: Callable):
+    var ingredients_needed = recipe.ingredients.duplicate()
+    var items_to_remove = []
+    for item in held_items:
+        if (
+            ingredients_needed.has(item.data.id)
+            and ingredients_needed[item.data.id] > 0
+        ):
+            ingredients_needed[item.data.id] -= 1
+            items_to_remove.append(item)
+    for item in items_to_remove:
+        held_items.erase(item)
+        item.queue_free()
+
+    var new_items: Array[Item]
+    for result in recipe.results:
+        var amount = recipe.results[result]
+        for i in amount:
+            var new_item = Item.from_id(result)
+            new_item.position = position
+            new_item.temp_disable(0.1)
+            each_item.call(new_item)
+
+    return new_items
 
 
 func stack_queue():
