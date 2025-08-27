@@ -4,32 +4,48 @@ extends MechanicalComponent
 var running = false
 var target_transport: ItemTransport
 var target_items: Array[Item]
-var process_targets: Array[Item]
 var speed = 0.0:
     set(value):
         speed = value
         $Anim.speed_scale = abs(speed)
 
 
-func start_mix(items: Array[Item]) -> Array[Item]:
-    const MIX_THRESHOLD = 2
-    if not running and speed != 0 and items.size() >= MIX_THRESHOLD:
-        process_targets = []
-        for i in MIX_THRESHOLD:
-            process_targets.append(items.pop_front())
-        running = true
-        print(process_targets)
+func mix_recipe() -> ItemRecipe:
+    var ids: Array[String]
+    target_transport.held_items.map(func(i: Item): ids.append(i.data.id))
+    var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.MIXING, ids)
+    return recipe
+
+
+func start_mix():
+    if not running and speed != 0 and mix_recipe() != null:
         $Anim.play(&"mix")
+        running = true
 
-    return items
 
+func _mix_items():
+    var recipe = mix_recipe()
+    if recipe != null:
+        var ingredients_needed = recipe.ingredients.duplicate()
+        var items_to_remove = []
+        for item in target_transport.held_items:
+            if (
+                ingredients_needed.has(item.data.id)
+                and ingredients_needed[item.data.id] > 0
+            ):
+                ingredients_needed[item.data.id] -= 1
+                items_to_remove.append(item)
+        for item in items_to_remove:
+            target_transport.held_items.erase(item)
+            item.queue_free()
 
-func _physics_process(_delta: float) -> void:
-    #debug_data = process_targets
-    if target_transport:
-        for item in process_targets:
-            item.global_position = target_transport.global_position
-            item.velocity.y = 0.0
+        for result in recipe.results:
+            var amount = recipe.results[result]
+            for i in amount:
+                var new_item = Item.from_id(result)
+                new_item.position = target_transport.position
+                new_item.position += Vector2(64.0, 96.0)
+                new_item.z_index = -1
 
 
 func _ready() -> void:
@@ -51,21 +67,6 @@ func _ready() -> void:
 func _on_anim_animation_finished(anim_name: StringName) -> void:
     if anim_name != &"reset":
         running = false
-
-    if anim_name == &"mix" and target_transport:
-        for item in process_targets:
-            item.queue_free()
-        process_targets = []
-        var new_item = Item.from_id("")
-        new_item.position = target_transport.position
-        new_item.position += Vector2(64.0, 64.0)
-        new_item.position.y += 32.0
-        get_parent().add_child(new_item)
-        #await get_tree().physics_frame
-
-        #new_item.temp_disable(0.01)
-        print(new_item.global_position)
-        #target_transport.
 
 
 func _post_disconnect_neighbors(

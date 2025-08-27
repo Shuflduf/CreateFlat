@@ -7,7 +7,7 @@ func _physics_process(_delta: float) -> void:
         if press:
             press.start_pack()
         elif mixer:
-            held_items = mixer.start_mix(held_items)
+            mixer.start_mix()
 
     for item in held_items:
         item.global_position = global_position

@@ -17,17 +17,17 @@ func _physics_process(_delta: float) -> void:
     debug_data = held_items.size()
 
 
-func start_mill():
-    if not running and speed != 0.0 and mill_recipe() != null:
-        $MillTimer.start()
-        running = true
-
-
 func mill_recipe() -> ItemRecipe:
     var ids: Array[String]
     held_items.map(func(i: Item): ids.append(i.data.id))
     var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.MILLING, ids)
     return recipe
+
+
+func start_mill():
+    if not running and speed != 0.0 and mill_recipe() != null:
+        $MillTimer.start()
+        running = true
 
 
 func _mill_items():
@@ -69,5 +69,4 @@ func _ready() -> void:
 
 func _on_area_body_entered(body: Node2D) -> void:
     if body is Item and active:
-        # and body not in held_items
         held_items.append(body)
