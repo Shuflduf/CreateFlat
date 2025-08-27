@@ -3,21 +3,30 @@ class_name ItemSourceSpawner
 extends Node2D
 
 @export_tool_button("Spawn") var create_sources_action = create_sources
-@export var noise_tex: NoiseTexture2D
 @export var item_source_scene: PackedScene
-@export var max_range = 10
-@export var block_count = 40
-@export var output_image: ImageTexture
+@export var circle_radius = 5
+@export var max_offset_radius = 10
 
 var current_blocks_pos: Array[Vector2i]
 
 func create_sources():
-    var flat_noise = noise_tex.noise.get_image(32, 32, false, false, true)
-    for x in flat_noise.get_width():
-        for y in flat_noise.get_height():
-            var col = flat_noise.get_pixel(x, y)
-            var value = col.v
-            col.v = snapped(value, 0.2)
-            flat_noise.set_pixel(x, y, col)
-    output_image = ImageTexture.create_from_image(flat_noise)
+    current_blocks_pos = []
+    for child in get_children():
+        child.queue_free()
+
+    var center_offset = Vector2i(
+        randi_range(-max_offset_radius, max_offset_radius),
+        randi_range(-max_offset_radius, max_offset_radius),
+    )
+    var top_left_offset = center_offset + Vector2i(circle_radius, circle_radius)
+    for x in circle_radius * 2:
+        for y in circle_radius * 2:
+            var pos = Vector2i(x, y) + center_offset
+            print(pos)
+            var new_source = item_source_scene.instantiate()
+            new_source.position = Vector2(pos) * 128.0
+            add_child(new_source)
+
+
+
     print("A")
