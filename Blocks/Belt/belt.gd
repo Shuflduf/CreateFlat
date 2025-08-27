@@ -28,40 +28,41 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-    if held_item:
+    if held_items.size() > 0:
+        var main_item = held_items[0]
         var on_belt = (
-            abs(global_position.x - held_item.global_position.x) < 76.0
+            abs(global_position.x - main_item.global_position.x) < 76.0
         )
         var target_transfer = right_connection if speed > 0 else left_connection
         if on_belt:
-            held_item.velocity.y = 0.0
-            held_item.position.y = global_position.y - 80.0
+            main_item.velocity.y = 0.0
+            main_item.position.y = global_position.y - 80.0
 
             #if press and not item_processed
             if (not press) or item_processed:
-                held_item.velocity.x = BELT_SPEED * speed
+                main_item.velocity.x = BELT_SPEED * speed
 
             if press and not item_processed:
-                if abs(global_position.x - held_item.global_position.x) > 4.0:
-                    held_item.velocity.x = BELT_SPEED * speed
+                if abs(global_position.x - main_item.global_position.x) > 4.0:
+                    main_item.velocity.x = BELT_SPEED * speed
                 else:
-                    held_item.velocity.x = 0
-                    held_item.global_position.x = global_position.x
-                    press.start(held_item)
+                    main_item.velocity.x = 0
+                    main_item.global_position.x = global_position.x
+                    press.start_press()
 
         elif target_transfer:
-            if target_transfer.held_item:
-                held_item.velocity.y = 0.0
-                held_item.velocity.x = 0.0
-                held_item.position.y = global_position.y - 80.0
+            if target_transfer.main_item:
+                main_item.velocity.y = 0.0
+                main_item.velocity.x = 0.0
+                main_item.position.y = global_position.y - 80.0
             else:
-                target_transfer.held_item = held_item
-                held_item = null
+                target_transfer.held_items.append(main_item)
+                held_items.pop_front()
                 item_processed = false
         else:
-            held_item.velocity.x = BELT_SPEED * speed
-            held_item.temp_disable()
-            held_item = null
+            main_item.velocity.x = BELT_SPEED * speed
+            main_item.temp_disable()
+            held_items.pop_front()
             item_processed = false
 
     super(delta)

@@ -25,17 +25,16 @@ func start_compact(items: Array[Item]) -> Array[Item]:
 
 
 # func _physics_process(_delta: float) -> void:
-    #debug_data = process_targets
-    # if target_transport:
-    #     for item in process_targets:
-    #         item.global_position = target_transport.global_position
-    #         item.velocity.y = 0.0
+#debug_data = process_targets
+# if target_transport:
+#     for item in process_targets:
+#         item.global_position = target_transport.global_position
+#         item.velocity.y = 0.0
 
 
-func start(item: Item):
+func start_press():
     if not running and speed != 0.0:
         running = true
-        print(item)
         $Anim.play(&"press")
 
 
@@ -75,9 +74,7 @@ func _press_item():
 func _pack_items():
     var ids: Array[String]
     target_transport.held_items.map(func(i: Item): ids.append(i.data.id))
-    var recipe = RecipeSystem.find_recipe(
-        RecipeSystem.RecipeType.PACKING, ids
-    )
+    var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.PACKING, ids)
     if recipe != null:
         for ingredient in recipe.results:
             # var amount = recipe.results[ingredient]
@@ -111,6 +108,7 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
     #         print(new_item.global_position)
     #         #target_transport.
     #
+
 
 func _post_disconnect_neighbors(
     _component_pos: Vector2i,

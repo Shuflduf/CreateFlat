@@ -4,8 +4,7 @@ extends MechanicalComponent
 var left_connection: ItemTransport
 var right_connection: ItemTransport
 
-var held_item: Item
-var queue: Array[Item]
+var held_items: Array[Item]
 var item_processed = false
 
 var press: MechanicalPress
@@ -13,28 +12,31 @@ var mixer: MechanicalMixer
 
 
 func _physics_process(_delta: float) -> void:
-    if not held_item and queue.size() >= 1:
-        held_item = queue.pop_front()
-        held_item.global_position.x = global_position.x
+    stack_queue()
 
-    for i in queue.size():
-        var item = queue[i]
+
+func stack_queue():
+    for i in held_items.size():
+        if i == 0:
+            continue
+        var item = held_items[i]
         item.velocity.y = 0.0
         item.velocity.x = 0.0
         item.global_position.y = global_position.y - 92.0 - (32.0 * i)
 
 
 func _on_area_item_entered(body: Node2D) -> void:
-    if body is Item and active and body != held_item:
+    if body is Item and active:
+        held_items.append(body)
         #body.flying = false
         #body.collision_layer = 0
-        if held_item:
-            body.global_position.x = (
-                global_position.x + randf_range(-16.0, 16.0)
-            )
-            queue.append(body)
-        else:
-            held_item = body
+        # if held_item:
+        #     body.global_position.x = (
+        #         global_position.x + randf_range(-16.0, 16.0)
+        #     )
+        #     queue.append(body)
+        # else:
+        #     held_item = body
 
 
 func _post_update_neighbors(
