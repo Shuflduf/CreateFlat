@@ -1,8 +1,6 @@
 class_name Basin
 extends ItemTransport
 
-var held_items: Array[Item]
-
 
 func _physics_process(_delta: float) -> void:
     if held_items.size() > 0:
@@ -15,9 +13,6 @@ func _physics_process(_delta: float) -> void:
         item.global_position = global_position
         item.velocity = Vector2.ZERO
 
-    if held_item:
-        #held_items.append(held_item)
-        held_item = null
     debug_data = held_items
 
 

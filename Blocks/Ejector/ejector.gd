@@ -16,26 +16,27 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
     debug_data = target_pos
-    if held_item:
-        held_item.velocity.y = 0.0
-        held_item.velocity.x = 0
-        held_item.global_position.x = lerp(
-            held_item.global_position.x, global_position.x, delta * 5.0
+    if held_items.size() > 0:
+        var main_item = held_items[0]
+        main_item.velocity.y = 0.0
+        main_item.velocity.x = 0
+        main_item.global_position.x = lerp(
+            main_item.global_position.x, global_position.x, delta * 5.0
         )
-        held_item.position.y = global_position.y - 80.0
+        main_item.position.y = global_position.y - 80.0
 
         if is_ready and speed != 0.0:
             is_ready = false
             var difference = target_pos - tile_pos
             # I PULLED THESE NUMBERS OUT OF MY ASS
-            held_item.global_position.x = global_position.x
-            held_item.velocity.y = (difference.y * 64.0) - 970.0
-            held_item.velocity.x = difference.x * 64.0
-            held_item.flying = true
-            held_item.fly_destination = (
+            main_item.global_position.x = global_position.x
+            main_item.velocity.y = (difference.y * 64.0) - 970.0
+            main_item.velocity.x = difference.x * 64.0
+            main_item.flying = true
+            main_item.fly_destination = (
                 Vector2(target_pos * 128) + Vector2(64, 64)
             )
-            held_item = null
+            held_items.pop_front()
             $Anim.play(&"launch")
 
     super(delta)

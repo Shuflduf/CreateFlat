@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
                     press.start_press()
 
         elif target_transfer:
-            if target_transfer.main_item:
+            if target_transfer.held_items.size() > 0:
                 main_item.velocity.y = 0.0
                 main_item.velocity.x = 0.0
                 main_item.position.y = global_position.y - 80.0

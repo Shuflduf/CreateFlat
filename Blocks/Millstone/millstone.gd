@@ -2,7 +2,6 @@ extends ItemTransport
 
 var running = false
 var process_targets: Array[Item]
-var held_items: Array[Item]
 var speed = 0.0:
     set(value):
         speed = value
@@ -17,9 +16,6 @@ func _physics_process(_delta: float) -> void:
     for item in process_targets:
         item.global_position = global_position
         item.velocity = Vector2.ZERO
-
-    if held_item:
-        held_item = null
 
     held_items = start_mill(held_items)
     #print(held_items)
