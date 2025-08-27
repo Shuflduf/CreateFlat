@@ -6,3 +6,6 @@
 [node name="MechanicalResourceSource" type="Node2D"]
 script = ExtResource("1_xly58")
 item_source_scene = ExtResource("2_avokv")
+circle_radius = 4.0
+metadata/_edit_vertical_guides_ = [-448.0]
+metadata/_edit_horizontal_guides_ = [-576.0]
