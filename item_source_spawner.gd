@@ -5,6 +5,7 @@ extends Node2D
 @export_tool_button("Spawn") var create_sources_action = create_sources
 @export var item_source_scene: PackedScene
 @export var circle_radius = 5.0
+@export var item_data: ItemData
 
 var current_blocks_pos: Array[Vector2i]
 
@@ -20,6 +21,9 @@ func create_sources():
                 continue
             if pos.length() > randf_range(circle_radius / 2.0, circle_radius):
                 continue
-            var new_source = item_source_scene.instantiate()
+            var new_source: ItemSource = item_source_scene.instantiate()
             new_source.position = Vector2(pos) * 128.0
+
             add_child(new_source)
+            new_source.item_data = item_data
+            new_source.update_texture()

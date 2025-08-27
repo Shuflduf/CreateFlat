@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1cyk67p6tanl"]
+[gd_scene load_steps=4 format=3 uid="uid://c1cyk67p6tanl"]
 
 [ext_resource type="Script" uid="uid://c4cqc2luo43b1" path="res://item_source_spawner.gd" id="1_xly58"]
 [ext_resource type="PackedScene" uid="uid://bg8bwjkdcubia" path="res://item_source.tscn" id="2_avokv"]
+[ext_resource type="Resource" uid="uid://si1dppbu26sw" path="res://Items/List/brass_block.tres" id="3_avokv"]
 
 [node name="MechanicalResourceSource" type="Node2D"]
 script = ExtResource("1_xly58")
 item_source_scene = ExtResource("2_avokv")
 circle_radius = 4.0
-metadata/_edit_vertical_guides_ = [-448.0]
-metadata/_edit_horizontal_guides_ = [-576.0]
+item_data = ExtResource("3_avokv")
