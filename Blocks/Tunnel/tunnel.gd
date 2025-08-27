@@ -36,7 +36,6 @@ func _on_item_entered(body: Node2D, area: Area2D):
         return
 
     print(body, area)
-    # item.velocity = Vector2.ZERO
     var out_area = item_connections[area][current_out[area]]
     current_out[area] += 1
     current_out[area] %= 2
