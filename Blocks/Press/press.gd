@@ -59,7 +59,6 @@ func _press_item():
     var recipe = RecipeSystem.find_recipe(
         RecipeSystem.RecipeType.PRESSING, [target_transport.held_item.data.id]
     )
-    print(recipe.results)
     if recipe != null:
         var last_item: Item
         for ingredient in recipe.results:
@@ -69,48 +68,49 @@ func _press_item():
             last_item.z_index = -1
         target_transport.held_item.queue_free()
         target_transport.held_item = last_item
+        target_transport.item_processed = true
         # var new_items = recipe.results.
 
 
 func _pack_items():
+    var ids: Array[String]
+    target_transport.held_items.map(func(i: Item): ids.append(i.data.id))
     var recipe = RecipeSystem.find_recipe(
-        RecipeSystem.RecipeType.PACKING,
-        target_transport.held_items.map(func(i: Item): return i.data.id)
+        RecipeSystem.RecipeType.PACKING, ids
     )
-    print(recipe.results)
     if recipe != null:
-        var last_item: Item
         for ingredient in recipe.results:
             # var amount = recipe.results[ingredient]
-            last_item = Item.from_id(ingredient)
-            last_item.position = target_transport.held_item.position
-            last_item.z_index = -1
-        target_transport.held_item.queue_free()
-        target_transport.held_item = last_item
+            var new_item = Item.from_id(ingredient)
+            new_item.position = target_transport.position
+            new_item.position += Vector2(64.0, 96.0)
+            new_item.z_index = -1
+        # target_transport.held_item.queue_free()
+        # target_transport.held_item = last_item
 
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:
     if anim_name != &"reset":
         running = false
 
-    if anim_name == &"press":
-        if target_transport:
-            target_transport.item_processed = true
-    elif anim_name == &"press_basin":
-        if target_transport:
-            # for item in process_targets:
-            #     item.queue_free()
-            # process_targets = []
-            var new_item = Item.from_id("iron_block")
-            new_item.position = target_transport.position
-            new_item.position += Vector2(64.0, 64.0)
-            new_item.position.y += 32.0
-            #await get_tree().physics_frame
-
-            #new_item.temp_disable(0.01)
-            print(new_item.global_position)
-            #target_transport.
-
+    # if anim_name == &"press":
+    #     if target_transport:
+    #         target_transport.item_processed = true
+    # elif anim_name == &"press_basin":
+    #     if target_transport:
+    #         # for item in process_targets:
+    #         #     item.queue_free()
+    #         # process_targets = []
+    #         var new_item = Item.from_id("iron_block")
+    #         new_item.position = target_transport.position
+    #         new_item.position += Vector2(64.0, 64.0)
+    #         new_item.position.y += 32.0
+    #         #await get_tree().physics_frame
+    #
+    #         #new_item.temp_disable(0.01)
+    #         print(new_item.global_position)
+    #         #target_transport.
+    #
 
 func _post_disconnect_neighbors(
     _component_pos: Vector2i,
