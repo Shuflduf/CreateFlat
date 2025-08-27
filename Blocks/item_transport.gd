@@ -54,7 +54,6 @@ func stack_queue():
 
 func _on_area_item_entered(body: Node2D) -> void:
     if body is Item and active:
-        prints(self, body)
         held_items.append(body)
         #body.flying = false
         #body.collision_layer = 0
@@ -87,11 +86,9 @@ func _post_update_neighbors(
     if all_components.has(press_target_pos):
         var target = all_components[press_target_pos]
         if target is MechanicalPress:
-            print("PRES but from transport")
             press = target
             press.target_transport = self
         elif target is MechanicalMixer:
-            print("MIX from transport")
             mixer = target
             mixer.target_transport = self
 

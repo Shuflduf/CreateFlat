@@ -27,10 +27,7 @@ func _mix_items():
     var recipe = mix_recipe()
     if recipe != null:
         target_transport.follow_recipe(
-            recipe,
-            func(item: Item):
-                item.position += Vector2(64.0, 64.0)
-                item.position.y += 32.0
+            recipe, func(item: Item): item.position += Vector2(64.0, 96.0)
         )
 
 
@@ -71,7 +68,6 @@ func _post_update_neighbors(
     if all_components.has(transport_target_pos):
         var target = all_components[transport_target_pos]
         if target is ItemTransport:
-            print("MIX but from press")
             target_transport = target
             target.mixer = self
             #finished.connect(func(): target.item_processed = true)

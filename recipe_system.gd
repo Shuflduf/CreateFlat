@@ -44,7 +44,6 @@ func _ready() -> void:
         for recipe in type_recipes:
             recipes[raw_type].append(parse_recipe(recipe))
 
-    print(recipes)
 
 
 func parse_recipe(recipe_data: Dictionary) -> ItemRecipe:
@@ -72,21 +71,3 @@ func find_recipe(type: RecipeType, items: Array[String]) -> ItemRecipe:
             return recipe
     return null
 
-
-func recipe_test():
-    var res = find_recipe(
-        RecipeType.PACKING,
-        [
-            "iron",
-            "iron",
-            "iron",
-            "iron",
-            "iron",
-            "iron",
-            "iron",
-            "iron",
-            "iron",
-        ]
-    )
-    if res != null:
-        print(res.results)

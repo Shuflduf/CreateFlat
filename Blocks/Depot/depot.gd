@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
             press.start_press()
 
         if (press and items_processed > 0) or (not press and centered):
-            prints("dropped", main_item)
             main_item.temp_disable()
             held_items.pop_front()
             if items_processed > 0:

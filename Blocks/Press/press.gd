@@ -3,8 +3,6 @@ extends MechanicalComponent
 
 var running = false
 var target_transport: ItemTransport
-# var target_items: Array[Item]
-# var process_targets: Array[Item]
 var speed = 0.0:
     set(value):
         speed = value
@@ -47,6 +45,7 @@ func _press_item():
                 target_transport.items_processed += 1
         )
 
+
 func start_press():
     if press_recipe() != null and speed != 0.0:
         running = true
@@ -63,28 +62,12 @@ func pack_recipe() -> ItemRecipe:
 func _pack_items():
     var recipe = pack_recipe()
     if recipe != null:
-        var ingredients_needed = recipe.ingredients.duplicate()
-        var items_to_remove = []
-        for item in target_transport.held_items:
-            if (
-                ingredients_needed.has(item.data.id)
-                and ingredients_needed[item.data.id] > 0
-            ):
-                ingredients_needed[item.data.id] -= 1
-                items_to_remove.append(item)
-        for item in items_to_remove:
-            target_transport.held_items.erase(item)
-            item.queue_free()
-
-        for result in recipe.results:
-            var amount = recipe.results[result]
-            for i in amount:
-                var new_item = Item.from_id(result)
-                new_item.position = target_transport.position
-                new_item.position += Vector2(64.0, 96.0)
-                new_item.z_index = -1
-        # target_transport.held_item.queue_free()
-        # target_transport.held_item = last_item
+        target_transport.follow_recipe(
+            recipe,
+            func(item: Item):
+                item.position = target_transport.position
+                item.position += Vector2(64.0, 96.0)
+        )
 
 
 func start_pack():
@@ -96,25 +79,6 @@ func start_pack():
 func _on_anim_animation_finished(anim_name: StringName) -> void:
     if anim_name != &"reset":
         running = false
-
-    # if anim_name == &"press":
-    #     if target_transport:
-    #         target_transport.item_processed = true
-    # elif anim_name == &"press_basin":
-    #     if target_transport:
-    #         # for item in process_targets:
-    #         #     item.queue_free()
-    #         # process_targets = []
-    #         var new_item = Item.from_id("iron_block")
-    #         new_item.position = target_transport.position
-    #         new_item.position += Vector2(64.0, 64.0)
-    #         new_item.position.y += 32.0
-    #         #await get_tree().physics_frame
-    #
-    #         #new_item.temp_disable(0.01)
-    #         print(new_item.global_position)
-    #         #target_transport.
-    #
 
 
 func _post_disconnect_neighbors(
@@ -133,7 +97,6 @@ func _post_update_neighbors(
     if all_components.has(transport_target_pos):
         var target = all_components[transport_target_pos]
         if target is ItemTransport:
-            print("PRES but from press")
             target_transport = target
             target.press = self
             #finished.connect(func(): target.item_processed = true)

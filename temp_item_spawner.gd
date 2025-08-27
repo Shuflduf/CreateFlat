@@ -10,5 +10,5 @@ func _on_spawn_timer_timeout() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
     if event.is_action_pressed(&"debug"):
-        var new_item = Item.from_id("iron")
+        var new_item = Item.from_id("andesite")
         new_item.position = position

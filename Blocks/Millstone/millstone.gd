@@ -34,27 +34,34 @@ func _mill_items():
     running = false
     var recipe = mill_recipe()
     if recipe != null:
-        var ingredients_needed = recipe.ingredients.duplicate()
-        var items_to_remove = []
-        for item in held_items:
-            if (
-                ingredients_needed.has(item.data.id)
-                and ingredients_needed[item.data.id] > 0
-            ):
-                ingredients_needed[item.data.id] -= 1
-                items_to_remove.append(item)
-        for item in items_to_remove:
-            held_items.erase(item)
-            item.queue_free()
-
-        for result in recipe.results:
-            var amount = recipe.results[result]
-            for i in amount:
-                var new_item = Item.from_id(result)
-                new_item.position = position
-                new_item.position += Vector2(64.0, 32.0)
-                new_item.velocity.y = -1000.0
-                new_item.z_index = -1
+        follow_recipe(
+            recipe,
+            func(item: Item):
+                item.position = position
+                item.position += Vector2(64.0, 32.0)
+                item.velocity.y = -1000.0
+        )
+        # var ingredients_needed = recipe.ingredients.duplicate()
+        # var items_to_remove = []
+        # for item in held_items:
+        #     if (
+        #         ingredients_needed.has(item.data.id)
+        #         and ingredients_needed[item.data.id] > 0
+        #     ):
+        #         ingredients_needed[item.data.id] -= 1
+        #         items_to_remove.append(item)
+        # for item in items_to_remove:
+        #     held_items.erase(item)
+        #     item.queue_free()
+        #
+        # for result in recipe.results:
+        #     var amount = recipe.results[result]
+        #     for i in amount:
+        #         var new_item = Item.from_id(result)
+        #         new_item.position = position
+        #         new_item.position += Vector2(64.0, 32.0)
+        #         new_item.velocity.y = -1000.0
+        #         new_item.z_index = -1
 
 
 func _ready() -> void:
