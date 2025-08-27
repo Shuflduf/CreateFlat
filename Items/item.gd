@@ -31,10 +31,11 @@ func temp_disable(time: float = 0.5):
 
 static func from_id(id: String) -> Item:
     var new_item = preload("res://Items/item.tscn").instantiate()
-    new_item.data = RecipeSystem.all_item_data.filter(func(i: ItemData): return i.id == id)[0]	
+    new_item.data = RecipeSystem.all_item_data.filter(func(i: ItemData): return i.id == id)[0]
     new_item.is_ready = true
     new_item.update_sprite()
     return new_item
+
 
 func update_sprite():
     $Sprite.texture = data.texture
