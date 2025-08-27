@@ -61,9 +61,9 @@ func _press_item():
                 new_item.position = target_transport.held_items[0].position
                 new_item.z_index = -1
                 target_transport.held_items.append(new_item)
+                target_transport.items_processed += 1
         target_transport.held_items[0].queue_free()
         target_transport.held_items.pop_front()
-        target_transport.item_processed = true
         # var new_items = recipe.results.
 
 
@@ -72,8 +72,8 @@ func start_press():
     if recipe != null:
         running = true
         $Anim.play(&"press")
-    else:
-        target_transport.item_processed = true
+    # else:
+    #     target_transport.item_processed = true
 
 
 func _pack_items():

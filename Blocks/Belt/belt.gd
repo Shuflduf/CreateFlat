@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
             if (not press) or items_processed > 0:
                 main_item.velocity.x = BELT_SPEED * speed
 
-            if press and items_processed > 0:
+            if press and items_processed <= 0:
                 if abs(global_position.x - main_item.global_position.x) > 4.0:
                     main_item.velocity.x = BELT_SPEED * speed
                 else:
@@ -57,15 +57,18 @@ func _physics_process(delta: float) -> void:
             else:
                 target_transfer.held_items.append(main_item)
                 held_items.pop_front()
-                items_processed -= 1
+                if items_processed > 0:
+                    items_processed -= 1
                 # if held_items.size() <= 0:
                 #     item_processed = false
         else:
             main_item.velocity.x = BELT_SPEED * speed
             main_item.temp_disable()
             held_items.pop_front()
-            items_processed -= 1
+            if items_processed > 0:
+                items_processed -= 1
             # if held_items.size() <= 0:
+            #
             #     item_processed = false
 
     super(delta)
