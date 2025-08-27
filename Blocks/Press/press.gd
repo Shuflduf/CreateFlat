@@ -41,6 +41,7 @@ func _press_item():
             recipe,
             func(item: Item):
                 item.position = new_item_pos
+                item.z_index = -1
                 target_transport.held_items.push_front(item)
                 target_transport.items_processed += 1
         )
