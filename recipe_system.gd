@@ -61,19 +61,31 @@ func parse_recipe(recipe_data: Dictionary) -> ItemRecipe:
 func find_recipe(type: RecipeType, items: Array[String]) -> ItemRecipe:
     var recipe_list = recipes[type]
     for recipe in recipe_list:
-        var ingredients_needed = recipe.ingredients
+        var ingredients_needed = recipe.ingredients.duplicate()
         for item in items:
             if ingredients_needed.has(item) and ingredients_needed[item] > 0:
                 ingredients_needed[item] -= 1
 
         for ingredient in ingredients_needed:
             if ingredients_needed[ingredient] <= 0:
-                print(recipe.results)
                 return recipe
     return null
 
 
 func recipe_test():
-    var iron = ItemData.new()
-    iron.id = "iron"
-    find_recipe(RecipeType.PRESSING, ["iron"])
+    var res = find_recipe(
+        RecipeType.PACKING,
+        [
+            "iron",
+            "iron",
+            "iron",
+            "iron",
+            "iron",
+            "iron",
+            "iron",
+            "iron",
+            "iron",
+        ]
+    )
+    if res != null:
+        print(res.results)
