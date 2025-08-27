@@ -5,7 +5,7 @@ var left_connection: ItemTransport
 var right_connection: ItemTransport
 
 var held_items: Array[Item]
-var item_processed = false
+var items_processed = 0
 
 var press: MechanicalPress
 var mixer: MechanicalMixer
@@ -13,6 +13,7 @@ var mixer: MechanicalMixer
 
 func _physics_process(_delta: float) -> void:
     stack_queue()
+    debug_data = items_processed
 
 
 func stack_queue():

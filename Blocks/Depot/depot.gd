@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
         var distance_to_center = main_item.global_position.x - global_position.x
         var centered = abs(distance_to_center) < 1.0
 
-        if (not centered) or (press and not item_processed):
+        if (not centered) or (press and items_processed <= 0):
             main_item.velocity.y = 0.0
             main_item.velocity.x = 0
             main_item.global_position.x = lerp(
@@ -20,12 +20,12 @@ func _physics_process(delta: float) -> void:
             )
             main_item.position.y = global_position.y - 80.0
 
-        if press and not item_processed:
-            press.start(main_item)
+        if press and items_processed <= 0:
+            press.start_press()
 
-        if (press and item_processed) or (not press and centered):
+        if (press and items_processed > 0) or (not press and centered):
             main_item.temp_disable()
             held_items.pop_front()
-            item_processed = false
+            items_processed -= 1
 
     super(delta)

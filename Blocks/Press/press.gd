@@ -14,11 +14,6 @@ var speed = 0.0:
 func start_compact(items: Array[Item]) -> Array[Item]:
     const COMPACT_THRESHOLD = 9
     if not running and speed != 0 and items.size() >= COMPACT_THRESHOLD:
-        # process_targets = []
-        # for i in COMPACT_THRESHOLD:
-        #     process_targets.append(items.pop_front())
-        # running = true
-        # print(process_targets)
         $Anim.play(&"press_basin")
 
     return items
@@ -32,10 +27,10 @@ func start_compact(items: Array[Item]) -> Array[Item]:
 #         item.velocity.y = 0.0
 
 
-func start_press():
-    if not running and speed != 0.0:
-        running = true
-        $Anim.play(&"press")
+# func start_press():
+#     if not running and speed != 0.0:
+#         running = true
+#         $Anim.play(&"press")
 
 
 func _ready() -> void:
@@ -56,19 +51,29 @@ func _ready() -> void:
 
 func _press_item():
     var recipe = RecipeSystem.find_recipe(
-        RecipeSystem.RecipeType.PRESSING, [target_transport.held_item.data.id]
+        RecipeSystem.RecipeType.PRESSING, [target_transport.held_items[0].data.id]
     )
     if recipe != null:
-        var last_item: Item
-        for ingredient in recipe.results:
-            # var amount = recipe.results[ingredient]
-            last_item = Item.from_id(ingredient)
-            last_item.position = target_transport.held_item.position
-            last_item.z_index = -1
-        target_transport.held_item.queue_free()
-        target_transport.held_item = last_item
+        for result in recipe.results:
+            var amount = recipe.results[result]
+            for i in amount:
+                var new_item = Item.from_id(result)
+                new_item.position = target_transport.held_items[0].position
+                new_item.z_index = -1
+                target_transport.held_items.append(new_item)
+        target_transport.held_items[0].queue_free()
+        target_transport.held_items.pop_front()
         target_transport.item_processed = true
         # var new_items = recipe.results.
+
+
+func start_press():
+    var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.PRESSING, [target_transport.held_items[0].data.id])
+    if recipe != null:
+        running = true
+        $Anim.play(&"press")
+    else:
+        target_transport.item_processed = true
 
 
 func _pack_items():
@@ -76,9 +81,9 @@ func _pack_items():
     target_transport.held_items.map(func(i: Item): ids.append(i.data.id))
     var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.PACKING, ids)
     if recipe != null:
-        for ingredient in recipe.results:
+        for result in recipe.results:
             # var amount = recipe.results[ingredient]
-            var new_item = Item.from_id(ingredient)
+            var new_item = Item.from_id(result)
             new_item.position = target_transport.position
             new_item.position += Vector2(64.0, 96.0)
             new_item.z_index = -1
