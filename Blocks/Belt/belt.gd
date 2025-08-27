@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
                     press.start_press()
 
         elif target_transfer:
-            if target_transfer.held_items.size() > 0:
+            if not target_transfer.can_accept_item():
                 main_item.velocity.y = 0.0
                 main_item.velocity.x = 0.0
                 main_item.position.y = global_position.y - 80.0
@@ -59,8 +59,6 @@ func _physics_process(delta: float) -> void:
                 held_items.pop_front()
                 if items_processed > 0:
                     items_processed -= 1
-                # if held_items.size() <= 0:
-                #     item_processed = false
         else:
             main_item.velocity.x = BELT_SPEED * speed
             main_item.temp_disable()
@@ -72,6 +70,7 @@ func _physics_process(delta: float) -> void:
             #     item_processed = false
 
     super(delta)
+
 
 
 func _post_update_neighbors(

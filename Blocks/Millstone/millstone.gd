@@ -16,6 +16,8 @@ func _physics_process(_delta: float) -> void:
     start_mill()
     debug_data = held_items.size()
 
+func can_accept_item() -> bool:
+    return true
 
 func mill_recipe() -> ItemRecipe:
     var ids: Array[String]
@@ -75,5 +77,5 @@ func _ready() -> void:
 
 
 func _on_area_body_entered(body: Node2D) -> void:
-    if body is Item and active:
+    if body is Item and active and body not in held_items:
         held_items.append(body)

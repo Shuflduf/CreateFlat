@@ -51,6 +51,8 @@ func stack_queue():
         item.velocity.x = 0.0
         item.global_position.y = global_position.y - 92.0 - (32.0 * i)
 
+func can_accept_item() -> bool:
+    return held_items.size() <= 0
 
 func _on_area_item_entered(body: Node2D) -> void:
     if body is Item and active:
@@ -101,3 +103,6 @@ func _post_disconnect_neighbors(
         left_connection.right_connection = null
     if right_connection:
         right_connection.left_connection = null
+
+    # press = null
+    # mixer = null

@@ -85,6 +85,7 @@ func _post_disconnect_neighbors(
     _component_pos: Vector2i,
     _all_components: Dictionary[Vector2i, MechanicalComponent]
 ):
+    target_transport.press = null
     target_transport = null
 
 
