@@ -2,7 +2,6 @@ extends Node2D
 
 const TILE_SIZE = 128.0
 const HALF_TILE = TILE_SIZE / 2.0
-const HALF_PI = 1.5708
 
 @export var selected_component: PackedScene
 
@@ -56,7 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
             new_component.tile_pos = grid_pos
             new_component.position = $CursorSelection.position
             new_component.rotation = (
-                HALF_PI * (rotation_index % new_component.max_rotations)
+                MoreConsts.HALF_PI * (rotation_index % new_component.max_rotations)
             )
             new_component.rotation_index = (
                 rotation_index % new_component.max_rotations
@@ -81,7 +80,7 @@ func _unhandled_input(event: InputEvent) -> void:
         rotation_index = (
             (rotation_index + 1) % %Preview.get_child(0).max_rotations
         )
-        %Preview.rotation = HALF_PI * rotation_index
+        %Preview.rotation = MoreConsts.HALF_PI * rotation_index
 
 
 func remove_at(pos: Vector2i):
@@ -99,7 +98,7 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
     var new_preview = scene.instantiate()
     %Preview.add_child(new_preview)
     rotation_index %= new_preview.max_rotations
-    %Preview.rotation = HALF_PI * rotation_index
+    %Preview.rotation = MoreConsts.HALF_PI * rotation_index
     target_placed = false
     %Indicator.visible = new_preview.needs_target_pos
     new_preview.visible = not new_preview.needs_target_pos

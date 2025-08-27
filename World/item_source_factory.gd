@@ -1,6 +1,5 @@
 extends Node2D
 
-const MAP_SIZE = 200
 const MIN_DISTANCE = 1000.0
 const MIN_DISTANCE_SQUARED = MIN_DISTANCE * MIN_DISTANCE
 const FREQUENCY = 0.001
@@ -18,11 +17,11 @@ func _ready() -> void:
         sources.append(data)
 
     seed(3)
-    for x in MAP_SIZE * 2:
-        for y in MAP_SIZE * 2:
+    for x in MoreConsts.MAP_SIZE * 2:
+        for y in MoreConsts.MAP_SIZE * 2:
             if randf() > FREQUENCY:
                 continue
-            var pos = Vector2(x - MAP_SIZE, y - MAP_SIZE) * 128.0
+            var pos = Vector2(x - MoreConsts.MAP_SIZE, y - MoreConsts.MAP_SIZE) * 128.0
             pos += Vector2(64.0, 64.0)
             if pos.distance_squared_to(Vector2.ZERO) < MIN_DISTANCE_SQUARED:
                 continue
