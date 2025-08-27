@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1y0ffs636ih6" path="res://Assets/Items/andesite.png" id="2_xgeed"]
 
 [node name="MechanicalResource" type="Node2D"]
+z_index = -1
 script = ExtResource("1_jlb8q")
 
 [node name="Sprite" type="Sprite2D" parent="."]

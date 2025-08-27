@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=46 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -28,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://bjgmn68myyw4q" path="res://Blocks/Millstone/millstone_base.png" id="25_flgxl"]
 [ext_resource type="PackedScene" uid="uid://4iek0cn16121" path="res://Blocks/Tunnel/tunnel.tscn" id="26_bs7a0"]
 [ext_resource type="Texture2D" uid="uid://burfs6qqorcal" path="res://Blocks/Tunnel/tunnel.png" id="27_40rxn"]
+[ext_resource type="PackedScene" uid="uid://c4lq6iv02ktr8" path="res://Blocks/Drill/drill.tscn" id="28_mp5dt"]
 [ext_resource type="Script" uid="uid://j88dbiqwleil" path="res://World/item_source_factory.gd" id="29_40rxn"]
+[ext_resource type="Texture2D" uid="uid://bq6jycjt3nyaf" path="res://Blocks/Drill/DrillPart/file.png" id="29_xxw4t"]
 [ext_resource type="PackedScene" uid="uid://c6vw3pv6p2rjo" path="res://item_source_spawner.tscn" id="30_5k5ia"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
@@ -108,6 +110,13 @@ scene = ExtResource("26_bs7a0")
 thumbnail = ExtResource("27_40rxn")
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
+[sub_resource type="Resource" id="Resource_hyaif"]
+script = ExtResource("6_k12tt")
+name = "Drill"
+scene = ExtResource("28_mp5dt")
+thumbnail = ExtResource("29_xxw4t")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -148,6 +157,7 @@ limit_left = -128000
 limit_top = -128000
 limit_right = 128000
 limit_bottom = 128000
+limit_smoothed = true
 position_smoothing_speed = 10.0
 script = ExtResource("4_jkdf5")
 
@@ -165,7 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("5_wsu2k")
-components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd"), SubResource("Resource_44n3w"), SubResource("Resource_6y664"), SubResource("Resource_5iy0x"), SubResource("Resource_bs7a0"), SubResource("Resource_5k5ia")])
+components = Array[ExtResource("6_k12tt")]([SubResource("Resource_5vw27"), SubResource("Resource_efxa6"), SubResource("Resource_ycdy4"), SubResource("Resource_sfxlf"), SubResource("Resource_lh7yw"), SubResource("Resource_m0hhd"), SubResource("Resource_44n3w"), SubResource("Resource_6y664"), SubResource("Resource_5iy0x"), SubResource("Resource_bs7a0"), SubResource("Resource_5k5ia"), SubResource("Resource_hyaif")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Sidebar"]
 layout_mode = 1

@@ -1,0 +1,103 @@
+[gd_scene load_steps=20 format=3 uid="uid://c4lq6iv02ktr8"]
+
+[ext_resource type="Shader" uid="uid://bts132c5rbmkv" path="res://Blocks/Drill/drill_clip.gdshader" id="1_1bunw"]
+[ext_resource type="Script" uid="uid://41mxeukh7sus" path="res://Blocks/Drill/drill.gd" id="1_i5kx7"]
+[ext_resource type="Texture2D" uid="uid://dtn1qwxt2r7x" path="res://Blocks/Drill/drill.png" id="1_qfp3w"]
+[ext_resource type="Texture2D" uid="uid://byyko4pxa42xa" path="res://Blocks/Drill/DrillPart/file(8).png" id="2_sfog7"]
+[ext_resource type="Texture2D" uid="uid://bqyvwnww4itqj" path="res://Blocks/Drill/DrillPart/file(7).png" id="3_i5kx7"]
+[ext_resource type="Texture2D" uid="uid://bqfmya7fd3udb" path="res://Blocks/Drill/DrillPart/file(6).png" id="4_hwucv"]
+[ext_resource type="Texture2D" uid="uid://dpkc5146n6a1s" path="res://Blocks/Drill/DrillPart/file(5).png" id="5_1bunw"]
+[ext_resource type="Texture2D" uid="uid://cy85t355bk28h" path="res://Blocks/Drill/DrillPart/file(4).png" id="6_mfnk1"]
+[ext_resource type="Texture2D" uid="uid://bhhth30aq1kgg" path="res://Blocks/Drill/DrillPart/file(3).png" id="7_6eg7g"]
+[ext_resource type="Texture2D" uid="uid://c6e42bf3otoi7" path="res://Blocks/Drill/DrillPart/file(2).png" id="8_5lv77"]
+[ext_resource type="Texture2D" uid="uid://b8bk6pu1alay4" path="res://Blocks/Drill/DrillPart/file(1).png" id="9_la4ak"]
+[ext_resource type="Texture2D" uid="uid://bq6jycjt3nyaf" path="res://Blocks/Drill/DrillPart/file.png" id="10_quqwf"]
+[ext_resource type="PackedScene" uid="uid://c8jgkm8qshiah" path="res://Blocks/Connector/connector.tscn" id="11_sfog7"]
+[ext_resource type="Texture2D" uid="uid://bjdbcns343tjl" path="res://Assets/Items/gold_ore.png" id="13_hwucv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfnk1"]
+shader = ExtResource("1_1bunw")
+shader_parameter/clipped = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8w6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sfog7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i5kx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hwucv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1bunw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mfnk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6eg7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lv77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_la4ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_quqwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Curve" id="Curve_hwucv"]
+_data = [Vector2(0.0446429, 0), 0.0, 0.0, 0, 0, Vector2(0.110119, 1), 0.0, 0.0, 0, 0, Vector2(0.824405, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1bunw"]
+curve = SubResource("Curve_hwucv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1bunw"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -64, 0)
+emission_shape = 3
+emission_box_extents = Vector3(32, 0, 0)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+scale_min = 0.7
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_1bunw")
+
+[node name="Drill" type="Node2D" node_paths=PackedStringArray("connections")]
+script = ExtResource("1_i5kx7")
+connections = {
+2: NodePath("Connector")
+}
+
+[node name="Connector" parent="." instance=ExtResource("11_sfog7")]
+z_index = -2
+shaft_bottom = true
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_qfp3w")
+
+[node name="DrillPart" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_mfnk1")
+position = Vector2(0, -60.5)
+scale = Vector2(0.202273, 0.202273)
+sprite_frames = SubResource("SpriteFrames_k8w6c")
+autoplay = "default"
+frame_progress = 0.635623
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 16
+texture = ExtResource("13_hwucv")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_1bunw")

@@ -1,6 +1,6 @@
 extends Node2D
 
-const MAP_SIZE = 100
+const MAP_SIZE = 200
 const MIN_DISTANCE = 1000.0
 const MIN_DISTANCE_SQUARED = MIN_DISTANCE * MIN_DISTANCE
 const FREQUENCY = 0.001
@@ -22,6 +22,7 @@ func _ready() -> void:
             if randf() > FREQUENCY:
                 continue
             var pos = Vector2(x - MAP_SIZE, y - MAP_SIZE) * 128.0
+            pos += Vector2(64.0, 64.0)
             if pos.distance_squared_to(Vector2.ZERO) < MIN_DISTANCE_SQUARED:
                 continue
             var new_source_spawner: ItemSourceSpawner = (

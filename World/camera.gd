@@ -1,10 +1,19 @@
 extends Camera2D
 
+const MAP_SIZE = 200
 const MAX_ZOOM_IN = 2.0
 const MAX_ZOOM_OUT = 0.1
 
 var moving_cam = false
 
+func _ready() -> void:
+    limit_left = -MAP_SIZE * 128
+    limit_top = limit_left
+    limit_right = -limit_left
+    limit_bottom = limit_right
+
+#func _physics_process(delta: float) -> void:
+    #position = position.clamp(Vector2(limit_right, limit_bottom), Vector2(limit_left, limit_top))
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton:
