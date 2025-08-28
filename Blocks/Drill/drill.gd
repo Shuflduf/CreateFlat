@@ -8,10 +8,12 @@ var speed = 0.0:
         $AnimationPlayer.speed_scale = abs(speed)
 var target_source: ItemSource
 
+
 func mine():
     if target_source:
         var new_item = Item.from_id(target_source.item_data.id)
         new_item.position = target_source.global_position
+
 
 func _physics_process(_delta: float) -> void:
     if not active:
@@ -34,6 +36,7 @@ func _ready():
         print(target_source.item_data.name)
 
     update_visuals()
+
 
 func update_visuals():
     $DrillPart.material.set_shader_parameter(&"clipped", target_source != null)

@@ -21,7 +21,10 @@ func _ready() -> void:
         for y in MoreConsts.MAP_SIZE * 2:
             if randf() > FREQUENCY:
                 continue
-            var pos = Vector2(x - MoreConsts.MAP_SIZE, y - MoreConsts.MAP_SIZE) * 128.0
+            var pos = (
+                Vector2(x - MoreConsts.MAP_SIZE, y - MoreConsts.MAP_SIZE)
+                * 128.0
+            )
             pos += Vector2(64.0, 64.0)
             if pos.distance_squared_to(Vector2.ZERO) < MIN_DISTANCE_SQUARED:
                 continue

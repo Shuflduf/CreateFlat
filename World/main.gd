@@ -55,7 +55,8 @@ func _unhandled_input(event: InputEvent) -> void:
             new_component.tile_pos = grid_pos
             new_component.position = $CursorSelection.position
             new_component.rotation = (
-                MoreConsts.HALF_PI * (rotation_index % new_component.max_rotations)
+                MoreConsts.HALF_PI
+                * (rotation_index % new_component.max_rotations)
             )
             new_component.rotation_index = (
                 rotation_index % new_component.max_rotations
