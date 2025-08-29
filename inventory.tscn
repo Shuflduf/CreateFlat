@@ -122,7 +122,7 @@ description = "When an item enters any open side of the [b]Tunnel[/b], it exits 
 
 This is used for splitting up large item streams for parallel processing.
 
-[i][b]Tunnels[/b] are very inconsistent right now, you may need to leave a large gap between each [b]Tunnel[/b] for them to properly work. HOPEFULLY it will be fixed by the time you're using it though, and I just forgot to update this text"
+Try connecting multiple [b]Tunnels[/b] next to each other to split up item streams even more!"
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_1e4nm"]
