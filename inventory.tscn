@@ -1,6 +1,116 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsfgnlmje3x4l"]
+[gd_scene load_steps=40 format=3 uid="uid://bsfgnlmje3x4l"]
 
 [ext_resource type="Script" uid="uid://b1vrnp8s8j7lh" path="res://inventory.gd" id="1_pohso"]
+[ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="2_0xmy5"]
+[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="2_psafj"]
+[ext_resource type="Script" uid="uid://dd41jxinu7o6f" path="res://Blocks/component_info.gd" id="3_qjyhv"]
+[ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="4_ormsd"]
+[ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="5_ho8i8"]
+[ext_resource type="PackedScene" uid="uid://bjvlrki0jrqgj" path="res://Blocks/Gearbox/gearbox.tscn" id="5_ormsd"]
+[ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="6_ho8i8"]
+[ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="9_a8ig1"]
+[ext_resource type="PackedScene" uid="uid://c7iv8yqs3garh" path="res://component_collection.tscn" id="9_ho8i8"]
+[ext_resource type="Texture2D" uid="uid://fbkhde7egcyy" path="res://Blocks/Belt/belt_thumbnail.png" id="10_2pjyi"]
+[ext_resource type="PackedScene" uid="uid://by7s731rskf0" path="res://Blocks/Depot/depot.tscn" id="11_kucie"]
+[ext_resource type="Texture2D" uid="uid://b6tq6vj52com0" path="res://Blocks/Depot/depot.png" id="12_8xn2g"]
+[ext_resource type="PackedScene" uid="uid://cmyclgwog4m7x" path="res://Blocks/Ejector/ejector.tscn" id="13_b541n"]
+[ext_resource type="Texture2D" uid="uid://b68e7lkq1lsfw" path="res://Blocks/Ejector/ejector_top.png" id="14_n787p"]
+[ext_resource type="PackedScene" uid="uid://4iek0cn16121" path="res://Blocks/Tunnel/tunnel.tscn" id="15_b541n"]
+[ext_resource type="Texture2D" uid="uid://burfs6qqorcal" path="res://Blocks/Tunnel/tunnel.png" id="16_n787p"]
+[ext_resource type="PackedScene" uid="uid://bhxvdh835jteg" path="res://Blocks/Press/press.tscn" id="17_dtjj5"]
+[ext_resource type="Texture2D" uid="uid://bd3tqkhsarpso" path="res://Blocks/Press/press_head_bottom.png" id="18_ivl67"]
+[ext_resource type="PackedScene" uid="uid://p2ejtjkyrp6c" path="res://Blocks/Basin/basin.tscn" id="19_oee3c"]
+[ext_resource type="Texture2D" uid="uid://b0p2bn00ffey5" path="res://Blocks/Basin/basin.png" id="20_1v6ah"]
+[ext_resource type="PackedScene" uid="uid://i4hgtsfr05y6" path="res://Blocks/Mixer/mixer.tscn" id="21_1e4nm"]
+[ext_resource type="Texture2D" uid="uid://gqp2ovvc175v" path="res://Blocks/Mixer/Textures/file.png" id="22_4d41x"]
+[ext_resource type="PackedScene" uid="uid://dpo6jtkrsu6ag" path="res://Blocks/Millstone/millstone.tscn" id="23_ivhg3"]
+[ext_resource type="Texture2D" uid="uid://bjgmn68myyw4q" path="res://Blocks/Millstone/millstone_base.png" id="24_xp0ck"]
+[ext_resource type="PackedScene" uid="uid://c4lq6iv02ktr8" path="res://Blocks/Drill/drill.tscn" id="25_oee3c"]
+[ext_resource type="Texture2D" uid="uid://bq6jycjt3nyaf" path="res://Blocks/Drill/DrillPart/file.png" id="26_1v6ah"]
+
+[sub_resource type="Resource" id="Resource_udyo3"]
+script = ExtResource("3_qjyhv")
+name = "Shaft"
+scene = ExtResource("2_0xmy5")
+thumbnail = ExtResource("4_ormsd")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_2pjyi"]
+script = ExtResource("3_qjyhv")
+name = "Gearbox"
+scene = ExtResource("5_ormsd")
+thumbnail = ExtResource("6_ho8i8")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_a8ig1"]
+script = ExtResource("3_qjyhv")
+name = "Motor"
+scene = ExtResource("5_ho8i8")
+thumbnail = ExtResource("2_psafj")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_dhhmk"]
+script = ExtResource("3_qjyhv")
+name = "Belt"
+scene = ExtResource("9_a8ig1")
+thumbnail = ExtResource("10_2pjyi")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_6a2vb"]
+script = ExtResource("3_qjyhv")
+name = "Depot"
+scene = ExtResource("11_kucie")
+thumbnail = ExtResource("12_8xn2g")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_t4mou"]
+script = ExtResource("3_qjyhv")
+name = "Ejector"
+scene = ExtResource("13_b541n")
+thumbnail = ExtResource("14_n787p")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_scktg"]
+script = ExtResource("3_qjyhv")
+name = "Tunnel"
+scene = ExtResource("15_b541n")
+thumbnail = ExtResource("16_n787p")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_4lgwj"]
+script = ExtResource("3_qjyhv")
+name = "Press"
+scene = ExtResource("17_dtjj5")
+thumbnail = ExtResource("18_ivl67")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_ywxdu"]
+script = ExtResource("3_qjyhv")
+name = "Basin"
+scene = ExtResource("19_oee3c")
+thumbnail = ExtResource("20_1v6ah")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_tsh78"]
+script = ExtResource("3_qjyhv")
+name = "Mixer"
+scene = ExtResource("21_1e4nm")
+thumbnail = ExtResource("22_4d41x")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_7ytli"]
+script = ExtResource("3_qjyhv")
+name = "Millstone"
+scene = ExtResource("23_ivhg3")
+thumbnail = ExtResource("24_xp0ck")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="Resource" id="Resource_1e4nm"]
+script = ExtResource("3_qjyhv")
+name = "Drill"
+scene = ExtResource("25_oee3c")
+thumbnail = ExtResource("26_1v6ah")
+metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -10,6 +120,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pohso")
+components = Dictionary[String, Array]({
+"Item Processing": [SubResource("Resource_4lgwj"), SubResource("Resource_ywxdu"), SubResource("Resource_tsh78"), SubResource("Resource_7ytli")],
+"Item Transportation": [SubResource("Resource_dhhmk"), SubResource("Resource_6a2vb"), SubResource("Resource_t4mou"), SubResource("Resource_scktg")],
+"Miscellaneous": [SubResource("Resource_1e4nm")],
+"Rotation Handling": [SubResource("Resource_udyo3"), SubResource("Resource_2pjyi"), SubResource("Resource_a8ig1")]
+})
+component_collection_scene = ExtResource("9_ho8i8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -18,12 +135,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Collections" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

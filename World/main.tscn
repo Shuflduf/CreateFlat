@@ -239,3 +239,4 @@ sources_path = "res://Items/Sources/"
 
 [connection signal="item_selected" from="CanvasLayer/Sidebar" to="." method="_on_sidebar_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Refresh" to="." method="_on_refresh_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Inventory" to="." method="_on_inventory_item_selected"]

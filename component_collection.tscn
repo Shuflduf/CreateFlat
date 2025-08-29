@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7iv8yqs3garh"]
+
+[ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="1_0y77s"]
+[ext_resource type="Script" uid="uid://de3u50v6n71s6" path="res://component_collection.gd" id="1_k2lli"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5tt2m"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrqgh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.47451)
+border_color = Color(1, 1, 1, 1)
+
+[node name="ComponentCollection" type="VBoxContainer"]
+script = ExtResource("1_k2lli")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Rotation Handling"
+label_settings = SubResource("LabelSettings_5tt2m")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Base" type="PanelContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mrqgh")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Base"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("1_0y77s")
+expand_mode = 4
+stretch_mode = 5

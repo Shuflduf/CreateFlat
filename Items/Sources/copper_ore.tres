@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_cpelp")
 name = "Copper Ore"
-id = "copper_ore"
+id = "copper"
 texture = ExtResource("2_cpelp")

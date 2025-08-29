@@ -93,7 +93,6 @@ func remove_at(pos: Vector2i):
 
 func _on_sidebar_item_selected(scene: PackedScene) -> void:
     selected_component = scene
-    #rot
     for c in %Preview.get_children():
         c.queue_free()
     var new_preview = scene.instantiate()
@@ -121,3 +120,16 @@ func _on_refresh_pressed() -> void:
     for pos in all_components:
         var target = all_components[pos]
         target.connect_neighbors(pos, all_components)
+
+
+func _on_inventory_item_selected(scene: PackedScene) -> void:
+    selected_component = scene
+    for c in %Preview.get_children():
+        c.queue_free()
+    var new_preview = scene.instantiate()
+    %Preview.add_child(new_preview)
+    rotation_index %= new_preview.max_rotations
+    %Preview.rotation = MoreConsts.HALF_PI * rotation_index
+    target_placed = false
+    %Indicator.visible = new_preview.needs_target_pos
+    new_preview.visible = not new_preview.needs_target_pos

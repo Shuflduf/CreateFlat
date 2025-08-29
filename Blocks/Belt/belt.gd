@@ -1,7 +1,7 @@
 class_name Belt
 extends ItemTransport
 
-const BELT_SPEED = 200.0
+const BELT_SPEED = 250.0
 
 var speed = 0.0:
     set(value):
