@@ -13,7 +13,7 @@ var mixer: MechanicalMixer
 
 func _physics_process(_delta: float) -> void:
     stack_queue()
-    debug_data = held_items.size()
+    debug_data = items_processed
 
 
 func follow_recipe(recipe: ItemRecipe, each_item: Callable):
@@ -36,7 +36,7 @@ func follow_recipe(recipe: ItemRecipe, each_item: Callable):
         for i in amount:
             var new_item = Item.from_id(result)
             new_item.position = position
-            new_item.temp_disable(0.1)
+            # new_item.temp_disable(0.1)
             each_item.call(new_item)
 
     return new_items
