@@ -76,6 +76,19 @@ func _unhandled_input(event: InputEvent) -> void:
             await get_tree().physics_frame
             await get_tree().physics_frame
             _on_refresh_pressed()
+        elif event.button_index == MOUSE_BUTTON_MIDDLE:
+            # var grid_pos = Vector2i($CursorSelection.position / 128.0)
+            var target: MechanicalComponent = all_components.get(grid_pos)
+            if target != null:
+                selected_component = load(target.duplicate().scene_file_path)
+                # print(target.scene)
+                %Preview.get_child(0).queue_free()
+                %Preview.add_child(selected_component.instantiate())
+                # rotation_index = (
+                #     (rotation_index + 1) % target.max_rotations
+                # )
+                rotation_index = target.rotation_index
+                %Preview.rotation = MoreConsts.HALF_PI * rotation_index
 
     elif event.is_action_pressed(&"rotate"):
         rotation_index = (
