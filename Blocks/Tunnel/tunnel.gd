@@ -55,7 +55,7 @@ func _on_item_entered(body: Node2D, area: Area2D):
 
     item.velocity = item.velocity.rotated(rotation_index * MoreConsts.HALF_PI)
     var dir = item.velocity.normalized()
-    item.position = position + Vector2(64.0 ,64.0) + (dir * 96.0)
+    item.position = position + Vector2(64.0 ,64.0) + (dir * 80.0)
     #item.velocity.x = 0.0
     #item.velocity.y = item.velocity.length()
     # item.velocity = item.velocity.rotated(90)
