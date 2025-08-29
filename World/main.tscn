@@ -168,6 +168,7 @@ position = Vector2(64, 64)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sidebar" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

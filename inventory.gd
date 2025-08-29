@@ -8,7 +8,12 @@ signal item_selected(scene: PackedScene)
 
 
 func _ready():
-    for type in ["Rotation Handling", "Item Transportation", "Item Processing", "Miscellaneous"]:
+    for type in [
+        "Rotation Handling",
+        "Item Transportation",
+        "Item Processing",
+        "Miscellaneous"
+    ]:
         var new_collection = component_collection_scene.instantiate()
         %Collections.add_child(new_collection)
         new_collection.label.text = type
