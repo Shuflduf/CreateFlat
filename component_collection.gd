@@ -16,7 +16,7 @@ func add_item(info: ComponentInfo):
 
 func _on_item_input(event: InputEvent, info: ComponentInfo):
     if event is InputEventMouseMotion:
-        item_hovered.emit(info.infographic)
+        item_hovered.emit(info)
     if event is InputEventMouseButton and event.is_pressed():
         if event.button_index == MOUSE_BUTTON_LEFT:
             item_selected.emit(info.scene)

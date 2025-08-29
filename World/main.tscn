@@ -39,6 +39,8 @@ script = ExtResource("6_k12tt")
 name = "Motor"
 scene = ExtResource("2_6iyac")
 thumbnail = ExtResource("7_h1bgf")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_efxa6"]
@@ -46,6 +48,8 @@ script = ExtResource("6_k12tt")
 name = "Shaft"
 scene = ExtResource("8_b3802")
 thumbnail = ExtResource("9_fevyy")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_ycdy4"]
@@ -53,6 +57,8 @@ script = ExtResource("6_k12tt")
 name = "Gearbox"
 scene = ExtResource("10_hibaj")
 thumbnail = ExtResource("11_pdsj5")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_sfxlf"]
@@ -60,6 +66,8 @@ script = ExtResource("6_k12tt")
 name = "Belt"
 scene = ExtResource("12_ps454")
 thumbnail = ExtResource("12_eso2c")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_lh7yw"]
@@ -67,6 +75,8 @@ script = ExtResource("6_k12tt")
 name = "Depot"
 scene = ExtResource("14_4pper")
 thumbnail = ExtResource("15_r6hqv")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_m0hhd"]
@@ -74,6 +84,8 @@ script = ExtResource("6_k12tt")
 name = "Ejector"
 scene = ExtResource("16_lh7yw")
 thumbnail = ExtResource("17_scvq1")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_44n3w"]
@@ -81,6 +93,8 @@ script = ExtResource("6_k12tt")
 name = "Press"
 scene = ExtResource("18_m0hhd")
 thumbnail = ExtResource("19_rqan7")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_6y664"]
@@ -88,6 +102,8 @@ script = ExtResource("6_k12tt")
 name = "Basin"
 scene = ExtResource("20_44n3w")
 thumbnail = ExtResource("21_2sp6a")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_5iy0x"]
@@ -95,6 +111,8 @@ script = ExtResource("6_k12tt")
 name = "Mixer"
 scene = ExtResource("22_6y664")
 thumbnail = ExtResource("23_ixdso")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_bs7a0"]
@@ -102,6 +120,8 @@ script = ExtResource("6_k12tt")
 name = "Millstone"
 scene = ExtResource("24_5iy0x")
 thumbnail = ExtResource("25_flgxl")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_5k5ia"]
@@ -109,6 +129,8 @@ script = ExtResource("6_k12tt")
 name = "Tunnel"
 scene = ExtResource("26_bs7a0")
 thumbnail = ExtResource("27_40rxn")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_hyaif"]
@@ -116,6 +138,8 @@ script = ExtResource("6_k12tt")
 name = "Drill"
 scene = ExtResource("28_mp5dt")
 thumbnail = ExtResource("29_xxw4t")
+infographic_index = 0
+description = ""
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]

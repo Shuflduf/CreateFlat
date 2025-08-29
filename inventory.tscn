@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bsfgnlmje3x4l"]
+[gd_scene load_steps=43 format=3 uid="uid://bsfgnlmje3x4l"]
 
 [ext_resource type="Script" uid="uid://b1vrnp8s8j7lh" path="res://inventory.gd" id="1_pohso"]
 [ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="2_0xmy5"]
@@ -27,12 +27,19 @@
 [ext_resource type="Texture2D" uid="uid://bjgmn68myyw4q" path="res://Blocks/Millstone/millstone_base.png" id="24_xp0ck"]
 [ext_resource type="PackedScene" uid="uid://c4lq6iv02ktr8" path="res://Blocks/Drill/drill.tscn" id="25_oee3c"]
 [ext_resource type="Texture2D" uid="uid://bq6jycjt3nyaf" path="res://Blocks/Drill/DrillPart/file.png" id="26_1v6ah"]
+[ext_resource type="Texture2D" uid="uid://cdskmhte5pgs6" path="res://Assets/infographics-Sheet.png" id="28_1v6ah"]
 
 [sub_resource type="Resource" id="Resource_4lgwj"]
 script = ExtResource("3_qjyhv")
 name = "Press"
 scene = ExtResource("17_dtjj5")
 thumbnail = ExtResource("18_ivl67")
+infographic_index = 7
+description = "The [b]Press[/b] applies [b]Pressing[/b] recipes onto any items below them.
+
+These items need to be on top of either a belt, where the belt will stop and wait for the item to be processed, on top of a depot, which will not let items pass until the item has been processed.
+
+If the [b]Press[/b] is 2 blocks above a [b]Basin[/b], then the [b]Press[/b] will instead apply [b]Packing[/b] recipes, which are analagous to a full crafting grid of ingredients."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_ywxdu"]
@@ -40,6 +47,10 @@ script = ExtResource("3_qjyhv")
 name = "Basin"
 scene = ExtResource("19_oee3c")
 thumbnail = ExtResource("20_1v6ah")
+infographic_index = 8
+description = "[b]Basins[/b] hold items for [b]Packing[/b] and [b]Mixing[/b] recipes. See [b]Press[/b] and [b]Mixer[/b] for more details.
+
+There are no Blaze Burners in this game."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_tsh78"]
@@ -47,6 +58,8 @@ script = ExtResource("3_qjyhv")
 name = "Mixer"
 scene = ExtResource("21_1e4nm")
 thumbnail = ExtResource("22_4d41x")
+infographic_index = 9
+description = "The [b]Mixer[/b] applies [b]Mixing[/b] recipes onto any items in a [b]Basin[/b] two blocks below it."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_7ytli"]
@@ -54,6 +67,10 @@ script = ExtResource("3_qjyhv")
 name = "Millstone"
 scene = ExtResource("23_ivhg3")
 thumbnail = ExtResource("24_xp0ck")
+infographic_index = 10
+description = "The [b]Millstone[/b] applies [b]Milling[/b] recipes onto any items inside it.
+
+Processed items will then be launched out of the top due to centrifugal force or something idk."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_dhhmk"]
@@ -61,6 +78,10 @@ script = ExtResource("3_qjyhv")
 name = "Belt"
 scene = ExtResource("9_a8ig1")
 thumbnail = ExtResource("10_2pjyi")
+infographic_index = 3
+description = "When receiving rotation from either end, the [b]Belt[/b] moves items on top of it.
+
+If there's a compatible component ([b]Basin[/b], [b]Depot[/b], [b]Ejector[/b], [b]Millstone[/b]) connected to the end of the [b]Belt[/b], then items will automatically be inputted into it."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_6a2vb"]
@@ -68,6 +89,14 @@ script = ExtResource("3_qjyhv")
 name = "Depot"
 scene = ExtResource("11_kucie")
 thumbnail = ExtResource("12_8xn2g")
+infographic_index = 4
+description = "[b]Depots[/b] hold items on top of them.
+
+Moves first item towards the center.
+
+Items in the center drop through.
+
+If a [b]Press[/b] is two blocks above the [b]Depot[/b], then the items wont drop until they've been processed."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_t4mou"]
@@ -75,6 +104,12 @@ script = ExtResource("3_qjyhv")
 name = "Ejector"
 scene = ExtResource("13_b541n")
 thumbnail = ExtResource("14_n787p")
+infographic_index = 5
+description = "First, select the target position for the [b]Ejector[/b], then place the main body.
+
+When powered, any items on top of the [b]Ejector[/b] will be launched [b]Directly[/b] towards the target positon. Launched items will not interact with anything in their way.
+
+"
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_scktg"]
@@ -82,6 +117,12 @@ script = ExtResource("3_qjyhv")
 name = "Tunnel"
 scene = ExtResource("15_b541n")
 thumbnail = ExtResource("16_n787p")
+infographic_index = 6
+description = "When an item enters any open side of the [b]Tunnel[/b], it exits through one of the other open ends, alternating which one.
+
+This is used for splitting up large item streams for parallel processing.
+
+[i][b]Tunnels[/b] are very inconsistent right now, you may need to leave a large gap between each [b]Tunnel[/b] for them to properly work. HOPEFULLY it will be fixed by the time you're using it though, and I just forgot to update this text"
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_1e4nm"]
@@ -89,6 +130,10 @@ script = ExtResource("3_qjyhv")
 name = "Drill"
 scene = ExtResource("25_oee3c")
 thumbnail = ExtResource("26_1v6ah")
+infographic_index = 11
+description = "Placing a powered [b]Drill[/b] next to a resource deposit will start generating dropped items.
+
+Having lots of [b]Drills[/b] may not be the best idea if you don't know how to properly split up very dense item streams."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_udyo3"]
@@ -96,6 +141,10 @@ script = ExtResource("3_qjyhv")
 name = "Shaft"
 scene = ExtResource("2_0xmy5")
 thumbnail = ExtResource("4_ormsd")
+infographic_index = 0
+description = "Powering one end of the [b]Shaft[/b] will transfer the power to the other end.
+
+Any component with a little [b]Shaft[/b] bit is powered from it. (Belts have an invisible shaft running through them)"
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_2pjyi"]
@@ -103,6 +152,10 @@ script = ExtResource("3_qjyhv")
 name = "Gearbox"
 scene = ExtResource("5_ormsd")
 thumbnail = ExtResource("6_ho8i8")
+infographic_index = 1
+description = "Powering one end of the [b]Gearbox[/b] will transfer the power to all the other ends.
+
+Opposite ends of the [b]Gearbox[/b] [b]Reverse[/b] the direction of rotation."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 
 [sub_resource type="Resource" id="Resource_a8ig1"]
@@ -110,7 +163,21 @@ script = ExtResource("3_qjyhv")
 name = "Motor"
 scene = ExtResource("5_ho8i8")
 thumbnail = ExtResource("2_psafj")
+infographic_index = 2
+description = "The source of all rotation.
+
+Important note: Using a lot of these is
+[b][tornado radius=5.0 freq=1.0][font_size=50.0][rainbow freq=0.2]Cringe[/rainbow][/font_size][/tornado][/b]
+
+Stick to about one per system. Or else."
 metadata/_custom_type_script = "uid://dd41jxinu7o6f"
+
+[sub_resource type="LabelSettings" id="LabelSettings_1v6ah"]
+font_size = 36
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e4nm"]
+atlas = ExtResource("28_1v6ah")
+region = Rect2(0, 0, 100, 100)
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -150,9 +217,42 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Collections" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="NameLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+text = "Shaft"
+label_settings = SubResource("LabelSettings_1v6ah")
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]"
+fit_content = true
+
+[node name="Collections" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Infographic" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_1e4nm")
+stretch_mode = 5
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

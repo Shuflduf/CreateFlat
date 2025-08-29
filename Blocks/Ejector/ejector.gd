@@ -30,6 +30,8 @@ func _physics_process(delta: float) -> void:
             var difference = target_pos - tile_pos
             # I PULLED THESE NUMBERS OUT OF MY ASS
             main_item.global_position.x = global_position.x
+
+
             main_item.velocity.y = (difference.y * 64.0) - 970.0
             main_item.velocity.x = difference.x * 64.0
             main_item.flying = true
