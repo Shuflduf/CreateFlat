@@ -1,6 +1,6 @@
 extends Node2D
 
-const MIN_DISTANCE = 1000.0
+const MIN_DISTANCE = 500.0
 const MIN_DISTANCE_SQUARED = MIN_DISTANCE * MIN_DISTANCE
 const FREQUENCY = 0.001
 
@@ -16,7 +16,7 @@ func _ready() -> void:
         var data: ItemData = ResourceLoader.load(sources_path + "/" + file)
         sources.append(data)
 
-    seed(3)
+    seed(4)
     for x in MoreConsts.MAP_SIZE * 2:
         for y in MoreConsts.MAP_SIZE * 2:
             if randf() > FREQUENCY:
