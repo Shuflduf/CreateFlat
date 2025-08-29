@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bn8dvj3p2cdkc" path="res://Blocks/Shaft/Textures/file.png" id="4_ormsd"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="5_ho8i8"]
 [ext_resource type="PackedScene" uid="uid://bjvlrki0jrqgj" path="res://Blocks/Gearbox/gearbox.tscn" id="5_ormsd"]
-[ext_resource type="Texture2D" uid="uid://bntrxb6ybu8vj" path="res://Blocks/Gearbox/gearbox.png" id="6_ho8i8"]
 [ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="9_a8ig1"]
 [ext_resource type="PackedScene" uid="uid://c7iv8yqs3garh" path="res://component_collection.tscn" id="9_ho8i8"]
+[ext_resource type="Texture2D" uid="uid://bostd2kijn8k4" path="res://Blocks/Millstone/thumbnail.png" id="10_1v6ah"]
 [ext_resource type="Texture2D" uid="uid://fbkhde7egcyy" path="res://Blocks/Belt/belt_thumbnail.png" id="10_2pjyi"]
 [ext_resource type="PackedScene" uid="uid://by7s731rskf0" path="res://Blocks/Depot/depot.tscn" id="11_kucie"]
 [ext_resource type="Texture2D" uid="uid://b6tq6vj52com0" path="res://Blocks/Depot/depot.png" id="12_8xn2g"]
@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://i4hgtsfr05y6" path="res://Blocks/Mixer/mixer.tscn" id="21_1e4nm"]
 [ext_resource type="Texture2D" uid="uid://gqp2ovvc175v" path="res://Blocks/Mixer/Textures/file.png" id="22_4d41x"]
 [ext_resource type="PackedScene" uid="uid://dpo6jtkrsu6ag" path="res://Blocks/Millstone/millstone.tscn" id="23_ivhg3"]
-[ext_resource type="Texture2D" uid="uid://bjgmn68myyw4q" path="res://Blocks/Millstone/millstone_base.png" id="24_xp0ck"]
+[ext_resource type="Texture2D" uid="uid://b74eu6quv48os" path="res://Blocks/Gearbox/thumbnail.png" id="24_1v6ah"]
 [ext_resource type="PackedScene" uid="uid://c4lq6iv02ktr8" path="res://Blocks/Drill/drill.tscn" id="25_oee3c"]
 [ext_resource type="Texture2D" uid="uid://bq6jycjt3nyaf" path="res://Blocks/Drill/DrillPart/file.png" id="26_1v6ah"]
 [ext_resource type="Texture2D" uid="uid://cdskmhte5pgs6" path="res://Assets/infographics-Sheet.png" id="28_1v6ah"]
@@ -66,7 +66,7 @@ metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 script = ExtResource("3_qjyhv")
 name = "Millstone"
 scene = ExtResource("23_ivhg3")
-thumbnail = ExtResource("24_xp0ck")
+thumbnail = ExtResource("10_1v6ah")
 infographic_index = 10
 description = "The [b]Millstone[/b] applies [b]Milling[/b] recipes onto any items inside it.
 
@@ -151,7 +151,7 @@ metadata/_custom_type_script = "uid://dd41jxinu7o6f"
 script = ExtResource("3_qjyhv")
 name = "Gearbox"
 scene = ExtResource("5_ormsd")
-thumbnail = ExtResource("6_ho8i8")
+thumbnail = ExtResource("24_1v6ah")
 infographic_index = 1
 description = "Powering one end of the [b]Gearbox[/b] will transfer the power to all the other ends.
 
@@ -229,7 +229,6 @@ size_flags_vertical = 4
 [node name="NameLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Shaft"
 label_settings = SubResource("LabelSettings_1v6ah")
 horizontal_alignment = 1
 
