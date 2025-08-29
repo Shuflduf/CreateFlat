@@ -23,13 +23,15 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-    modulate.v = remap(collision_layer, 0, 1, 0.5, 1.0)
+    modulate.v = remap(collision_layer, 0, 1, 0.8, 1.0)
     velocity.y += get_gravity().y * delta
     move_and_slide()
     if flying:
         if fly_destination.distance_squared_to(position) > CATCH_RADIUS_SQUARED:
             collision_layer = 0
+            rotation += velocity.x * delta * 0.01
         else:
+            rotation = 0
             flying = false
             collision_layer = default_collision
 
