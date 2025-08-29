@@ -45,7 +45,7 @@ func _on_item_entered(body: Node2D, area: Area2D):
 
     await get_tree().create_timer(0.1).timeout
     item.global_position = out_area.global_position
-    var strength = max(item.velocity.length(), 200.0)
+    var strength = max(item.velocity.length(), 300.0)
     if out_area == $Bottom:
         item.velocity = Vector2(0.0, strength)
     elif out_area == $Left:
@@ -53,10 +53,10 @@ func _on_item_entered(body: Node2D, area: Area2D):
     elif out_area == $Right:
         item.velocity = Vector2(strength, 0)
 
-    item.velocity = item.velocity.rotated(rotation_index * 1.5708)
+    item.velocity = item.velocity.rotated(rotation_index * MoreConsts.HALF_PI)
     #item.velocity.x = 0.0
     #item.velocity.y = item.velocity.length()
     # item.velocity = item.velocity.rotated(90)
 
-    item.temp_disable(0.2)
+    item.temp_disable(0.15)
     queued_items.erase(item)

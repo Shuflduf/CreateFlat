@@ -228,6 +228,7 @@ theme_override_font_sizes/font_size = 32
 text = "Refresh"
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("33_xxw4t")]
+visible = false
 
 [node name="TempItemSpawner" parent="." instance=ExtResource("14_sfxlf")]
 position = Vector2(192, -384)
