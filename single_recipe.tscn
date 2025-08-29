@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://crw0q4ib2rpm0"]
+
+[ext_resource type="Texture2D" uid="uid://bef4nf2vb3ysk" path="res://Assets/Items/iron_ingot.png" id="1_54f6m"]
+[ext_resource type="Script" uid="uid://2qyjxkseeuex" path="res://single_recipe.gd" id="1_wrxcr"]
+[ext_resource type="Texture2D" uid="uid://bmuvf8u6fqn25" path="res://Assets/arrow.png" id="2_wrxcr"]
+
+[node name="SingleRecipe" type="PanelContainer"]
+script = ExtResource("1_wrxcr")
+arrow_texture = ExtResource("2_wrxcr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="BaseTexture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("1_54f6m")
+expand_mode = 5
+stretch_mode = 5
