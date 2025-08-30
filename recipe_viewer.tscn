@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_donee")
 single_recipe = ExtResource("2_705ix")
 metadata/_edit_vertical_guides_ = [-80.0]
@@ -27,10 +28,7 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="ListBase" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="ListBase" type="MarginContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -40,17 +38,19 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 script = ExtResource("3_emq3x")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/ListBase"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ListBase"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="List" type="FlowContainer" parent="MarginContainer/PanelContainer/ListBase/ScrollContainer"]
+[node name="List" type="FlowContainer" parent="MarginContainer/ListBase/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RecipeTypes" type="TabContainer" parent="MarginContainer/PanelContainer"]
+[node name="RecipeTypes" type="TabContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 tab_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

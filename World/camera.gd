@@ -2,8 +2,14 @@ extends Camera2D
 
 const MAX_ZOOM_IN = 2.0
 const MAX_ZOOM_OUT = 0.1
+const WASD_MOVE_SPEED = 1000.0
 
 var moving_cam = false
+
+
+func _physics_process(delta: float) -> void:
+    var move_dir = Input.get_vector(&"left", &"right", &"up", &"down")
+    position += move_dir * delta * WASD_MOVE_SPEED * (1/zoom.x)
 
 
 func _ready() -> void:

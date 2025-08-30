@@ -20,3 +20,16 @@ func _ready():
             var new_recipe = single_recipe.instantiate()
             new_list.list.add_child(new_recipe)
             new_recipe.populate(recipe)
+
+
+func _input(event: InputEvent) -> void:
+    if event.is_action_pressed(&"recipes"):
+        visible = not visible
+    elif event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"inventory"):
+        visible = false
+
+
+func _on_gui_input(event: InputEvent) -> void:
+    if event is InputEventMouseButton and event.is_pressed():
+        if event.button_index == MOUSE_BUTTON_LEFT:
+            hide()

@@ -26,15 +26,6 @@
 			"results": {
 				"andesite_alloy": 1.0
 			}
-		},
-		{
-			"ingredients": {
-				"andesite": 1.0,
-				"iron_nugget": 1.0
-			},
-			"results": {
-				"andesite_alloy": 1.0
-			}
 		}
 	],
 	"milling": [
