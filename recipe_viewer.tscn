@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0ihxymrkklg5"]
+[gd_scene load_steps=4 format=3 uid="uid://b0ihxymrkklg5"]
 
 [ext_resource type="Script" uid="uid://ccf1v48tcim6l" path="res://recipe_viewer.gd" id="1_donee"]
 [ext_resource type="PackedScene" uid="uid://crw0q4ib2rpm0" path="res://single_recipe.tscn" id="2_705ix"]
+[ext_resource type="Script" uid="uid://cevdxjiyglagy" path="res://recipe_list.gd" id="3_emq3x"]
 
 [node name="RecipeViewer" type="Control"]
 layout_mode = 3
@@ -29,26 +30,27 @@ theme_override_constants/margin_bottom = 50
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-tab_alignment = 1
-current_tab = 0
-
-[node name="Pressing" type="MarginContainer" parent="MarginContainer/PanelContainer/TabContainer"]
+[node name="ListBase" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
-metadata/_tab_index = 0
+script = ExtResource("3_emq3x")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/TabContainer/Pressing"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/ListBase"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="RecipeList" type="FlowContainer" parent="MarginContainer/PanelContainer/TabContainer/Pressing/ScrollContainer"]
-unique_name_in_owner = true
+[node name="List" type="FlowContainer" parent="MarginContainer/PanelContainer/ListBase/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="RecipeTypes" type="TabContainer" parent="MarginContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+tab_alignment = 1

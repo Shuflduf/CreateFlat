@@ -2,6 +2,7 @@ extends PanelContainer
 
 @export var arrow_texture: Texture2D
 
+
 func populate(recipe: ItemRecipe):
     print(recipe)
     populate_item_set(recipe.ingredients)
@@ -20,6 +21,7 @@ func populate_item_set(items: Dictionary[String, int]):
             new_icon.tooltip_text = item_data.name
             new_icon.texture = tex
             new_icon.show()
+
 
 func add_arrow():
     var arrow = %BaseTexture.duplicate()

@@ -6,6 +6,7 @@ signal item_selected(scene: PackedScene)
 @export var components: Dictionary[String, Array]
 @export var component_collection_scene: PackedScene
 
+
 func show_extra_info(info: ComponentInfo):
     var tex: AtlasTexture = %Infographic.texture
     tex.region.position.x = info.infographic_index * 100.0
@@ -28,9 +29,7 @@ func _ready():
                 hide()
                 item_selected.emit(s)
         )
-        new_collection.item_hovered.connect(
-            show_extra_info
-        )
+        new_collection.item_hovered.connect(show_extra_info)
         var components_of_type = components[type]
         for component: ComponentInfo in components_of_type:
             new_collection.add_item(component)
