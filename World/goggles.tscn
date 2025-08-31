@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5c3sw47v4dpw"]
+
+[ext_resource type="Script" uid="uid://bqqbpgnco61df" path="res://World/goggles.gd" id="1_2ldcm"]
+[ext_resource type="Texture2D" uid="uid://dc1uut57p5t65" path="res://icon.svg" id="1_aro1v"]
+
+[node name="Goggles" type="Node2D"]
+script = ExtResource("1_2ldcm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aro1v")
+centered = false

@@ -40,6 +40,8 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.is_pressed():
         var grid_pos = Vector2i($CursorSelection.position / 128.0)
+        if grid_pos == Vector2i.ZERO and (not needs_target() and target_placed):
+            return
         if event.button_index == MOUSE_BUTTON_LEFT:
             if needs_target() and not target_placed:
                 target_placed = true

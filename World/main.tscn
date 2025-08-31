@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=50 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://c6vw3pv6p2rjo" path="res://World/item_source_spawner.tscn" id="30_5k5ia"]
 [ext_resource type="PackedScene" uid="uid://b0ihxymrkklg5" path="res://World/RecipeViewer/recipe_viewer.tscn" id="31_hyaif"]
 [ext_resource type="PackedScene" uid="uid://bsfgnlmje3x4l" path="res://World/Inventory/inventory.tscn" id="33_xxw4t"]
+[ext_resource type="PackedScene" uid="uid://dmlws70736bi8" path="res://World/Portal/portal.tscn" id="36_02r0l"]
 
 [sub_resource type="Resource" id="Resource_5vw27"]
 script = ExtResource("6_k12tt")
@@ -273,6 +274,8 @@ script = ExtResource("4_jj6pk")
 item_source_factory = NodePath("../ItemSourceFactory")
 world = NodePath("..")
 inventory = NodePath("../CanvasLayer/Inventory")
+
+[node name="Portal" parent="." instance=ExtResource("36_02r0l")]
 
 [connection signal="item_selected" from="CanvasLayer/Sidebar" to="." method="_on_sidebar_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Refresh" to="." method="_on_refresh_pressed"]
