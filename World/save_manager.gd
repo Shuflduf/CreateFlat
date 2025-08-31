@@ -47,7 +47,8 @@ func find_component_by_name(target_name: String) -> ComponentInfo:
 
 func _ready():
     load_component_data()
-    load_example()
+    if Global.transition_data["example"]:
+        load_example()
 
 
 func parse_vec2i(vec_string: String) -> Vector2i:
