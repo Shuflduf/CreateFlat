@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0ihxymrkklg5"]
 
-[ext_resource type="Script" uid="uid://ccf1v48tcim6l" path="res://recipe_viewer.gd" id="1_donee"]
-[ext_resource type="PackedScene" uid="uid://crw0q4ib2rpm0" path="res://single_recipe.tscn" id="2_705ix"]
-[ext_resource type="Script" uid="uid://cevdxjiyglagy" path="res://recipe_list.gd" id="3_emq3x"]
+[ext_resource type="Script" uid="uid://ccf1v48tcim6l" path="res://World/RecipeViewer/recipe_viewer.gd" id="1_donee"]
+[ext_resource type="PackedScene" uid="uid://crw0q4ib2rpm0" path="res://World/RecipeViewer/single_recipe.tscn" id="2_705ix"]
+[ext_resource type="Script" uid="uid://cevdxjiyglagy" path="res://World/RecipeViewer/recipe_list.gd" id="3_emq3x"]
 
 [node name="RecipeViewer" type="Control"]
 layout_mode = 3

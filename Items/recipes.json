@@ -1,133 +1,133 @@
 {
-	"mixing": [
-		{
-			"ingredients": {
-				"copper": 1.0,
-				"zinc": 1.0
-			},
-			"results": {
-				"brass": 2.0
-			}
-		},
-		{
-			"ingredients": {
-				"andesite": 1.0,
-				"iron_nugget": 1.0
-			},
-			"results": {
-				"andesite_alloy": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"andesite": 1.0,
-				"zinc_nugget": 1.0
-			},
-			"results": {
-				"andesite_alloy": 1.0
-			}
-		}
-	],
-	"milling": [
-		{
-			"ingredients": {
-				"andesite": 1.0
-			},
-			"results": {
-				"cobblestone": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"cobblestone": 1.0
-			},
-			"results": {
-				"gravel": 1.0
-			}
-		}
-	],
-	"pressing": [
-		{
-			"ingredients": {
-				"iron": 1.0
-			},
-			"results": {
-				"iron_sheet": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"gold": 1.0
-			},
-			"results": {
-				"gold_sheet": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"copper": 1.0
-			},
-			"results": {
-				"copper_sheet": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"brass": 1.0
-			},
-			"results": {
-				"brass_sheet": 1.0
-			}
-		}
-	],
-	"packing": [
-		{
-			"ingredients": {
-				"iron": 9.0
-			},
-			"results": {
-				"iron_block": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"gold": 9.0
-			},
-			"results": {
-				"gold_block": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"copper": 9.0
-			},
-			"results": {
-				"copper_block": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"brass": 9.0
-			},
-			"results": {
-				"brass_block": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"iron_nugget": 9.0
-			},
-			"results": {
-				"iron": 1.0
-			}
-		},
-		{
-			"ingredients": {
-				"gold_nugget": 9.0
-			},
-			"results": {
-				"gold": 1.0
-			}
-		},
-	]
+  "mixing": [
+    {
+      "ingredients": {
+        "copper": 1.0,
+        "zinc": 1.0
+      },
+      "results": {
+        "brass": 2.0
+      }
+    },
+    {
+      "ingredients": {
+        "andesite": 1.0,
+        "iron_nugget": 1.0
+      },
+      "results": {
+        "andesite_alloy": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "andesite": 1.0,
+        "zinc_nugget": 1.0
+      },
+      "results": {
+        "andesite_alloy": 1.0
+      }
+    }
+  ],
+  "milling": [
+    {
+      "ingredients": {
+        "andesite": 1.0
+      },
+      "results": {
+        "cobblestone": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "cobblestone": 1.0
+      },
+      "results": {
+        "gravel": 1.0
+      }
+    }
+  ],
+  "pressing": [
+    {
+      "ingredients": {
+        "iron": 1.0
+      },
+      "results": {
+        "iron_sheet": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "gold": 1.0
+      },
+      "results": {
+        "gold_sheet": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "copper": 1.0
+      },
+      "results": {
+        "copper_sheet": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "brass": 1.0
+      },
+      "results": {
+        "brass_sheet": 1.0
+      }
+    }
+  ],
+  "packing": [
+    {
+      "ingredients": {
+        "iron": 9.0
+      },
+      "results": {
+        "iron_block": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "gold": 9.0
+      },
+      "results": {
+        "gold_block": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "copper": 9.0
+      },
+      "results": {
+        "copper_block": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "brass": 9.0
+      },
+      "results": {
+        "brass_block": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "iron_nugget": 9.0
+      },
+      "results": {
+        "iron": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "gold_nugget": 9.0
+      },
+      "results": {
+        "gold": 1.0
+      }
+    }
+  ]
 }

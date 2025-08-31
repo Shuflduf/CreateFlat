@@ -46,7 +46,6 @@ func _press_item():
                 target_transport.held_items.push_front(item)
                 target_transport.items_processed += 1
         )
-        prints("PRESS", target_transport)
 
 
 func start_press():

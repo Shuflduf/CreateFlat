@@ -27,7 +27,6 @@ func _physics_process(delta: float) -> void:
             main_item.temp_disable(0.6)
             held_items.pop_front()
             if items_processed > 0:
-                print(main_item)
                 items_processed -= 1
 
     super(delta)

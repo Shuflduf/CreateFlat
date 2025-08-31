@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7iv8yqs3garh"]
 
 [ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="1_0y77s"]
-[ext_resource type="Script" uid="uid://de3u50v6n71s6" path="res://component_collection.gd" id="1_k2lli"]
+[ext_resource type="Script" uid="uid://de3u50v6n71s6" path="res://World/Inventory/component_collection.gd" id="1_k2lli"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5tt2m"]
 font_size = 24

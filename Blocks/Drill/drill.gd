@@ -33,7 +33,6 @@ func _ready():
     $Connector.rotated.connect(func(): speed = $Connector.speed)
     if $Area.has_overlapping_areas():
         target_source = $Area.get_overlapping_areas()[0].get_parent()
-        print(target_source.item_data.name)
 
     update_visuals()
 

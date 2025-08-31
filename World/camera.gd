@@ -9,7 +9,7 @@ var moving_cam = false
 
 func _physics_process(delta: float) -> void:
     var move_dir = Input.get_vector(&"left", &"right", &"up", &"down")
-    position += move_dir * delta * WASD_MOVE_SPEED * (1/zoom.x)
+    position += move_dir * delta * WASD_MOVE_SPEED * (1 / zoom.x)
 
 
 func _ready() -> void:

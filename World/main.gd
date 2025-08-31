@@ -1,3 +1,4 @@
+class_name GameWorld
 extends Node2D
 
 const TILE_SIZE = 128.0

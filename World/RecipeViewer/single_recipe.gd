@@ -4,7 +4,6 @@ extends PanelContainer
 
 
 func populate(recipe: ItemRecipe):
-    print(recipe)
     populate_item_set(recipe.ingredients)
     add_arrow()
     populate_item_set(recipe.results)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crw0q4ib2rpm0"]
 
 [ext_resource type="Texture2D" uid="uid://bef4nf2vb3ysk" path="res://Assets/Items/iron_ingot.png" id="1_54f6m"]
-[ext_resource type="Script" uid="uid://2qyjxkseeuex" path="res://single_recipe.gd" id="1_wrxcr"]
+[ext_resource type="Script" uid="uid://2qyjxkseeuex" path="res://World/RecipeViewer/single_recipe.gd" id="1_wrxcr"]
 [ext_resource type="Texture2D" uid="uid://bmuvf8u6fqn25" path="res://Assets/arrow.png" id="2_wrxcr"]
 
 [node name="SingleRecipe" type="PanelContainer"]

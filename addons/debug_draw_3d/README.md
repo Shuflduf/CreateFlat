@@ -24,38 +24,38 @@ Your support adds motivation to develop my public projects.
 
 3D:
 
-* Arrow
-* Billboard opaque square
-* Box
-* Camera Frustum
-* Cylinder
-* Gizmo
-* Grid
-* Line
-* Line Path
-* Line with Arrow
-* Plane
-* Points
-* Position 3D (3 crossing axes)
-* Sphere
-* 3D Text
+- Arrow
+- Billboard opaque square
+- Box
+- Camera Frustum
+- Cylinder
+- Gizmo
+- Grid
+- Line
+- Line Path
+- Line with Arrow
+- Plane
+- Points
+- Position 3D (3 crossing axes)
+- Sphere
+- 3D Text
 
 2D:
 
-* **[Work in progress]**
+- **[Work in progress]**
 
 Overlay:
 
-* Text (with grouping and coloring)
+- Text (with grouping and coloring)
 
 Precompiled for:
 
-* Windows
-* Linux (built on Ubuntu 22.04)
-* macOS (10.15+)
-* Android (5.0+)
-* iOS
-* Web (Firefox is supported by Godot 4.3+)
+- Windows
+- Linux (built on Ubuntu 22.04)
+- macOS (10.15+)
+- Android (5.0+)
+- iOS
+- Web (Firefox is supported by Godot 4.3+)
 
 This addon supports working with several World3D and different Viewports.
 There is also a no depth test mode and other settings that can be changed for each instance.
@@ -74,9 +74,9 @@ For versions prior to `1.4.5`, just download one of the `source codes` in the as
 
 ### Installation
 
-* Close editor
-* Copy `addons/debug_draw_3d` to your `addons` folder, create it if the folder doesn't exist
-* Launch editor
+- Close editor
+- Copy `addons/debug_draw_3d` to your `addons` folder, create it if the folder doesn't exist
+- Launch editor
 
 ## Examples
 

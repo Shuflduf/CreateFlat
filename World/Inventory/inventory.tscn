@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://bsfgnlmje3x4l"]
 
-[ext_resource type="Script" uid="uid://b1vrnp8s8j7lh" path="res://inventory.gd" id="1_pohso"]
+[ext_resource type="Script" uid="uid://b1vrnp8s8j7lh" path="res://World/Inventory/inventory.gd" id="1_pohso"]
 [ext_resource type="PackedScene" uid="uid://dlxgqbso1kloa" path="res://Blocks/Shaft/shaft.tscn" id="2_0xmy5"]
 [ext_resource type="Texture2D" uid="uid://cfxbpmc14y3cc" path="res://Blocks/Motor/motor.png" id="2_psafj"]
 [ext_resource type="Script" uid="uid://dd41jxinu7o6f" path="res://Blocks/component_info.gd" id="3_qjyhv"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="5_ho8i8"]
 [ext_resource type="PackedScene" uid="uid://bjvlrki0jrqgj" path="res://Blocks/Gearbox/gearbox.tscn" id="5_ormsd"]
 [ext_resource type="PackedScene" uid="uid://dv4mw6mdkpqxp" path="res://Blocks/Belt/belt.tscn" id="9_a8ig1"]
-[ext_resource type="PackedScene" uid="uid://c7iv8yqs3garh" path="res://component_collection.tscn" id="9_ho8i8"]
+[ext_resource type="PackedScene" uid="uid://c7iv8yqs3garh" path="res://World/Inventory/component_collection.tscn" id="9_ho8i8"]
 [ext_resource type="Texture2D" uid="uid://bostd2kijn8k4" path="res://Blocks/Millstone/thumbnail.png" id="10_1v6ah"]
 [ext_resource type="Texture2D" uid="uid://fbkhde7egcyy" path="res://Blocks/Belt/belt_thumbnail.png" id="10_2pjyi"]
 [ext_resource type="PackedScene" uid="uid://by7s731rskf0" path="res://Blocks/Depot/depot.tscn" id="11_kucie"]

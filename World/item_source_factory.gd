@@ -1,3 +1,4 @@
+class_name ItemSourceFactory
 extends Node2D
 
 const MIN_DISTANCE = 500.0
@@ -8,6 +9,7 @@ const FREQUENCY = 0.001
 
 @export_dir var sources_path
 var sources: Array[ItemData]
+var gen_seed = 4
 
 
 func _ready() -> void:
@@ -16,7 +18,7 @@ func _ready() -> void:
         var data: ItemData = ResourceLoader.load(sources_path + "/" + file)
         sources.append(data)
 
-    seed(4)
+    seed(gen_seed)
     for x in MoreConsts.MAP_SIZE * 2:
         for y in MoreConsts.MAP_SIZE * 2:
             if randf() > FREQUENCY:

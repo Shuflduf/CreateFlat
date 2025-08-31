@@ -1,3 +1,4 @@
+class_name Inventory
 extends Control
 
 signal item_selected(scene: PackedScene)
@@ -38,7 +39,10 @@ func _ready():
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed(&"inventory"):
         visible = not visible
-    elif event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"recipes"):
+    elif (
+        event.is_action_pressed(&"ui_cancel")
+        or event.is_action_pressed(&"recipes")
+    ):
         visible = false
 
 
