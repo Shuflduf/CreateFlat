@@ -9,7 +9,7 @@ const HALF_TILE = TILE_SIZE / 2.0
 var rotation_index = 0
 var target_placed = true
 
-@onready var all_components: Dictionary[Vector2i, MechanicalComponent] = {}
+var all_components: Dictionary[Vector2i, MechanicalComponent] = {}
 
 
 func needs_target():
@@ -117,8 +117,7 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
     %Indicator.visible = new_preview.needs_target_pos
     new_preview.visible = not new_preview.needs_target_pos
 
-
-func _on_refresh_pressed() -> void:
+func refresh():
     for pos in all_components:
         var target = all_components[pos]
         #target.disconnect_neighbors(pos, all_components)
@@ -126,14 +125,15 @@ func _on_refresh_pressed() -> void:
             var conn: MechanicalConnector = target.connections[dir]
             conn.speed = 0.0
             conn.rotated.emit()
-            #conn.transfer_rotation()
-            #conn.sprites.frame = 0
             conn.connected_to = null
 
     #await get_tree().physics_frame
     for pos in all_components:
         var target = all_components[pos]
         target.connect_neighbors(pos, all_components)
+
+func _on_refresh_pressed() -> void:
+    refresh()
 
 
 func _on_inventory_item_selected(scene: PackedScene) -> void:

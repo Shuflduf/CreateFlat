@@ -16,12 +16,19 @@ func load_example():
         var target_block_name = block["name"]
         var component_info = find_component_by_name(target_block_name)
         var tile_pos = parse_vec2i(block["position"])
+        var rotation_index = int(block["rotation"])
         var new_component: MechanicalComponent = component_info.scene.instantiate()
-
         new_component.position = Vector2(tile_pos) * 128.0
+        new_component.tile_pos = tile_pos
+        new_component.rotation_index = rotation_index
+        new_component.rotation = (
+            MoreConsts.HALF_PI
+            * (rotation_index % new_component.max_rotations)
+        )
         components_parent.add_child(new_component)
         world.all_components[tile_pos] = new_component
-    print(world.all_components)
+
+    world.refresh()
     # assert(save["blocks"][0]["position"] == Vector2i(0, 2))
 
 
@@ -29,7 +36,6 @@ func load_component_data():
     for category in inventory.components:
         var components = inventory.components[category]
         components_list.append_array(components)
-        print(components_list)
 
 
 func find_component_by_name(target_name: String) -> ComponentInfo:
@@ -39,8 +45,6 @@ func find_component_by_name(target_name: String) -> ComponentInfo:
 func _ready():
     load_component_data()
     load_example()
-    print(find_component_by_name("Motor"))
-    print(parse_vec2i("(0, 2)"))
 
 
 func parse_vec2i(vec_string: String) -> Vector2i:
