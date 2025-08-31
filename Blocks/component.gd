@@ -53,12 +53,10 @@ func connect_neighbors(
     active = true
     for test_dir in connections:
         var connector: MechanicalConnector = connections[test_dir]
-        prints(self, connector)
         var offset = MechanicalComponent.DIR_MAPPINGS[
             (test_dir + rotation_index) % 4
         ]
         var test_pos = component_pos + offset
-        prints(test_pos, all_components)
         if all_components.has(test_pos):
             var neighbor = all_components[test_pos]
             var opposite_dir = (

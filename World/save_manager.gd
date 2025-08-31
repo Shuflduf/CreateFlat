@@ -25,6 +25,9 @@ func load_example():
             MoreConsts.HALF_PI
             * (rotation_index % new_component.max_rotations)
         )
+        if block.has("extra") and target_block_name == "Ejector":
+            print(block["extra"])
+            new_component.target_pos = parse_vec2i(block["extra"])
         components_parent.add_child(new_component)
         world.all_components[tile_pos] = new_component
 

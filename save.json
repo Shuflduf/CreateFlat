@@ -2,7 +2,6 @@
   "seed": 4,
   "blocks": [
     { "name": "Motor", "position": "(0, 2)", "rotation": 1 },
-    { "name": "Shaft", "position": "(1, 2)", "rotation": 1 },
-    { "name": "Ejector", "position": "(2, 2)", "rotation": 0, "extra": "(9, 5)" },
+    { "name": "Ejector", "position": "(1, 2)", "rotation": 0, "extra": "(9, 5)" },
   ]
 }
