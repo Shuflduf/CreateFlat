@@ -52,6 +52,7 @@ static func from_id(id: String) -> Item:
     new_item.data = RecipeSystem.all_item_data.filter(func(i: ItemData): return i.id == id)[0]
     new_item.update_sprite()
     RecipeSystem.add_child(new_item)
+    print(new_item.data.id)
     return new_item
 
 

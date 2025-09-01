@@ -3,7 +3,7 @@ extends Node2D
 
 const MIN_DISTANCE = 300.0
 const MIN_DISTANCE_SQUARED = MIN_DISTANCE * MIN_DISTANCE
-const FREQUENCY = 0.001
+const FREQUENCY = 0.002
 
 @export var item_source_spawner_scene: PackedScene
 
@@ -13,7 +13,6 @@ var gen_seed = randi()
 
 
 func _ready() -> void:
-    print(gen_seed)
     var dir = DirAccess.open(sources_path)
     for file in dir.get_files():
         var data: ItemData = ResourceLoader.load(sources_path + "/" + file)

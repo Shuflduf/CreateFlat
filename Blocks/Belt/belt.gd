@@ -28,8 +28,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+    super(delta)
     if held_items.size() > 0:
         var main_item = held_items[0]
+        if main_item == null:
+            held_items.pop_front()
+            return
+            
         var on_belt = (
             abs(global_position.x - main_item.global_position.x) < 76.0
         )
@@ -74,7 +79,6 @@ func _physics_process(delta: float) -> void:
             #
             #     item_processed = false
 
-    super(delta)
 
 
 func _post_update_neighbors(

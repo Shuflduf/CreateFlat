@@ -11,6 +11,8 @@ var speed = 0.0:
 
 
 func mix_recipe() -> ItemRecipe:
+    if target_transport == null:
+        return null
     var ids: Array[String]
     target_transport.held_items.map(func(i: Item): ids.append(i.data.id))
     var recipe = RecipeSystem.find_recipe(RecipeSystem.RecipeType.MIXING, ids)
