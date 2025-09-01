@@ -47,6 +47,9 @@ func stack_queue():
         if i == 0:
             continue
         var item = held_items[i]
+        if item == null:
+            held_items.remove_at(i)
+            continue
         item.velocity.y = 0.0
         item.velocity.x = 0.0
         item.global_position.y = global_position.y - 92.0 - (32.0 * i)
