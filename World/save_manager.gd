@@ -7,6 +7,7 @@ extends Node
 var components_list: Array[ComponentInfo]
 @onready var components_parent: Node2D = $"../Components"
 
+
 func load_from_file(path: String):
     var save_str = FileAccess.get_file_as_string(path)
     var save = JSON.parse_string(save_str)
@@ -32,6 +33,7 @@ func load_from_file(path: String):
         world.all_components[tile_pos] = new_component
 
     world.refresh()
+
 
 func load_example():
     load_from_file("res://save.json")
@@ -100,7 +102,6 @@ func _ready():
     # if Global.transition_data["load"] == "example":
     #     load_example()
     # elif Global.transition_data["load"] != "new":
-
 
 
 func parse_vec2i(vec_string: String) -> Vector2i:

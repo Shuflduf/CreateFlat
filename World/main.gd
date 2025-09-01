@@ -8,6 +8,7 @@ const HALF_TILE = TILE_SIZE / 2.0
 
 var rotation_index = 0
 var target_placed = true
+var can_place = true
 
 var all_components: Dictionary[Vector2i, MechanicalComponent] = {}
 
@@ -36,51 +37,68 @@ func _physics_process(_delta: float) -> void:
     DebugDraw2D.set_text("Position", grid_pos)
     DebugDraw2D.set_text("Global Pos", get_global_mouse_position())
 
+    if grid_pos == Vector2i.ZERO and (not needs_target() and target_placed):
+        return
+
+    if menus_open():
+        return
+
+    if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+        can_place = true
+
+    if not can_place:
+        return
+
+    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+        if needs_target() and not target_placed:
+            target_placed = true
+            %Preview.get_child(0).show()
+            return
+
+        if all_components.has(grid_pos):
+            remove_at(grid_pos)
+
+        var new_component: MechanicalComponent = (
+            selected_component.instantiate()
+        )
+        new_component.target_pos = Vector2i(%Indicator.position / 128.0)
+        new_component.tile_pos = grid_pos
+        new_component.position = $CursorSelection.position
+        new_component.rotation = (
+            MoreConsts.HALF_PI * (rotation_index % new_component.max_rotations)
+        )
+        new_component.rotation_index = (
+            rotation_index % new_component.max_rotations
+        )
+        $Components.add_child(new_component)
+
+        all_components[grid_pos] = new_component
+        new_component.connect_neighbors(grid_pos, all_components)
+        target_placed = false
+        #%Indicator.hide()
+        if needs_target():
+            %Preview.get_child(0).hide()
+
+    elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+        remove_at(grid_pos)
+        # fuck if i know
+        await get_tree().physics_frame
+        await get_tree().physics_frame
+        _on_refresh_pressed()
+
+
+
+func menus_open() -> bool:
+    return [$CanvasLayer/Inventory.visible, $CanvasLayer/RecipeViewer.visible].any(
+        func(b): return b
+    )
+
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.is_pressed():
-        var grid_pos = Vector2i($CursorSelection.position / 128.0)
-        if grid_pos == Vector2i.ZERO and (not needs_target() and target_placed):
-            return
-        if event.button_index == MOUSE_BUTTON_LEFT:
-            if needs_target() and not target_placed:
-                target_placed = true
-                %Preview.get_child(0).show()
-                return
-
-            if all_components.has(grid_pos):
-                remove_at(grid_pos)
-
-            var new_component: MechanicalComponent = (
-                selected_component.instantiate()
-            )
-            new_component.target_pos = Vector2i(%Indicator.position / 128.0)
-            new_component.tile_pos = grid_pos
-            new_component.position = $CursorSelection.position
-            new_component.rotation = (
-                MoreConsts.HALF_PI
-                * (rotation_index % new_component.max_rotations)
-            )
-            new_component.rotation_index = (
-                rotation_index % new_component.max_rotations
-            )
-            $Components.add_child(new_component)
-
-            all_components[grid_pos] = new_component
-            new_component.connect_neighbors(grid_pos, all_components)
-            target_placed = false
-            #%Indicator.hide()
-            if needs_target():
-                %Preview.get_child(0).hide()
-
-        elif event.button_index == MOUSE_BUTTON_RIGHT:
-            remove_at(grid_pos)
-            # fuck if i know
-            await get_tree().physics_frame
-            await get_tree().physics_frame
-            _on_refresh_pressed()
-        elif event.button_index == MOUSE_BUTTON_MIDDLE:
+        if event.button_index == MOUSE_BUTTON_MIDDLE:
             # var grid_pos = Vector2i($CursorSelection.position / 128.0)
+            var grid_pos = Vector2i($CursorSelection.position / 128.0)
             var target: MechanicalComponent = all_components.get(grid_pos)
             if target != null:
                 selected_component = load(target.duplicate().scene_file_path)
@@ -155,3 +173,4 @@ func _on_inventory_item_selected(scene: PackedScene) -> void:
     target_placed = false
     %Indicator.visible = new_preview.needs_target_pos
     new_preview.visible = not new_preview.needs_target_pos
+    can_place = false
