@@ -24,6 +24,7 @@ var recipes: Dictionary[RecipeType, Array] = {
 func _ready() -> void:
     var dir = DirAccess.open(ITEMS_LIST_PATH)
     for file in dir.get_files():
+        file = file.trim_suffix(".remap")
         var data: ItemData = ResourceLoader.load(ITEMS_LIST_PATH + "/" + file)
         all_item_data.append(data)
 

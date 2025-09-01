@@ -155,7 +155,7 @@ border_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_d1ilt")
-selected_component = ExtResource("2_6iyac")
+selected_component = ExtResource("28_mp5dt")
 
 [node name="Indicator" type="Sprite2D" parent="."]
 unique_name_in_owner = true
