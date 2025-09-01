@@ -1,4 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bic1ec1ygqdft"]
+[gd_scene load_steps=4 format=3 uid="uid://bic1ec1ygqdft"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngyb1"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_4m1lu"]
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_s28qd"]
 font_size = 12
@@ -27,46 +33,55 @@ grow_vertical = 0
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Inventory: E"
+label_settings = SubResource("LabelSettings_ngyb1")
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Recipes: H"
+label_settings = SubResource("LabelSettings_ngyb1")
 horizontal_alignment = 2
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Place: LMB"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Remove: RMB"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Pick: MMB"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label10" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Rotate: R"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Move: WASD / MMB"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label7" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Zoom: Mouse Wheel"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label8" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Save: CTRL + S"
+label_settings = SubResource("LabelSettings_4m1lu")
 horizontal_alignment = 2
 
 [node name="Label9" type="Label" parent="VBoxContainer"]
