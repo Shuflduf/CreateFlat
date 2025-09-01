@@ -49,6 +49,11 @@ layout_mode = 2
 text = "Pick: MMB"
 horizontal_alignment = 2
 
+[node name="Label10" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Rotate: R"
+horizontal_alignment = 2
+
 [node name="Label6" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Move: WASD / MMB"

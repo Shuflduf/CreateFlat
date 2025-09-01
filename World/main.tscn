@@ -175,9 +175,9 @@ unique_name_in_owner = true
 self_modulate = Color(0.509804, 1, 0.878431, 0.6)
 position = Vector2(64, 64)
 
-[node name="Motor" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("2_6iyac")]
+[node name="Drill" parent="CursorSelection/Preview" node_paths=PackedStringArray("connections") instance=ExtResource("28_mp5dt")]
 connections = {
-0: NodePath("Connector")
+2: NodePath("Connector")
 }
 
 [node name="Cam" type="Camera2D" parent="."]
