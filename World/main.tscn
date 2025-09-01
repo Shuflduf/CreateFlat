@@ -264,16 +264,16 @@ visible = false
 [node name="TempItemSpawner" parent="." instance=ExtResource("14_sfxlf")]
 position = Vector2(192, -384)
 
-[node name="ItemSourceFactory" type="Node2D" parent="."]
-script = ExtResource("29_40rxn")
-item_source_spawner_scene = ExtResource("30_5k5ia")
-sources_path = "res://Items/Sources/"
-
 [node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("item_source_factory", "world", "inventory")]
 script = ExtResource("4_jj6pk")
 item_source_factory = NodePath("../ItemSourceFactory")
 world = NodePath("..")
 inventory = NodePath("../CanvasLayer/Inventory")
+
+[node name="ItemSourceFactory" type="Node2D" parent="."]
+script = ExtResource("29_40rxn")
+item_source_spawner_scene = ExtResource("30_5k5ia")
+sources_path = "res://Items/Sources/"
 
 [node name="Portal" parent="." instance=ExtResource("36_02r0l")]
 

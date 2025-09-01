@@ -7,9 +7,8 @@ extends Node
 var components_list: Array[ComponentInfo]
 @onready var components_parent: Node2D = $"../Components"
 
-
-func load_example():
-    var save_str = FileAccess.get_file_as_string("res://save.json")
+func load_from_file(path: String):
+    var save_str = FileAccess.get_file_as_string(path)
     var save = JSON.parse_string(save_str)
     item_source_factory.gen_seed = int(save["seed"])
     for block in save["blocks"]:
@@ -33,6 +32,9 @@ func load_example():
         world.all_components[tile_pos] = new_component
 
     world.refresh()
+
+func load_example():
+    load_from_file("res://save.json")
     # assert(save["blocks"][0]["position"] == Vector2i(0, 2))
 
 
@@ -88,8 +90,17 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _ready():
     load_component_data()
-    if Global.transition_data["example"]:
-        load_example()
+    match Global.transition_data["load"]:
+        "example":
+            load_example()
+        "new":
+            pass
+        _:
+            load_from_file(Global.transition_data["load"])
+    # if Global.transition_data["load"] == "example":
+    #     load_example()
+    # elif Global.transition_data["load"] != "new":
+
 
 
 func parse_vec2i(vec_string: String) -> Vector2i:
