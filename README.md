@@ -1,6 +1,6 @@
 # Create Flat
 *Create Mod but 2D*
-Features:
+## Features:
 - Mechanical rotation system thing
 - Item system
 - Recipe system
