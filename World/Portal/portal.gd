@@ -7,6 +7,10 @@ var showing_data = false
 var items_eaten: Dictionary[int, String]
 
 
+func _ready():
+    %Info.hide()
+
+
 func _physics_process(_delta: float) -> void:
     if showing_data:
         var items = items_last_interval()
@@ -17,7 +21,6 @@ func _physics_process(_delta: float) -> void:
             %Labels.add_child(new_label)
             new_label.text = "%d %s" % [items[item], item]
             new_label.show()
-
 
 
 func _on_area_body_entered(body: Node2D) -> void:

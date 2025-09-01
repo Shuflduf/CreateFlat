@@ -250,7 +250,7 @@ script = ExtResource("1_su474")
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_pgvin")
 autoplay = "default"
-frame_progress = 0.875604
+frame_progress = 0.762723
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

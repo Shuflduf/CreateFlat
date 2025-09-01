@@ -36,6 +36,32 @@ func load_example():
     # assert(save["blocks"][0]["position"] == Vector2i(0, 2))
 
 
+func save_data():
+    var new_save_data = {"seed": item_source_factory.gen_seed, "blocks": []}
+    for pos in world.all_components:
+        var component = world.all_components[pos]
+        var new_component_data = {
+            "position": pos,
+            "name": find_name_by_component(component),
+            "rotation": component.rotation_index
+        }
+
+        if component is WeightedEjector:
+            new_component_data["extra"] = component.target_pos
+
+        new_save_data["blocks"].append(new_component_data)
+    var file = FileAccess.open("%s.json" % random_string(), FileAccess.WRITE)
+    file.store_string(JSON.stringify(new_save_data))
+
+
+func random_string() -> String:
+    const CHARACTERS = "abcdefghijklmnopqrstuvwxyz"
+    var word = ""
+    for i in range(8):
+        word += CHARACTERS[randi() % CHARACTERS.length()]
+    return word
+
+
 func load_component_data():
     for category in inventory.components:
         var components = inventory.components[category]
@@ -44,6 +70,20 @@ func load_component_data():
 
 func find_component_by_name(target_name: String) -> ComponentInfo:
     return components_list.filter(func(c: ComponentInfo): return c.name == target_name)[0]
+
+
+func find_name_by_component(target_component: MechanicalComponent) -> String:
+    var component_scene: PackedScene = load(target_component.scene_file_path)
+    return (
+        components_list
+        . filter(func(c: ComponentInfo): return c.scene == component_scene)[0]
+        . name
+    )
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+    if event.is_action_pressed(&"save"):
+        save_data()
 
 
 func _ready():

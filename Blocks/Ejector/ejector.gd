@@ -1,3 +1,4 @@
+class_name WeightedEjector
 extends ItemTransport
 
 var is_ready = true
