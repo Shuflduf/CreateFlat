@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://bic1ec1ygqdft"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s28qd"]
+font_size = 12
+
+[node name="Keybinds" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Inventory: E"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Recipes: H"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Place: LMB"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Remove: RMB"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Pick: MMB"
+horizontal_alignment = 2
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Move: WASD / MMB"
+horizontal_alignment = 2
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Zoom: Mouse Wheel"
+horizontal_alignment = 2
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Save: CTRL + S"
+horizontal_alignment = 2
+
+[node name="Label9" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "(Drag and drop save file on main menu to open)"
+label_settings = SubResource("LabelSettings_s28qd")
+horizontal_alignment = 2

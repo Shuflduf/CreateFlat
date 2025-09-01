@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bri4bsuu8weqc"]
+[gd_scene load_steps=51 format=3 uid="uid://bri4bsuu8weqc"]
 
 [ext_resource type="Script" uid="uid://ctr73ygjw850p" path="res://World/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dvqr1pc5ymigg" path="res://Blocks/Motor/motor.tscn" id="2_6iyac"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bq6jycjt3nyaf" path="res://Blocks/Drill/DrillPart/file.png" id="29_xxw4t"]
 [ext_resource type="PackedScene" uid="uid://c6vw3pv6p2rjo" path="res://World/item_source_spawner.tscn" id="30_5k5ia"]
 [ext_resource type="PackedScene" uid="uid://b0ihxymrkklg5" path="res://World/RecipeViewer/recipe_viewer.tscn" id="31_hyaif"]
+[ext_resource type="PackedScene" uid="uid://bic1ec1ygqdft" path="res://World/keybinds.tscn" id="32_e4oxu"]
 [ext_resource type="PackedScene" uid="uid://bsfgnlmje3x4l" path="res://World/Inventory/inventory.tscn" id="33_xxw4t"]
 [ext_resource type="PackedScene" uid="uid://dmlws70736bi8" path="res://World/Portal/portal.tscn" id="36_02r0l"]
 
@@ -260,6 +261,8 @@ visible = false
 
 [node name="RecipeViewer" parent="CanvasLayer" instance=ExtResource("31_hyaif")]
 visible = false
+
+[node name="Keybinds" parent="CanvasLayer" instance=ExtResource("32_e4oxu")]
 
 [node name="TempItemSpawner" parent="." instance=ExtResource("14_sfxlf")]
 position = Vector2(192, -384)
