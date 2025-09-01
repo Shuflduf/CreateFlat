@@ -53,6 +53,7 @@ func _physics_process(_delta: float) -> void:
         if needs_target() and not target_placed:
             target_placed = true
             %Preview.get_child(0).show()
+            can_place = false
             return
 
         if all_components.has(grid_pos):
@@ -78,6 +79,7 @@ func _physics_process(_delta: float) -> void:
         #%Indicator.hide()
         if needs_target():
             %Preview.get_child(0).hide()
+            can_place = false
 
     elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
         remove_at(grid_pos)
