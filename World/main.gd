@@ -91,7 +91,7 @@ func _physics_process(_delta: float) -> void:
         # fuck if i know
         await get_tree().physics_frame
         await get_tree().physics_frame
-        _on_refresh_pressed()
+        refresh()
 
 
 
@@ -165,10 +165,6 @@ func refresh():
         target.connect_neighbors(pos, all_components)
 
 
-func _on_refresh_pressed() -> void:
-    refresh()
-
-
 func _on_inventory_item_selected(scene: PackedScene) -> void:
     selected_component = scene
     for c in %Preview.get_children():
@@ -181,3 +177,7 @@ func _on_inventory_item_selected(scene: PackedScene) -> void:
     %Indicator.visible = new_preview.needs_target_pos
     new_preview.visible = not new_preview.needs_target_pos
     can_place = false
+
+
+func _on_main_menu_pressed() -> void:
+    get_tree().change_scene_to_file("res://main_menu.tscn")

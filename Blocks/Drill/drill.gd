@@ -25,10 +25,15 @@ func _physics_process(_delta: float) -> void:
 
 func _ready():
     super()
+    
+    # WHAT THE ACTUAL LIVING FUCK
     await get_tree().physics_frame
+    if get_tree() == null:
+        return
     await get_tree().physics_frame
     if not active:
         return
+    
 
     $Connector.rotated.connect(func(): speed = $Connector.speed)
     if $Area.has_overlapping_areas():
