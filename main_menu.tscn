@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4rjvd4kqg0fw"]
+[gd_scene load_steps=5 format=3 uid="uid://b4rjvd4kqg0fw"]
 
 [ext_resource type="Script" uid="uid://dmkk87wcwk07r" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://d37en7gw7x8ay" path="res://Assets/minecraft_title.png" id="2_7vrkn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rhts7"]
 font_size = 101
@@ -33,13 +34,21 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_7vrkn")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Create Flat"
 label_settings = SubResource("LabelSettings_rhts7")
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Create Mod but 2D"
 label_settings = SubResource("LabelSettings_06t4h")
@@ -53,6 +62,7 @@ theme_override_constants/separation = 35
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 48
 text = "New World"
 
@@ -60,8 +70,14 @@ text = "New World"
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 48
 text = "Example World"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "(Drag and drop save file to open)"
+horizontal_alignment = 1
 
 [node name="InGameOnly" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 visible = false

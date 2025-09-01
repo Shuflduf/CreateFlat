@@ -36,7 +36,7 @@ func load_from_file(path: String):
 
 
 func load_example():
-    load_from_file("res://save.json")
+    load_from_file("res://example.json")
     # assert(save["blocks"][0]["position"] == Vector2i(0, 2))
 
 

@@ -26,6 +26,14 @@
       "results": {
         "andesite_alloy": 1.0
       }
+    },
+    {
+      "ingredients": {
+        "gravel": 1.0,
+      },
+      "results": {
+        "iron_nugget": 2.0
+      }
     }
   ],
   "milling": [
@@ -44,7 +52,47 @@
       "results": {
         "gravel": 1.0
       }
-    }
+    },
+    {
+      "ingredients": {
+        "iron": 1.0
+      },
+      "results": {
+        "iron_nugget": 4.0
+      }
+    },
+    {
+      "ingredients": {
+        "gold": 1.0
+      },
+      "results": {
+        "gold_nugget": 4.0
+      }
+    },
+    {
+      "ingredients": {
+        "copper": 1.0
+      },
+      "results": {
+        "copper_nugget": 4.0
+      }
+    },
+    {
+      "ingredients": {
+        "zinc": 1.0
+      },
+      "results": {
+        "zinc_nugget": 4.0
+      }
+    },
+    {
+      "ingredients": {
+        "brass": 1.0
+      },
+      "results": {
+        "brass_nugget": 4.0
+      }
+    },
   ],
   "pressing": [
     {
@@ -135,6 +183,14 @@
       },
       "results": {
         "copper": 1.0
+      }
+    },
+    {
+      "ingredients": {
+        "zinc_nugget": 4.0
+      },
+      "results": {
+        "zinc": 1.0
       }
     }
   ]
