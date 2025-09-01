@@ -119,6 +119,7 @@ func _on_sidebar_item_selected(scene: PackedScene) -> void:
     %Indicator.visible = new_preview.needs_target_pos
     new_preview.visible = not new_preview.needs_target_pos
 
+
 func refresh():
     for pos in all_components:
         var target = all_components[pos]
@@ -133,6 +134,7 @@ func refresh():
     for pos in all_components:
         var target = all_components[pos]
         target.connect_neighbors(pos, all_components)
+
 
 func _on_refresh_pressed() -> void:
     refresh()

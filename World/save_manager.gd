@@ -4,9 +4,9 @@ extends Node
 @export var world: GameWorld
 @export var inventory: Inventory
 
-
 var components_list: Array[ComponentInfo]
 @onready var components_parent: Node2D = $"../Components"
+
 
 func load_example():
     var save_str = FileAccess.get_file_as_string("res://save.json")
@@ -17,13 +17,14 @@ func load_example():
         var component_info = find_component_by_name(target_block_name)
         var tile_pos = parse_vec2i(block["position"])
         var rotation_index = int(block["rotation"])
-        var new_component: MechanicalComponent = component_info.scene.instantiate()
+        var new_component: MechanicalComponent = (
+            component_info.scene.instantiate()
+        )
         new_component.position = Vector2(tile_pos) * 128.0
         new_component.tile_pos = tile_pos
         new_component.rotation_index = rotation_index
         new_component.rotation = (
-            MoreConsts.HALF_PI
-            * (rotation_index % new_component.max_rotations)
+            MoreConsts.HALF_PI * (rotation_index % new_component.max_rotations)
         )
         if block.has("extra") and target_block_name == "Ejector":
             print(block["extra"])
