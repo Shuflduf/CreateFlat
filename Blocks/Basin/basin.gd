@@ -15,6 +15,8 @@ func _physics_process(_delta: float) -> void:
 
     debug_data = held_items.size()
 
+func can_accept_item() -> bool:
+    return true
 
 func _ready() -> void:
     super()
