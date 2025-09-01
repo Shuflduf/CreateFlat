@@ -1,6 +1,7 @@
 extends Node2D
 
-const INTERVAL_MSEC = 3000
+const INTERVAL_SEC = 30
+const INTERVAL_MSEC = INTERVAL_SEC * 1000
 
 var showing_data = false
 var items_eaten: Dictionary[int, String]
@@ -8,7 +9,15 @@ var items_eaten: Dictionary[int, String]
 
 func _physics_process(_delta: float) -> void:
     if showing_data:
-        DebugDraw2D.set_text("PORTAL", items_last_interval())
+        var items = items_last_interval()
+        for child in %Labels.get_children():
+            child.queue_free()
+        for item in items:
+            var new_label = %BaseLabel.duplicate()
+            %Labels.add_child(new_label)
+            new_label.text = "%d %s" % [items[item], item]
+            new_label.show()
+
 
 
 func _on_area_body_entered(body: Node2D) -> void:
@@ -34,7 +43,9 @@ func items_last_interval() -> Dictionary[String, int]:
 
 func _on_area_mouse_entered() -> void:
     showing_data = true
+    %Info.show()
 
 
 func _on_area_mouse_exited() -> void:
     showing_data = false
+    %Info.hide()

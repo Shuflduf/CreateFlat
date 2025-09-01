@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dmlws70736bi8"]
+[gd_scene load_steps=39 format=3 uid="uid://dmlws70736bi8"]
 
 [ext_resource type="Texture2D" uid="uid://do6c16vl1ku53" path="res://World/Portal/nether_portal.png" id="1_356b4"]
 [ext_resource type="Script" uid="uid://btomdg8gtyk7" path="res://World/Portal/portal.gd" id="1_su474"]
@@ -239,6 +239,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x485"]
 size = Vector2(112, 112)
 
+[sub_resource type="LabelSettings" id="LabelSettings_su474"]
+font_size = 24
+
 [node name="Portal" type="Node2D"]
 z_index = 40
 script = ExtResource("1_su474")
@@ -247,7 +250,7 @@ script = ExtResource("1_su474")
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_pgvin")
 autoplay = "default"
-frame_progress = 0.58777
+frame_progress = 0.875604
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -262,6 +265,39 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_6x485")
+
+[node name="Info" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+offset_left = 136.0
+offset_top = -24.0
+offset_right = 328.0
+offset_bottom = 152.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Info"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Last 30 Seconds"
+label_settings = SubResource("LabelSettings_su474")
+horizontal_alignment = 1
+
+[node name="BaseLabel" type="Label" parent="Info/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "2 Andesite"
+
+[node name="Labels" type="VBoxContainer" parent="Info/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
 [connection signal="mouse_entered" from="Area" to="." method="_on_area_mouse_entered"]
