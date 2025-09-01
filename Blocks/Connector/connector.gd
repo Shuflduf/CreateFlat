@@ -16,6 +16,7 @@ var speed = 0.0:
 var connected_to: MechanicalConnector
 var global_dir: MechanicalComponent.Dir
 var parent: MechanicalComponent
+var already_rotated = false
 
 @onready var sprites: AnimatedSprite2D = $Sprites
 @onready var debug: Sprite2D = $Debug
@@ -36,12 +37,17 @@ func _ready() -> void:
 
 #speed = 0.0
 #print(modulate.h)
+func _physics_process(_delta: float) -> void:
+    already_rotated = false
 
 
 func transfer_rotation():
     if not connected_to:
         return
 
+    if already_rotated:
+        return
+    already_rotated = true
     connected_to.speed = -speed
     connected_to.sprites.frame = sprites.frame
     connected_to.rotated.emit()
